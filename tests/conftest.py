@@ -10,6 +10,7 @@ from models.user import UserModel
 from settings import settings
 from models import Base, get_db
 from main import application
+import json
 
 
 @pytest.fixture(scope="function")
@@ -46,3 +47,20 @@ def client(db_session):
 def clear_db(session):
     session.query(UserModel).delete()
     session.commit()
+
+
+DEFAULT_USER_PAYLOAD = {
+        "email": "test@gmail.com",
+        "password": "Test@123",
+        "first_name": "Test",
+        "last_name": "User",
+    }
+
+
+@pytest.fixture(scope="function")
+def account_user_and_token(client):
+    response = client.post(f"/api/v1/users/create", data=DEFAULT_USER_PAYLOAD)
+    if response.status_code == 200:
+        response = client.post(f"/api/v1/users/token", data=DEFAULT_USER_PAYLOAD)
+        if response.status_code == 200:
+            return json.loads(response.text)

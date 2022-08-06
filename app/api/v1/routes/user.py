@@ -24,9 +24,8 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 300
 
 
-def get_user_by_email(email):
-    with get_db() as db:
-        return db.query(UserModel).filter_by(email=email).first()
+def get_user_by_email(db, email):
+    return db.query(UserModel).filter_by(email=email).first()
 
 
 def verify_password(plain_password, hashed_password):
@@ -38,7 +37,7 @@ def get_password_hash(password):
 
 
 def authenticate_user(db, email: str, password: str):
-    user = get_user_by_email(email)
+    user = get_user_by_email(db, email)
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
@@ -58,7 +57,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 
 
 @user_router.get("/define-me", response_model=UserResponseSchema)
-async def get_current_user(token: str = Depends(oauth2_scheme)):
+async def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -72,7 +71,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
     except JWTError as je:
         print(je)
         raise credentials_exception
-    user = get_user_by_email(email)
+    user = get_user_by_email(db, email)
     if user is None:
         raise credentials_exception
     return user
