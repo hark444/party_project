@@ -19,6 +19,7 @@ python-jose = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
+mock = "*"
 black = "*"
 
 [requires]
