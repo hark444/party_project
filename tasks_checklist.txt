@@ -1,6 +1,5 @@
 To Do List
-- Setup black[PPDEV-000]
-    - setup black and fix all files[PPDEV-000-A]
+
 
 - Write unit tests [PPDEV-001]
     - Create boiler plate for UTs[PPDEV-001-A]
@@ -18,3 +17,5 @@ Completed Tasks
 - Create FastAPI boiler plate
 - Create User Module
 - Create Roles Module
+- Setup black[PPDEV-000]
+    - setup black and fix all files[PPDEV-000-A]

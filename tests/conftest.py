@@ -16,7 +16,7 @@ from main import application
 def db_engine():
     engine = create_engine(settings.DATABASE.SQLALCHEMY_TEST_DATABASE_URL)
     if not database_exists(engine.url):
-        print(engine.url)
+        # print(engine.url)
         create_database(engine.url)
 
     Base.metadata.create_all(bind=engine)
