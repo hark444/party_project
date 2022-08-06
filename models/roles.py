@@ -11,7 +11,6 @@ from sqlalchemy import (
     func,
     Table,
     JSON,
-
 )
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
 from sqlalchemy.orm import relationship, Session
