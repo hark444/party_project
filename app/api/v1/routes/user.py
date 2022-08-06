@@ -10,7 +10,7 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
-user_router = APIRouter(prefix='/users', tags=["users"])
+user_router = APIRouter(prefix="/users", tags=["users"])
 
 app = FastAPI()
 
@@ -79,8 +79,9 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 
 
 @user_router.post("/token", response_model=TokenResponseSchema)
-async def login_for_access_token(form_data: UserSchemaForm = Depends(),
-                                 db: Session = Depends(get_db)):
+async def login_for_access_token(
+    form_data: UserSchemaForm = Depends(), db: Session = Depends(get_db)
+):
     try:
         user = authenticate_user(db, form_data.email, form_data.password)
         if not user:
@@ -99,14 +100,15 @@ async def login_for_access_token(form_data: UserSchemaForm = Depends(),
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
-async def create_user(form_data: UserSchemaForm = Depends(),
-                      db: Session = Depends(get_db)):
+async def create_user(
+    form_data: UserSchemaForm = Depends(), db: Session = Depends(get_db)
+):
     try:
         user_obj = UserModel(
             hashed_password=get_password_hash(form_data.password),
             email=form_data.email,
             first_name=form_data.first_name,
-            last_name=form_data.first_name
+            last_name=form_data.first_name,
         )
 
         db.add(user_obj)

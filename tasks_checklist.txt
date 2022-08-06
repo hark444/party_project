@@ -1,7 +1,11 @@
 To Do List
-- Create Boiler Plate for unit tests [PPDEV-001]
-    - Write UTs for auth[PPDEV-001-A]
-    - Write UTs for user[PPDEV-001-B]
+- Setup black[PPDEV-000]
+    - setup black and fix all files[PPDEV-000-A]
+
+- Write unit tests [PPDEV-001]
+    - Create boiler plate for UTs[PPDEV-001-A]
+    - Write UTs for auth[PPDEV-001-B]
+    - Write UTs for user[PPDEV-001-C]
 
 - Integrate User-Roles modules[PPDEV-002]
     - Create foreign key mappings[PPDEV-002-A]

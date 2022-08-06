@@ -19,8 +19,8 @@ python-jose = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
 
 [dev-packages]
-pytest = "*"
 mock = "*"
+black = "*"
 
 [requires]
 python_version = "3.10.2"
