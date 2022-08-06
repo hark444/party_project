@@ -50,11 +50,11 @@ def clear_db(session):
 
 
 DEFAULT_USER_PAYLOAD = {
-        "email": "test@gmail.com",
-        "password": "Test@123",
-        "first_name": "Test",
-        "last_name": "User",
-    }
+    "email": "test@gmail.com",
+    "password": "Test@123",
+    "first_name": "Test",
+    "last_name": "User",
+}
 
 
 @pytest.fixture(scope="function")

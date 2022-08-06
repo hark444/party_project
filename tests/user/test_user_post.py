@@ -3,11 +3,11 @@ from fastapi import status
 import json
 
 DEFAULT_USER_PAYLOAD = {
-        "email": "hkeshwani68@gmail.com",
-        "password": "Test@123",
-        "first_name": "Harshad",
-        "last_name": "Keshwani",
-    }
+    "email": "hkeshwani68@gmail.com",
+    "password": "Test@123",
+    "first_name": "Harshad",
+    "last_name": "Keshwani",
+}
 
 
 def test_create_user(client):

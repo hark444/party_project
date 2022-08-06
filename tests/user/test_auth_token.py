@@ -4,11 +4,11 @@ import json
 
 
 DEFAULT_USER_PAYLOAD = {
-        "email": "hkeshwani68@gmail.com",
-        "password": "Test@123",
-        "first_name": "Harshad",
-        "last_name": "Keshwani",
-    }
+    "email": "hkeshwani68@gmail.com",
+    "password": "Test@123",
+    "first_name": "Harshad",
+    "last_name": "Keshwani",
+}
 
 
 def test_create_user_token(client):
@@ -18,6 +18,7 @@ def test_create_user_token(client):
     assert response.status_code == status.HTTP_200_OK
     response_data = json.loads(response.text)
     assert response_data.get("access_token")
-    assert response_data.get("token_type") == 'bearer'
+    assert response_data.get("token_type") == "bearer"
+
 
 # TODO: Write negative cases as well.
