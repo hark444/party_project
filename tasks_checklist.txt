@@ -1,4 +1,7 @@
 To Do List
+- Setup black[PPDEV-000]
+    - setup black and fix all files[PPDEV-000-A]
+
 - Write unit tests [PPDEV-001]
     - Create boiler plate for UTs[PPDEV-001-A]
     - Write UTs for auth[PPDEV-001-B]

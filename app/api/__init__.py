@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from app.api.v1 import version_router as v1_router
+
 # from app.auth.inter_service_auth import verify_auth_token
 
 

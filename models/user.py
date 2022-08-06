@@ -11,7 +11,6 @@ from sqlalchemy import (
     func,
     Table,
     JSON,
-
 )
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
 from sqlalchemy.orm import relationship, Session
@@ -31,4 +30,3 @@ class UserModel(Base):
     hashed_password = Column(String, nullable=True)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
-
