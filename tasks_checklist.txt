@@ -1,14 +1,10 @@
 To Do List
 
-- Integrate User-Roles modules[PPDEV-002]
-    - Create role type enum and user mappings[PPDEV-002-A]
-    - Update the user schemas[PPDEV-002-B]
-    - Create API to update user roles[PPDEV-002-C]
-    - Create Scope for permitted API usage
-
 - Separate Auth and User[PPDEV-003]
 
 - Permissions setup
+
+- Logger
 
 
 Completed Tasks
@@ -22,3 +18,9 @@ Completed Tasks
     - Create boiler plate for UTs[PPDEV-001-A]
     - Write UTs for auth[PPDEV-001-B]
     - Write UTs for user[PPDEV-001-C]
+- Integrate User-Roles modules[PPDEV-002]
+    - Create role type enum and user mappings[PPDEV-002-A]
+    - Update the user schemas[PPDEV-002-B]
+    - Create API(PATCH) to update user roles[PPDEV-002-C]
+    - Write UTs for roles [PPDEV-002-D]
+    - Create Scope for permitted API usage
