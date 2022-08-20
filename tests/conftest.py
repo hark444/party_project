@@ -61,10 +61,10 @@ DEFAULT_USER_PAYLOAD = {
 def account_user_and_token(client):
     response = client.post(f"/api/v1/users/create", data=DEFAULT_USER_PAYLOAD)
     if response.status_code == 200:
-        user_id = response.json().get('id')
+        user_id = response.json().get("id")
         response = client.post(f"/api/v1/users/token", data=DEFAULT_USER_PAYLOAD)
         if response.status_code == 200:
             return {
                 "user_id": user_id,
-                "access_token": response.json().get("access_token")
+                "access_token": response.json().get("access_token"),
             }
