@@ -1,21 +1,23 @@
 To Do List
 
-
-- Write unit tests [PPDEV-001]
-    - Create boiler plate for UTs[PPDEV-001-A]
-    - Write UTs for auth[PPDEV-001-B]
-    - Write UTs for user[PPDEV-001-C]
-
 - Integrate User-Roles modules[PPDEV-002]
-    - Create foreign key mappings[PPDEV-002-A]
+    - Create role type enum and user mappingsPPDEV-002-A]
     - Create API to update user roles[PPDEV-002-B]
     - Create Scope for permitted API usage[PPDEV-002-C]
 
 - Separate Auth and User[PPDEV-003]
 
+- Permissions setup
+
+
 Completed Tasks
+
 - Create FastAPI boiler plate
 - Create User Module
 - Create Roles Module
 - Setup black[PPDEV-000]
     - setup black and fix all files[PPDEV-000-A]
+- Write unit tests [PPDEV-001]
+    - Create boiler plate for UTs[PPDEV-001-A]
+    - Write UTs for auth[PPDEV-001-B]
+    - Write UTs for user[PPDEV-001-C]
