@@ -6,9 +6,9 @@ from models import Base
 
 
 class RoleTypeEnum(str, enum.Enum):
-    ADMIN = "admin"
-    SUPERUSER = "superuser"
-    REGULAR = "regular"
+    admin = "admin"
+    superuser = "superuser"
+    regular = "regular"
 
 
 class UserModel(Base):
