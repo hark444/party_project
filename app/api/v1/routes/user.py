@@ -98,6 +98,9 @@ async def login_for_access_token(
         return {"access_token": access_token, "token_type": "bearer"}
     except Exception as e:
         print(e)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
