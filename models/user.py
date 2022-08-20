@@ -1,22 +1,14 @@
 import enum
-from sqlalchemy import (
-    Boolean,
-    Column,
-    ForeignKey,
-    Integer,
-    String,
-    UniqueConstraint,
-    Enum,
-    DateTime,
-    func,
-    Table,
-    JSON,
-)
+from sqlalchemy import Boolean, Column, Integer, String, Enum, DateTime
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
-from sqlalchemy.orm import relationship, Session
-from sqlalchemy.ext.mutable import MutableDict
 from datetime import datetime
 from models import Base
+
+
+class RoleTypeEnum(str, enum.Enum):
+    ADMIN = "admin"
+    SUPERUSER = "superuser"
+    REGULAR = "regular"
 
 
 class UserModel(Base):
@@ -28,5 +20,6 @@ class UserModel(Base):
     last_name = Column(String, nullable=True)
     disabled = Column(Boolean, default=False, nullable=False)
     hashed_password = Column(String, nullable=True)
+    role = Column(Enum(RoleTypeEnum), nullable=False, server_default="regular")
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
