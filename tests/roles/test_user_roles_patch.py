@@ -4,7 +4,7 @@ from fastapi import status
 
 def test_default_user_role_is_regular(client, account_user_and_token):
     headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
-    response = client.get("/api/v1/users/define-me", headers=headers)
+    response = client.get("/api/v1/auth/define-me", headers=headers)
     assert response.status_code == status.HTTP_200_OK
     response_data = response.json()
     assert response_data.get("role") == RoleTypeEnum.regular

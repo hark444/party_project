@@ -9,8 +9,6 @@ from app.api.v1.schema.request.role import RoleTypeSchema
 
 user_role_router = APIRouter(prefix="/user-role", tags=["roles"])
 
-app = FastAPI()
-
 
 @user_role_router.patch("/{user_id}", response_model=UserResponseSchema)
 async def login_for_access_token(
