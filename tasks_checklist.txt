@@ -1,6 +1,6 @@
 To Do List
 
-- Separate Auth and User[PPDEV-003]
+- Separate Auth and User & update UTs[PPDEV-003]
 
 - Permissions setup
 
