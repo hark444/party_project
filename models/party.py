@@ -1,5 +1,14 @@
 import enum
-from sqlalchemy import Boolean, Column, Integer, String, DateTime, BigInteger, ForeignKey, Float
+from sqlalchemy import (
+    Boolean,
+    Column,
+    Integer,
+    String,
+    DateTime,
+    BigInteger,
+    ForeignKey,
+    Float,
+)
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from models import Base
@@ -10,7 +19,7 @@ class Party(Base):
     __tablename__ = "party"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(BigInteger, ForeignKey('account_user.id'))
+    user_id = Column(BigInteger, ForeignKey("account_user.id"))
     user = relationship(UserModel)
     reason = Column(String)
     proposed_date = Column(DateTime, default=datetime.now(), nullable=False)
