@@ -1,8 +1,15 @@
 To Do List
 
-- Separate Auth and User & update UTs[PPDEV-003]
+- Permissions setup [PPDEV-003]
 
-- Permissions setup
+- Create party table structure [PPDEV-004]
+
+- Create following tables: [PPDEV-005]
+    - party: id, user_id, reason, created_on, proposed_date, guests_invited, given_date, place, approved, ratings
+    - parties_due: id, user_id, parties_due
+    - parties_attended: attendee, rating, approved, party_id
+
+- Design core business logic using design document [PPDEV-006]
 
 - Logger
 
@@ -24,3 +31,4 @@ Completed Tasks
     - Create API(PATCH) to update user roles[PPDEV-002-C]
     - Write UTs for roles [PPDEV-002-D]
     - Create Scope for permitted API usage
+- Separate Auth and User & update UTs [PPDEV-003]
