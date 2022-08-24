@@ -2,10 +2,9 @@ To Do List
 
 - Permissions setup [PPDEV-003]
 
-- Create following tables: [PPDEV-005]
-    - party: id, user_id, reason, created_on, proposed_date, guests_invited, given_date, place, approved, ratings
-    - parties_due: id, user_id, parties_due
-    - parties_attended: party_id, attendee, rating, approved, comment
+- Create party CRUD APIs [PPDEV-008]
+
+- Create parties_attended CRUD APIs [PPDEV-009]
 
 - Design core business logic using design document [PPDEV-006]
 
@@ -35,3 +34,7 @@ Completed Tasks
     - Create Scope for permitted API usage
 - Separate Auth and User & update UTs [PPDEV-003]
 - Create party table structure [PPDEV-004]
+- Create following tables: [PPDEV-005]
+    - party: id, user_id, reason, created_on, proposed_date, guests_invited, given_date, place, approved, ratings
+    - parties_due: id, user_id, parties_due
+    - parties_attended: party_id, attendee, rating, approved, comment
