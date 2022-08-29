@@ -1,6 +1,6 @@
 To Do List
 
-- Permissions setup [PPDEV-003]
+- Permissions setup and Create PUT for account_user[PPDEV-010]
 
 - Create party CRUD APIs [PPDEV-008]
 
@@ -12,8 +12,9 @@ To Do List
 
 - Small independent tasks:
     - Try and remove parties_due table.[PPDEV-007]
+    - create DELETE for account_user. [PPDEV-011]
 
-
+- Design individual roles with specific permissions [PPDEV-012]
 
 Completed Tasks
 
