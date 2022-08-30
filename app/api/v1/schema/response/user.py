@@ -1,16 +1,13 @@
 from pydantic import BaseModel
-from ..base import TimestampResponseSchema
+from ..base import TimeStampResponseSchema
 
 
-class UserResponseSchema(TimestampResponseSchema):
+class UserResponseSchema(TimeStampResponseSchema):
     email: str
     first_name: str | None = None
     last_name: str | None = None
     disabled: bool | None = None
     role: str | None = None
-
-    class Config:
-        orm_mode = True
 
 
 class TokenResponseSchema(BaseModel):
