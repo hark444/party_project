@@ -25,6 +25,7 @@ class Party(Base):
     proposed_date = Column(DateTime, default=datetime.now(), nullable=False)
     guests_invited = Column(Integer, nullable=False, default=0)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
+    last_modified_on = Column(DateTime, nullable=True)
     party_date = Column(DateTime, nullable=True)
     party_place = Column(String, nullable=True)
     ratings = Column(Float, nullable=True)

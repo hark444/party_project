@@ -1,7 +1,5 @@
 To Do List
 
-- Permissions setup and Create PUT for account_user[PPDEV-010]
-
 - Create party CRUD APIs [PPDEV-008]
 
 - Create parties_attended CRUD APIs [PPDEV-009]
@@ -10,9 +8,14 @@ To Do List
 
 - Logger
 
+- Write UTs for party CRUD APIs [PPDEV-015]
+
 - Small independent tasks:
     - Try and remove parties_due table.[PPDEV-007]
     - create DELETE for account_user. [PPDEV-011]
+    - Consolidate Schema [PPDEV-012]
+    - Write a common class for database communications [PPDEV-013]
+    - Create a common time stamp schema and independent response schema [PPDEV-014]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
@@ -39,3 +42,4 @@ Completed Tasks
     - party: id, user_id, reason, created_on, proposed_date, guests_invited, given_date, place, approved, ratings
     - parties_due: id, user_id, parties_due
     - parties_attended: party_id, attendee, rating, approved, comment
+- Permissions setup and Create PUT for account_user[PPDEV-010]
