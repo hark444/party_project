@@ -9,8 +9,3 @@ class TimeStampResponseSchema(BaseModel):
 
     class Config:
         orm_mode = True
-
-
-class TimeStampRequestSchema(BaseModel):
-    created_on: datetime | None = datetime.now()
-    last_modified_on: datetime | None = None
