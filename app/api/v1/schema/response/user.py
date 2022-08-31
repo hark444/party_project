@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from ..base import TimeStampResponseSchema
+from app.api.v1.schema.response.base import TimeStampResponseSchema
 
 
 class UserResponseSchema(TimeStampResponseSchema):

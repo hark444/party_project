@@ -1,5 +1,5 @@
 from pydantic.schema import datetime
-from app.api.v1.schema.base import TimeStampRequestSchema
+from app.api.v1.schema.request.base import TimeStampRequestSchema
 
 
 class PartyRequestSchema(TimeStampRequestSchema):

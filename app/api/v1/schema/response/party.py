@@ -1,5 +1,5 @@
 from pydantic.schema import datetime
-from app.api.v1.schema.base import TimeStampResponseSchema
+from app.api.v1.schema.response.base import TimeStampResponseSchema
 
 
 class PartyResponseSchema(TimeStampResponseSchema):
