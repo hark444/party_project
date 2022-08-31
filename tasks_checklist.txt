@@ -15,6 +15,11 @@ To Do List
     - Write a common class for database communications [PPDEV-013]
     - Create a common time stamp schema and independent response schema [PPDEV-014]
     - Split user schema into request-response [PPDEV-016]
+    - Put constants in env file [PPDEV-018]
+    - Add pagination to all GET-ALL APIs [PPDEV-019]
+
+- Bug and improvements:
+    - Create API to get all parties. [PPDEV-017]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
