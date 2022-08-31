@@ -1,12 +1,16 @@
 To Do List
 
-- Create parties_attended CRUD APIs [PPDEV-009]
-
 - Design core business logic using design document [PPDEV-006]
 
 - Logger
 
 - Write UTs for party CRUD APIs [PPDEV-015]
+
+- Write UTs for parties_attented CRUD APIs [PPDEV-020]
+
+- After removing parties_due table, 'parties_due' count was suggested to be stored in redis or memcache.
+    - Create Redis connections [PPDEV-021]
+    - Write Logic to create and invalidate cache [PPDEV-022]
 
 - Small independent tasks:
     - Try and remove parties_due table.[PPDEV-007]
@@ -48,3 +52,4 @@ Completed Tasks
     - parties_attended: party_id, attendee, rating, approved, comment
 - Permissions setup and Create PUT for account_user [PPDEV-010]
 - Create party CRUD APIs [PPDEV-008]
+- Create parties_attended CRUD APIs [PPDEV-009]
