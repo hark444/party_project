@@ -14,11 +14,10 @@ To Do List
 
 - Small independent tasks:
     - create DELETE for account_user. [PPDEV-011]
-    - Consolidate Schema [PPDEV-012]
     - Write a common class for database communications [PPDEV-013]
     - Create a common time stamp schema and independent response schema [PPDEV-014]
     - Split user schema into request-response [PPDEV-016]
-    - Put constants in env file [PPDEV-018]
+    - Put constants in env file and create env.example file [PPDEV-018]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
 
 - Bug and improvements:
@@ -52,4 +51,5 @@ Completed Tasks
 - Permissions setup and Create PUT for account_user [PPDEV-010]
 - Create party CRUD APIs [PPDEV-008]
 - Create parties_attended CRUD APIs [PPDEV-009]
-- Try and remove parties_due table.[PPDEV-007]
+- Try and remove parties_due table [PPDEV-007]
+- Consolidate Schema [PPDEV-012]
