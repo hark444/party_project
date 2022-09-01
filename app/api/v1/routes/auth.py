@@ -7,6 +7,7 @@ from models import get_db
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
+from settings.base import env
 from passlib.context import CryptContext
 
 
@@ -17,9 +18,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # to get a string like this run:
 # openssl rand -hex 32
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 300
+SECRET_KEY = env.str("SECRET_KEY")
+ALGORITHM = env.str("ALGORITHM")
+ACCESS_TOKEN_EXPIRE_MINUTES = env.int("ACCESS_TOKEN_EXPIRE_MINUTES")
 
 
 def get_user_by_email(db, email):
