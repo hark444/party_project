@@ -2,7 +2,7 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from models.user import UserModel
 from models import get_db
 from sqlalchemy.orm import Session
-from app.api.v1.schema.user import UserSchemaForm, UserUpdateSchemaForm
+from app.api.v1.schema.request.user import UserSchemaForm, UserUpdateSchemaForm
 from app.api.v1.schema.response.user import UserResponseSchema
 from app.api.v1.routes.auth import get_password_hash, get_current_user
 

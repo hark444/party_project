@@ -13,7 +13,6 @@ To Do List
     - Write Logic to create and invalidate cache [PPDEV-022]
 
 - Small independent tasks:
-    - Try and remove parties_due table.[PPDEV-007]
     - create DELETE for account_user. [PPDEV-011]
     - Consolidate Schema [PPDEV-012]
     - Write a common class for database communications [PPDEV-013]
@@ -53,3 +52,4 @@ Completed Tasks
 - Permissions setup and Create PUT for account_user [PPDEV-010]
 - Create party CRUD APIs [PPDEV-008]
 - Create parties_attended CRUD APIs [PPDEV-009]
+- Try and remove parties_due table.[PPDEV-007]
