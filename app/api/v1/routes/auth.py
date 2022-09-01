@@ -1,6 +1,6 @@
 from fastapi import Depends, APIRouter, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from app.api.v1.schema.user import UserSchemaForm
+from fastapi.security import OAuth2PasswordBearer
+from app.api.v1.schema.request.user import UserSchemaForm
 from app.api.v1.schema.response.user import UserResponseSchema, TokenResponseSchema
 from models.user import UserModel
 from models import get_db
