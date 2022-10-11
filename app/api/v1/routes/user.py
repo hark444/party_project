@@ -10,9 +10,7 @@ user_router = APIRouter(prefix="/users", tags=["users"])
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
-async def create_user(
-    user: UserRequestSchema, db: Session = Depends(get_db)
-):
+async def create_user(user: UserRequestSchema, db: Session = Depends(get_db)):
     try:
         user_obj = UserModel(
             hashed_password=get_password_hash(user.password),
