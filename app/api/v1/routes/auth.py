@@ -1,6 +1,6 @@
 from fastapi import Depends, APIRouter, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from app.api.v1.schema.request.user import UserSchemaForm
+from app.api.v1.schema.request.user import UserRequestSchema
 from app.api.v1.schema.response.user import UserResponseSchema, TokenResponseSchema
 from models.user import UserModel
 from models import get_db
@@ -80,7 +80,7 @@ async def get_current_user(
 
 @auth_router.post("/token", response_model=TokenResponseSchema)
 async def login_for_access_token(
-    form_data: UserSchemaForm = Depends(), db: Session = Depends(get_db)
+    form_data: UserRequestSchema, db: Session = Depends(get_db)
 ):
     try:
         user = authenticate_user(db, form_data.email, form_data.password)

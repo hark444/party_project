@@ -1,44 +1,12 @@
 from pydantic import BaseModel
 from typing import Optional
-from fastapi.param_functions import Form
+from pydantic.schema import datetime
+from app.api.v1.schema.request.base import TimeStampRequestSchema
 
 
-class UserSchemaForm:
-    def __init__(
-        self,
-        email: str = Form(),
-        password: str = Form(),
-        first_name: Optional[str] = Form(default=None),
-        last_name: Optional[str] = Form(default=None),
-        disabled: bool = Form(default=False),
-    ):
-        self.password = password
-        self.email = email
-        self.first_name = first_name
-        self.last_name = last_name
-        self.disabled = disabled
-
-
-class UserUpdateSchemaForm:
-    def __init__(
-        self,
-        email: str = Form(default=None),
-        password: str = Form(default=None),
-        first_name: Optional[str] = Form(default=None),
-        last_name: Optional[str] = Form(default=None),
-        disabled: bool = Form(default=False),
-    ):
-        self.password = password
-        self.email = email
-        self.first_name = first_name
-        self.last_name = last_name
-        self.disabled = disabled
-
-    def to_dict(self):
-        return {
-            "email": self.email,
-            "password": self.password,
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "disabled": self.disabled,
-        }
+class UserRequestSchema(TimeStampRequestSchema):
+    password: str
+    email: str
+    first_name: str = None
+    last_name: str = None
+    disabled: bool = False
