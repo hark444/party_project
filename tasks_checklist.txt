@@ -23,6 +23,8 @@ To Do List
 
 - Design individual roles with specific permissions [PPDEV-012]
 
+- Enable CORS [PPDEV-25]
+
 Completed Tasks
 
 - Create FastAPI boiler plate
