@@ -37,7 +37,7 @@ async def update_user(
     curr_user: UserModel = Depends(get_current_user),
 ):
     try:
-        for field, value in user.items():
+        for field, value in user:
             setattr(curr_user, field, value)
 
         db.add(curr_user)

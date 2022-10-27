@@ -1,5 +1,5 @@
 import enum
-from sqlalchemy import Boolean, Column, Integer, String, Enum, DateTime
+from sqlalchemy import Boolean, Column, Integer, String, Enum, DateTime, DATE
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
 from datetime import datetime
 from models import Base
@@ -21,5 +21,7 @@ class UserModel(Base):
     disabled = Column(Boolean, default=False, nullable=False)
     hashed_password = Column(String, nullable=True)
     role = Column(Enum(RoleTypeEnum), nullable=False, server_default="regular")
+    team = Column(String, nullable=True)
+    date_of_joining = Column(DATE, default=datetime.date)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
