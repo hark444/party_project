@@ -17,13 +17,14 @@ To Do List
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
     - Add validations in user create API to check if a user exists with the same email [PPDEV-023]
+    - Add team and date_of_joining in account_user table [PPDEV-026]
 
 - Bug and improvements:
     - Create API to get all parties. [PPDEV-017]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
-- Enable CORS [PPDEV-25]
+
 
 Completed Tasks
 
@@ -57,3 +58,4 @@ Completed Tasks
 - Split user schema into request-response [PPDEV-016]
 - Create a common time stamp schema and independent response schema [PPDEV-014]
 - Update user API to receive request in json format and not as form data [PPDEV-024]
+- Enable CORS [PPDEV-025]
