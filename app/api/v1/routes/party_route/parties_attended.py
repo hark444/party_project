@@ -21,7 +21,7 @@ parties_attended_router = APIRouter(
 async def create_parties_attended(
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user)
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
         parties_attended_obj = PartiesAttended(
@@ -49,8 +49,9 @@ async def create_parties_attended(
     "/{party_attended_id}", response_model=PartiesAttendedResponseSchema
 )
 async def get_party(
-    party_attended_id: int, db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user)
+    party_attended_id: int,
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
         party_attended_obj = (
@@ -72,8 +73,10 @@ async def get_party(
 
 
 @parties_attended_router.get("/", response_model=AllPartiesAttendedResponseSchema)
-async def get_all_parties_attended(db: Session = Depends(get_db),
-                                   current_user: UserResponseSchema = Depends(get_current_user)):
+async def get_all_parties_attended(
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
+):
     try:
         result = {}
         query = db.query(PartiesAttended).filter_by(user_id=current_user.id)
@@ -95,7 +98,7 @@ async def put_party(
     party_attended_id: int,
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user)
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     party_attended_obj = (
         db.query(PartiesAttended)
@@ -125,8 +128,9 @@ async def put_party(
 
 @parties_attended_router.delete("/{party_attended_id}")
 async def delete_party(
-    party_attended_id: int, db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user)
+    party_attended_id: int,
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     party_attended_obj = (
         db.query(PartiesAttended)

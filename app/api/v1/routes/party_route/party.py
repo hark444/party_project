@@ -15,8 +15,9 @@ party_party_router = APIRouter(prefix="/party", tags=["party"])
 
 @party_party_router.post("/create", response_model=PartyResponseSchema)
 async def create_party(
-    party: PartyRequestSchema, db: Session = Depends(get_db),
-        current_user: UserResponseSchema = Depends(get_current_user)
+    party: PartyRequestSchema,
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
         party_obj = Party(
@@ -44,10 +45,15 @@ async def create_party(
 
 
 @party_party_router.get("/{party_id}", response_model=PartyResponseSchema)
-async def get_party(party_id: int, db: Session = Depends(get_db),
-                    current_user: UserResponseSchema = Depends(get_current_user)):
+async def get_party(
+    party_id: int,
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
+):
     try:
-        party_obj = db.query(Party).filter_by(id=party_id, user_id=current_user.id).first()
+        party_obj = (
+            db.query(Party).filter_by(id=party_id, user_id=current_user.id).first()
+        )
         if not party_obj:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -66,7 +72,7 @@ async def put_party(
     party_id: int,
     party: PartyRequestSchema,
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user)
+    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     party_obj = db.query(Party).filter_by(id=party_id, user_id=current_user.id).first()
     if not party_obj:
@@ -91,8 +97,11 @@ async def put_party(
 
 
 @party_party_router.delete("/{party_id}")
-async def delete_party(party_id: int, db: Session = Depends(get_db),
-                       current_user: UserResponseSchema = Depends(get_current_user)):
+async def delete_party(
+    party_id: int,
+    db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user),
+):
     party_obj = db.query(Party).filter_by(id=party_id, user_id=current_user.id).first()
     if not party_obj:
         raise HTTPException(
