@@ -7,6 +7,8 @@ from app.api.v1.schema.response.parties_attended import (
     PartiesAttendedResponseSchema,
     AllPartiesAttendedResponseSchema,
 )
+from app.api.v1.schema.response.user import UserResponseSchema
+from app.api.v1.routes.auth import get_current_user
 from models.parties_attended import PartiesAttended
 
 
@@ -17,14 +19,14 @@ parties_attended_router = APIRouter(
 
 @parties_attended_router.post("/create", response_model=PartiesAttendedResponseSchema)
 async def create_parties_attended(
-    user_id: int,
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user)
 ):
     try:
         parties_attended_obj = PartiesAttended(
             party_id=party_attended.party_id,
-            user_id=user_id,
+            user_id=current_user.id,
             rating=party_attended.rating,
             approved=party_attended.approved,
             comment=party_attended.comment,
@@ -47,12 +49,13 @@ async def create_parties_attended(
     "/{party_attended_id}", response_model=PartiesAttendedResponseSchema
 )
 async def get_party(
-    user_id: int, party_attended_id: int, db: Session = Depends(get_db)
+    party_attended_id: int, db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user)
 ):
     try:
         party_attended_obj = (
             db.query(PartiesAttended)
-            .filter_by(id=party_attended_id, user_id=user_id)
+            .filter_by(id=party_attended_id, user_id=current_user.id)
             .first()
         )
         if not party_attended_obj:
@@ -69,10 +72,11 @@ async def get_party(
 
 
 @parties_attended_router.get("/", response_model=AllPartiesAttendedResponseSchema)
-async def get_all_parties_attended(user_id: int, db: Session = Depends(get_db)):
+async def get_all_parties_attended(db: Session = Depends(get_db),
+                                   current_user: UserResponseSchema = Depends(get_current_user)):
     try:
         result = {}
-        query = db.query(PartiesAttended).filter_by(user_id=user_id)
+        query = db.query(PartiesAttended).filter_by(user_id=current_user.id)
         party_attended_obj = query.all()
         result["data"] = party_attended_obj
         result["total"] = query.count()
@@ -88,14 +92,14 @@ async def get_all_parties_attended(user_id: int, db: Session = Depends(get_db)):
     "/{party_attended_id}", response_model=PartiesAttendedResponseSchema
 )
 async def put_party(
-    user_id: int,
     party_attended_id: int,
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user)
 ):
     party_attended_obj = (
         db.query(PartiesAttended)
-        .filter_by(id=party_attended_id, user_id=user_id)
+        .filter_by(id=party_attended_id, user_id=current_user.id)
         .first()
     )
     if not party_attended_obj:
@@ -121,11 +125,12 @@ async def put_party(
 
 @parties_attended_router.delete("/{party_attended_id}")
 async def delete_party(
-    user_id: int, party_attended_id: int, db: Session = Depends(get_db)
+    party_attended_id: int, db: Session = Depends(get_db),
+    current_user: UserResponseSchema = Depends(get_current_user)
 ):
     party_attended_obj = (
         db.query(PartiesAttended)
-        .filter_by(id=party_attended_id, user_id=user_id)
+        .filter_by(id=party_attended_id, user_id=current_user.id)
         .first()
     )
     if not party_attended_obj:

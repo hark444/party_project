@@ -17,6 +17,9 @@ To Do List
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
     - Add validations in user create API to check if a user exists with the same email [PPDEV-023]
+    - Add field party_name in create party [PPDEV-030]
+    - Remove approved and ratings field from create party [PPDEV-031]
+    - Remove user/user_id from party requests and yield it from the token itself [PPDEV-032]
 
 - Bug and improvements:
     - Create API to get all parties. [PPDEV-017]
