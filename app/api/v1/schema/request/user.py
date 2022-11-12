@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
-import datetime
+from pydantic.schema import date
 from app.api.v1.schema.request.base import TimeStampRequestSchema
 
 
@@ -11,4 +11,4 @@ class UserRequestSchema(TimeStampRequestSchema):
     last_name: str = None
     disabled: bool = False
     team: str = None
-    date_of_joining: datetime.date = None
+    date_of_joining: date = None

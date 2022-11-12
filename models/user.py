@@ -22,6 +22,6 @@ class UserModel(Base):
     hashed_password = Column(String, nullable=True)
     role = Column(Enum(RoleTypeEnum), nullable=False, server_default="regular")
     team = Column(String, nullable=True)
-    date_of_joining = Column(DATE, default=datetime.date)
+    date_of_joining = Column(DATE)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)

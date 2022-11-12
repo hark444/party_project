@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from app.api.v1.schema.response.base import TimeStampResponseSchema
-import datetime
+from pydantic.schema import date
 
 
 class UserResponseSchema(TimeStampResponseSchema):
@@ -10,7 +10,7 @@ class UserResponseSchema(TimeStampResponseSchema):
     disabled: bool | None = None
     role: str | None = None
     team: str | None = None
-    date_of_joining: datetime.date | None = None
+    date_of_joining: date | None = None
 
 
 class TokenResponseSchema(BaseModel):

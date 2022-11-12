@@ -23,6 +23,7 @@ To Do List
 
 - Bug and improvements:
     - Create API to get all parties. [PPDEV-017]
+    - Update date type in user request/response and model [PPDEV-033]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
