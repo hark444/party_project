@@ -1,4 +1,6 @@
 from pydantic.schema import datetime
+from pydantic import BaseModel
+from typing import List
 from app.api.v1.schema.response.base import TimeStampResponseSchema
 
 
@@ -11,3 +13,8 @@ class PartyResponseSchema(TimeStampResponseSchema):
     party_place: str | None
     ratings: float | None
     approved: bool
+
+
+class PartyListResponseSchema(BaseModel):
+    data: List[PartyResponseSchema]
+    total: int

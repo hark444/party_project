@@ -2,12 +2,6 @@ To Do List
 
 - Design core business logic using design document [PPDEV-006]
 
-- Logger
-
-- Write UTs for party CRUD APIs [PPDEV-015]
-
-- Write UTs for parties_attented CRUD APIs [PPDEV-020]
-
 - After removing parties_due table, 'parties_due' count was suggested to be stored in redis or memcache.
     - Create Redis connections [PPDEV-021]
     - Write Logic to create and invalidate cache [PPDEV-022]
@@ -19,17 +13,19 @@ To Do List
     - Add validations in user create API to check if a user exists with the same email [PPDEV-023]
     - Add field party_name in create party [PPDEV-030]
     - Remove approved and ratings field from create party [PPDEV-031]
-    - Remove user/user_id from party requests and yield it from the token itself [PPDEV-032]
 
 - Bug and improvements:
     - Create API to get all parties. [PPDEV-017]
-    - Update date type in user request/response and model [PPDEV-033]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
 - Fix all failing UTs [PPDEV-028]
 - Add new feature UTs [PPDEV-029]
+- Logger
 
+- Write UTs for party CRUD APIs [PPDEV-015]
+
+- Write UTs for parties_attented CRUD APIs [PPDEV-020]
 
 
 Completed Tasks
@@ -67,3 +63,5 @@ Completed Tasks
 - Enable CORS [PPDEV-025]
 - Add team and date_of_joining in account_user table [PPDEV-026]
 - Return username with token API [PPDEV-027]
+- Remove user/user_id from party requests and yield it from the token itself [PPDEV-032]
+- Update date type in user request/response and model [PPDEV-033]
