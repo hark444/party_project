@@ -15,7 +15,7 @@ class UserRequestSchema(TimeStampRequestSchema):
     team: str = None
     date_of_joining: date = None
 
-    @validator('email')
+    @validator("email")
     def validate_email_uniqueness(cls, v):
         db = next(get_db())
         user_obj = db.query(UserModel).filter_by(email=v).first()
@@ -25,4 +25,3 @@ class UserRequestSchema(TimeStampRequestSchema):
                 f"Please try to login or create a user with a different email"
             )
         return v
-
