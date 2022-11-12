@@ -2,7 +2,7 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from app.api.v1.schema.request.party import PartyRequestSchema
+from app.api.v1.schema.request.party import PartyRequestSchema, PartyRequestCreateSchema
 from app.api.v1.schema.response.party import (
     PartyResponseSchema,
     PartyListResponseSchema,
@@ -18,7 +18,7 @@ party_party_router = APIRouter(prefix="/party", tags=["party"])
 
 @party_party_router.post("/create", response_model=PartyResponseSchema)
 async def create_party(
-    party: PartyRequestSchema,
+    party: PartyRequestCreateSchema,
     db: Session = Depends(get_db),
     current_user: UserResponseSchema = Depends(get_current_user),
 ):
@@ -30,8 +30,6 @@ async def create_party(
             guests_invited=party.guests_invited,
             party_date=party.party_date,
             party_place=party.party_place,
-            ratings=party.ratings,
-            approved=party.approved,
             created_on=party.created_on,
             last_modified_on=party.last_modified_on,
         )
