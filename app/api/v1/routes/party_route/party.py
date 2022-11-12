@@ -3,7 +3,7 @@ from models import get_db
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from app.api.v1.schema.request.party import PartyRequestSchema
-from app.api.v1.schema.response.party import PartyResponseSchema
+from app.api.v1.schema.response.party import PartyResponseSchema, PartyListResponseSchema
 from app.api.v1.schema.response.user import UserResponseSchema
 from models.party import Party
 from app.api.v1.routes.auth import oauth2_scheme
@@ -60,6 +60,24 @@ async def get_party(
                 detail="No Party object for this party id and user id",
             )
         return party_obj
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@party_party_router.get("", response_model=PartyListResponseSchema)
+async def get_party_list(
+        db: Session = Depends(get_db),
+        current_user: UserResponseSchema = Depends(get_current_user),
+):
+    try:
+        party_obj_query = (db.query(Party).filter_by(user_id=current_user.id))
+        total = party_obj_query.count()
+        party_obj = party_obj_query.all()
+
+        return {'data': party_obj, 'total': total}
 
     except Exception as e:
         raise HTTPException(
