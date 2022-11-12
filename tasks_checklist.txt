@@ -10,8 +10,6 @@ To Do List
     - create DELETE for account_user. [PPDEV-011]
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
-    - Add validations in user create API to check if a user exists with the same email [PPDEV-023]
-    - Add field party_name in create party [PPDEV-030]
     - Remove approved and ratings field from create party [PPDEV-031]
 
 - Bug and improvements:
@@ -65,3 +63,4 @@ Completed Tasks
 - Return username with token API [PPDEV-027]
 - Remove user/user_id from party requests and yield it from the token itself [PPDEV-032]
 - Update date type in user request/response and model [PPDEV-033]
+- Add validations in user create API to check if a user exists with the same email [PPDEV-023]
