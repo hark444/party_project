@@ -4,6 +4,7 @@ from app.api.v1.schema.request.user import UserRequestSchema
 from app.api.v1.schema.response.user import UserResponseSchema, TokenResponseSchema
 from models.user import UserModel
 from models import get_db
+import logging
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
@@ -12,6 +13,9 @@ from passlib.context import CryptContext
 
 
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
+
+
+logger = logging.getLogger('main')
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -68,13 +72,16 @@ async def get_current_user(
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         email: str = payload.get("sub")
         if email is None:
+            logger.exception("Invalid token")
             raise credentials_exception
     except JWTError as je:
-        print(je)
+        logger.exception(je)
         raise credentials_exception
     user = get_user_by_email(db, email)
     if user is None:
+        logger.exception("Invalid token")
         raise credentials_exception
+    logger.info(f"{user.email} if logged in..!")
     return user
 
 

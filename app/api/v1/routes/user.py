@@ -1,12 +1,15 @@
 from fastapi import Depends, APIRouter, HTTPException, status
 from models.user import UserModel
 from models import get_db
+import logging
 from sqlalchemy.orm import Session
 from app.api.v1.schema.request.user import UserRequestSchema
 from app.api.v1.schema.response.user import UserResponseSchema
 from app.api.v1.routes.auth import get_password_hash, get_current_user
 
 user_router = APIRouter(prefix="/users", tags=["users"])
+
+logger = logging.getLogger('main')
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
@@ -22,6 +25,7 @@ async def create_user(user: UserRequestSchema, db: Session = Depends(get_db)):
         db.add(user_obj)
         db.commit()
         db.refresh(user_obj)
+        logger.info(f"A user is created with email: {user.email}")
         return user_obj
 
     except Exception as e:
