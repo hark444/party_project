@@ -16,11 +16,13 @@ To Do List
 
 - Fix all failing UTs [PPDEV-028]
 - Add new feature UTs [PPDEV-029]
-- Create logger and add logging to existing infra [PPDEV-034]
 
 - Write UTs for party CRUD APIs [PPDEV-015]
 
 - Write UTs for parties_attented CRUD APIs [PPDEV-020]
+
+- Bugs:
+    - Create a different schema for token generation and user creation [PPDEV-035]
 
 
 Completed Tasks
@@ -63,3 +65,4 @@ Completed Tasks
 - Add validations in user create API to check if a user exists with the same email [PPDEV-023]
 - Remove approved and ratings field from create party [PPDEV-031]
 - Create API to get all parties. [PPDEV-017]
+- Create logger and add logging to existing infra [PPDEV-034]
