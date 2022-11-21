@@ -16,4 +16,4 @@ class UserResponseSchema(TimeStampResponseSchema):
 class TokenResponseSchema(BaseModel):
     access_token: str
     token_type: str
-    username: str
+    username: str | None = None

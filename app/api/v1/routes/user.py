@@ -12,7 +12,7 @@ user_router = APIRouter(prefix="/users", tags=["users"])
 logger = logging.getLogger("main")
 
 
-@user_router.post("/create", response_model=UserResponseSchema)
+@user_router.post("", response_model=UserResponseSchema)
 async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)):
     try:
         user_obj = UserModel(
@@ -35,7 +35,7 @@ async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)
         )
 
 
-@user_router.put("/update", response_model=UserResponseSchema)
+@user_router.put("", response_model=UserResponseSchema)
 async def update_user(
     user: UserRequestSchema,
     db: Session = Depends(get_db),
@@ -52,6 +52,23 @@ async def update_user(
         return curr_user
     except Exception as e:
         logger.exception(f"User could not be updated as : {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@user_router.delete("", status_code=200)
+async def update_user(
+    db: Session = Depends(get_db),
+    curr_user: UserModel = Depends(get_current_user),
+):
+    try:
+        db.delete(curr_user)
+        db.commit()
+        logger.info(f"Deleted user {curr_user.email}")
+        return
+    except Exception as e:
+        logger.exception(f"User could not be deleted as : {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
