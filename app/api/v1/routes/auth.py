@@ -15,7 +15,7 @@ from passlib.context import CryptContext
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-logger = logging.getLogger('main')
+logger = logging.getLogger("main")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")

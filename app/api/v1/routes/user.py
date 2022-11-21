@@ -9,7 +9,7 @@ from app.api.v1.routes.auth import get_password_hash, get_current_user
 
 user_router = APIRouter(prefix="/users", tags=["users"])
 
-logger = logging.getLogger('main')
+logger = logging.getLogger("main")
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
