@@ -59,10 +59,10 @@ DEFAULT_USER_PAYLOAD = {
 
 @pytest.fixture(scope="function")
 def account_user_and_token(client):
-    response = client.post(f"/api/v1/users/create", data=DEFAULT_USER_PAYLOAD)
+    response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
     if response.status_code == 200:
         user_id = response.json().get("id")
-        response = client.post(f"/api/v1/auth/token", data=DEFAULT_USER_PAYLOAD)
+        response = client.post(f"/api/v1/auth/token", json=DEFAULT_USER_PAYLOAD)
         if response.status_code == 200:
             return {
                 "user_id": user_id,

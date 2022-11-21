@@ -17,6 +17,7 @@ alembic = "1.8.1"
 sqlalchemy-utils = "==0.38.3"
 python-jose = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
+httpx = "*"
 
 [dev-packages]
 mock = "*"
