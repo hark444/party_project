@@ -3,7 +3,7 @@ from models.user import UserModel
 from models import get_db
 import logging
 from sqlalchemy.orm import Session
-from app.api.v1.schema.request.user import UserRequestSchema
+from app.api.v1.schema.request.user import UserRequestSchema, UserRequestPostSchema
 from app.api.v1.schema.response.user import UserResponseSchema
 from app.api.v1.routes.auth import get_password_hash, get_current_user
 
@@ -13,7 +13,7 @@ logger = logging.getLogger("main")
 
 
 @user_router.post("/create", response_model=UserResponseSchema)
-async def create_user(user: UserRequestSchema, db: Session = Depends(get_db)):
+async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)):
     try:
         user_obj = UserModel(
             hashed_password=get_password_hash(user.password),
@@ -29,6 +29,7 @@ async def create_user(user: UserRequestSchema, db: Session = Depends(get_db)):
         return user_obj
 
     except Exception as e:
+        logger.exception(f"User could not be created as : {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
@@ -47,8 +48,10 @@ async def update_user(
         db.add(curr_user)
         db.commit()
         db.refresh(curr_user)
+        logger.info(f"Updated user {user.email}")
         return curr_user
     except Exception as e:
+        logger.exception(f"User could not be updated as : {str(e)}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )

@@ -4,17 +4,23 @@ from pydantic.schema import date
 from app.api.v1.schema.request.base import TimeStampRequestSchema
 from models import get_db
 from models.user import UserModel
+from pydantic import BaseModel
 
 
-class UserRequestSchema(TimeStampRequestSchema):
-    password: str
+class TokenGenerateSchema(BaseModel):
     email: str
+    password: str
+
+
+class UserRequestSchema(TokenGenerateSchema, TimeStampRequestSchema):
     first_name: str = None
     last_name: str = None
     disabled: bool = False
     team: str = None
     date_of_joining: date = None
 
+
+class UserRequestPostSchema(UserRequestSchema):
     @validator("email")
     def validate_email_uniqueness(cls, v):
         db = next(get_db())

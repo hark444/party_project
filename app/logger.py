@@ -16,6 +16,6 @@ log_config = {
         },
     },
     "loggers": {
-        "main": {"handlers": ["default"], "level": "DEBUG"},
+        "main": {"handlers": ["default"], "level": "INFO"},
     },
 }
