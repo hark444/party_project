@@ -15,7 +15,7 @@ from passlib.context import CryptContext
 auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-logger = logging.getLogger('main')
+logger = logging.getLogger("main")
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -108,7 +108,9 @@ async def login_for_access_token(
             "username": user.first_name,
         }
     except Exception as e:
-        logger.exception(f"Token could not be generated for user {user.email} as {str(e)}")
+        logger.exception(
+            f"Token could not be generated for user {user.email} as {str(e)}"
+        )
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )

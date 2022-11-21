@@ -21,7 +21,6 @@ class UserRequestSchema(TokenGenerateSchema, TimeStampRequestSchema):
 
 
 class UserRequestPostSchema(UserRequestSchema):
-
     @validator("email")
     def validate_email_uniqueness(cls, v):
         db = next(get_db())
