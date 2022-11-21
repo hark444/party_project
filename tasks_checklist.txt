@@ -7,14 +7,13 @@ To Do List
     - Write Logic to create and invalidate cache [PPDEV-022]
 
 - Small independent tasks:
-    - create DELETE for account_user. [PPDEV-011]
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
 - Fix all failing UTs [PPDEV-028]
-- Add new feature UTs [PPDEV-029]
+- Add DELETE API UTs for user [PPDEV-029]
 
 - Write UTs for party CRUD APIs [PPDEV-015]
 
@@ -66,3 +65,4 @@ Completed Tasks
 - Create logger and add logging to existing infra [PPDEV-034]
 - Bugs:
     - Create a different schema for token generation and user creation [PPDEV-035]
+- create DELETE for account_user. [PPDEV-011]
