@@ -9,7 +9,7 @@ DEFAULT_PARTY_PAYLOAD = {
     "proposed_date": str(datetime.now()),
     "guests_invited": 5,
     "party_date": str(datetime.now()),
-    "party_place": "Nagar Nigam"
+    "party_place": "Nagar Nigam",
 }
 party_url = "/api/v1/party"
 
@@ -26,8 +26,10 @@ def test_get_all_party(client, account_user_and_token):
     response = client.get(party_url, headers=headers)
     assert response.status_code == 200
     response_json = response.json()
-    assert response_json.get('total') == 1
-    assert response_json.get('data')[0].get('reason') == DEFAULT_PARTY_PAYLOAD.get('reason')
+    assert response_json.get("total") == 1
+    assert response_json.get("data")[0].get("reason") == DEFAULT_PARTY_PAYLOAD.get(
+        "reason"
+    )
 
 
 def test_get_single_party(client, account_user_and_token):
@@ -37,7 +39,7 @@ def test_get_single_party(client, account_user_and_token):
     response = client.get(party_get_url, headers=headers)
     assert response.status_code == 200
     response_json = response.json()
-    assert response_json.get('reason') == DEFAULT_PARTY_PAYLOAD.get('reason')
+    assert response_json.get("reason") == DEFAULT_PARTY_PAYLOAD.get("reason")
 
 
 def test_get_single_party_with_incorrect_party_id(client, account_user_and_token):
@@ -47,7 +49,9 @@ def test_get_single_party_with_incorrect_party_id(client, account_user_and_token
     response = client.get(party_get_url, headers=headers)
     assert response.status_code == 404
     response_json = response.json()
-    assert response_json.get('detail') == "No Party object for this party id and user id"
+    assert (
+        response_json.get("detail") == "No Party object for this party id and user id"
+    )
 
 
 def test_get_party_for_empty_party(client, account_user_and_token):
@@ -55,4 +59,4 @@ def test_get_party_for_empty_party(client, account_user_and_token):
     response = client.get(party_url, headers=headers)
     assert response.status_code == 200
     response_json = response.json()
-    assert response_json.get('total') == 0
+    assert response_json.get("total") == 0

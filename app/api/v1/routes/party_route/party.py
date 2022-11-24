@@ -65,7 +65,7 @@ async def get_party(
     except Exception as e:
         raise HTTPException(
             status_code=e.status_code or status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=e.detail or str(e)
+            detail=e.detail or str(e),
         )
 
 
