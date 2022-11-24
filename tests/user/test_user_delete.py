@@ -19,6 +19,5 @@ def test_delete_user(client, account_user_and_token):
 
 
 def test_delete_user_with_missing_auth(client):
-    # headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
     del_response = client.delete("/api/v1/users")
     assert del_response.status_code == 401
