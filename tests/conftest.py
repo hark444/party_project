@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 # from app.auth.inter_service_auth import verify_auth_token
 from models.user import UserModel
+from models.party import Party
 from settings import settings
 from models import Base, get_db
 from main import application
@@ -45,6 +46,7 @@ def client(db_session):
 
 
 def clear_db(session):
+    session.query(Party).delete()
     session.query(UserModel).delete()
     session.commit()
 

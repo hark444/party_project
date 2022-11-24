@@ -16,7 +16,7 @@ from app.api.v1.routes.auth import get_current_user
 party_party_router = APIRouter(prefix="/party", tags=["party"])
 
 
-@party_party_router.post("/create", response_model=PartyResponseSchema)
+@party_party_router.post("", response_model=PartyResponseSchema)
 async def create_party(
     party: PartyRequestCreateSchema,
     db: Session = Depends(get_db),
@@ -64,7 +64,8 @@ async def get_party(
 
     except Exception as e:
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+            status_code=e.status_code or status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=e.detail or str(e)
         )
 
 

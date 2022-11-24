@@ -13,9 +13,10 @@ To Do List
 - Design individual roles with specific permissions [PPDEV-012]
 
 - Unit Tests Related:
-
-    - Add PUT API UTs for user [PPDEV-036]
-    - Write UTs for party CRUD APIs [PPDEV-015]
+    - Write UTs for party GET APIs [PPDEV-015]
+    - Write UTs for party POST APIs [PPDEV-037]
+    - Write UTs for party PUT APIs [PPDEV-038]
+    - Write UTs for party DELETE APIs [PPDEV-039]
     - Write UTs for parties_attented CRUD APIs [PPDEV-020]
 
 - Bugs:
@@ -65,5 +66,7 @@ Completed Tasks
 - Bugs:
     - Create a different schema for token generation and user creation [PPDEV-035]
 - create DELETE for account_user. [PPDEV-011]
-- Fix all existing failing UTs [PPDEV-028]
-- Add DELETE API UTs for user [PPDEV-029]
+- Unit Test Related:
+    - Fix all existing failing UTs [PPDEV-028]
+    - Add DELETE API UTs for user [PPDEV-029]
+    - Add PUT API UTs for user [PPDEV-036]
