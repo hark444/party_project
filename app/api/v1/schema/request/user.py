@@ -12,7 +12,7 @@ class TokenGenerateSchema(BaseModel):
     password: str
 
 
-class UserRequestSchema(TokenGenerateSchema, TimeStampRequestSchema):
+class UserRequestSchema(TimeStampRequestSchema):
     first_name: str = None
     last_name: str = None
     disabled: bool = False
@@ -20,7 +20,7 @@ class UserRequestSchema(TokenGenerateSchema, TimeStampRequestSchema):
     date_of_joining: date = None
 
 
-class UserRequestPostSchema(UserRequestSchema):
+class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):
     @validator("email")
     def validate_email_uniqueness(cls, v):
         db = next(get_db())

@@ -48,7 +48,7 @@ async def update_user(
         db.add(curr_user)
         db.commit()
         db.refresh(curr_user)
-        logger.info(f"Updated user {user.email}")
+        logger.info(f"Updated user {curr_user.email}")
         return curr_user
     except Exception as e:
         logger.exception(f"User could not be updated as : {str(e)}")
