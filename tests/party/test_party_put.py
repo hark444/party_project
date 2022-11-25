@@ -32,10 +32,14 @@ def test_put_party(client, account_user_and_token):
     headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
     party_obj = create_party_object(client, headers)
     party_put_url = party_url + f'/{party_obj.get("id")}'
-    response = client.put(party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD)
+    response = client.put(
+        party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD
+    )
     assert response.status_code == 200
     response_json = response.json()
-    assert response_json.get("party_place") == DEFAULT_PARTY_PUT_PAYLOAD.get("party_place")
+    assert response_json.get("party_place") == DEFAULT_PARTY_PUT_PAYLOAD.get(
+        "party_place"
+    )
 
 
 def test_put_party_with_missing_auth(client, account_user_and_token):
@@ -52,7 +56,9 @@ def test_put_party_update_approved_and_ratings(client, account_user_and_token):
     party_put_url = party_url + f'/{party_obj.get("id")}'
     DEFAULT_PARTY_PUT_PAYLOAD["ratings"] = 5.1
     DEFAULT_PARTY_PUT_PAYLOAD["approved"] = True
-    response = client.put(party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD)
+    response = client.put(
+        party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD
+    )
     assert response.status_code == 200
     response_json = response.json()
     assert response_json.get("ratings") == DEFAULT_PARTY_PUT_PAYLOAD.get("ratings")
@@ -64,5 +70,7 @@ def test_put_party_with_missing_proposed_date(client, account_user_and_token):
     party_obj = create_party_object(client, headers)
     party_put_url = party_url + f'/{party_obj.get("id")}'
     del DEFAULT_PARTY_PUT_PAYLOAD["proposed_date"]
-    response = client.put(party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD)
+    response = client.put(
+        party_put_url, headers=headers, json=DEFAULT_PARTY_PUT_PAYLOAD
+    )
     assert response.status_code == 422
