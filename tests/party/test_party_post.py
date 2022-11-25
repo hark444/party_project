@@ -25,13 +25,6 @@ def test_post_party(client, account_user_and_token):
     )
 
 
-def test_post_party_with_missing_proposed_date(client, account_user_and_token):
-    headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
-    del DEFAULT_PARTY_PAYLOAD["proposed_date"]
-    response = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
-    assert response.status_code == 422
-
-
 def test_post_party_without_auth(client, account_user_and_token):
     response = client.post(party_url, json=DEFAULT_PARTY_PAYLOAD)
     assert response.status_code == 401
@@ -44,3 +37,10 @@ def test_post_party_return_default_approved_and_ratings(client, account_user_and
     response_json = response.json()
     assert not response_json.get("ratings")
     assert not response_json.get("approved")
+
+
+def test_post_party_with_missing_proposed_date(client, account_user_and_token):
+    headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
+    del DEFAULT_PARTY_PAYLOAD["proposed_date"]
+    response = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
+    assert response.status_code == 422
