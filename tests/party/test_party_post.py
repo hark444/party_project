@@ -20,12 +20,14 @@ def test_post_party(client, account_user_and_token):
     assert response.status_code == 200
     response_json = response.json()
     assert response_json.get("reason") == DEFAULT_PARTY_PAYLOAD.get("reason")
-    assert response_json.get("guests_invited") == DEFAULT_PARTY_PAYLOAD.get("guests_invited")
+    assert response_json.get("guests_invited") == DEFAULT_PARTY_PAYLOAD.get(
+        "guests_invited"
+    )
 
 
 def test_post_party_with_missing_proposed_date(client, account_user_and_token):
     headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
-    del DEFAULT_PARTY_PAYLOAD['proposed_date']
+    del DEFAULT_PARTY_PAYLOAD["proposed_date"]
     response = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
     assert response.status_code == 422
 
