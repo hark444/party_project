@@ -17,7 +17,7 @@ parties_attended_router = APIRouter(
 )
 
 
-@parties_attended_router.post("/create", response_model=PartiesAttendedResponseSchema)
+@parties_attended_router.post("", response_model=PartiesAttendedResponseSchema)
 async def create_parties_attended(
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),
@@ -72,7 +72,7 @@ async def get_party(
         )
 
 
-@parties_attended_router.get("/", response_model=AllPartiesAttendedResponseSchema)
+@parties_attended_router.get("", response_model=AllPartiesAttendedResponseSchema)
 async def get_all_parties_attended(
     db: Session = Depends(get_db),
     current_user: UserResponseSchema = Depends(get_current_user),
