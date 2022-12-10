@@ -12,6 +12,10 @@ To Do List
 
 - Design individual roles with specific permissions [PPDEV-012]
 
+- Create a get all party api, having date, and user filters. [PPDEV-043]
+
+- Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
+
 - Unit Tests Related:
     - Write GET UTs for parties_attented CRUD APIs [PPDEV-020]
     - Write POST UTs for parties_attented CRUD APIs [PPDEV-040]
