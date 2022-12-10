@@ -1,8 +1,9 @@
 from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
 from sqlalchemy.orm import Session
+from sqlalchemy import extract
 from pydantic import BaseModel
-from app.api.v1.schema.request.party import PartyRequestSchema, PartyRequestCreateSchema
+from app.api.v1.schema.request.party import PartyRequestSchema, PartyRequestCreateSchema, AllPartyRequestSchema
 from app.api.v1.schema.response.party import (
     PartyResponseSchema,
     PartyListResponseSchema,
@@ -38,6 +39,29 @@ async def create_party(
         db.commit()
         db.refresh(party_obj)
         return party_obj
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+@party_party_router.get("/all", response_model=PartyListResponseSchema)
+async def get_party_list(
+    db: Session = Depends(get_db),
+    args: AllPartyRequestSchema = Depends()
+):
+    try:
+        party_obj_query = db.query(Party)
+        if args.created_by:
+            party_obj_query = party_obj_query.filter_by(user_id=args.created_by)
+        if args.party_year:
+            party_obj_query = party_obj_query.filter(extract('year', Party.party_date) == args.party_year)
+
+        total = party_obj_query.count()
+        party_obj = party_obj_query.all()
+
+        return {"data": party_obj, "total": total}
 
     except Exception as e:
         raise HTTPException(

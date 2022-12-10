@@ -1,4 +1,5 @@
 from pydantic.schema import datetime
+from pydantic import BaseModel
 from app.api.v1.schema.request.base import TimeStampRequestSchema
 
 
@@ -13,3 +14,8 @@ class PartyRequestCreateSchema(TimeStampRequestSchema):
 class PartyRequestSchema(PartyRequestCreateSchema):
     ratings: float | None = None
     approved: bool = False
+
+
+class AllPartyRequestSchema(BaseModel):
+    created_by: str | None = None
+    party_year: str | None = None
