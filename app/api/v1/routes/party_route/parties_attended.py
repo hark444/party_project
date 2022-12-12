@@ -2,7 +2,10 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from app.api.v1.schema.request.parties_attended import PartiesAttendedRequestSchema, PartyAttendedArgs
+from app.api.v1.schema.request.parties_attended import (
+    PartiesAttendedRequestSchema,
+    PartyAttendedArgs,
+)
 from app.api.v1.schema.response.parties_attended import (
     PartiesAttendedResponseSchema,
     AllPartiesAttendedResponseSchema,
@@ -53,7 +56,9 @@ async def get_party(
     db: Session = Depends(get_db),
 ):
     try:
-        party_attended_obj = db.query(PartiesAttended).filter_by(id=party_attended_id).first()
+        party_attended_obj = (
+            db.query(PartiesAttended).filter_by(id=party_attended_id).first()
+        )
         if not party_attended_obj:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
