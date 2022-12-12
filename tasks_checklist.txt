@@ -76,6 +76,7 @@ Completed Tasks
 - Create logger and add logging to existing infra [PPDEV-034]
 - Bugs:
     - Create a different schema for token generation and user creation [PPDEV-035]
+    - Fix the return type of party attended get api [PPDEV-046]
 - create DELETE for account_user. [PPDEV-011]
 - Unit Test Related:
     - Fix all existing failing UTs [PPDEV-028]

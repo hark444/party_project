@@ -11,4 +11,4 @@ class PartiesAttendedRequestSchema(TimeStampRequestSchema):
 
 
 class PartyAttendedArgs(BaseModel):
-    party_id: int | None = None
+    party_id: str | None = None
