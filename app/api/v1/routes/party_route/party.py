@@ -78,11 +78,14 @@ async def get_party_list(
 async def get_party(
     party_id: int,
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
         party_obj = (
-            db.query(Party).filter_by(id=party_id, user_id=current_user.id).first()
+            db.query(Party)
+            .filter_by(
+                id=party_id,
+            )
+            .first()
         )
         if not party_obj:
             raise HTTPException(
