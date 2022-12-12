@@ -2,7 +2,7 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from app.api.v1.schema.request.parties_attended import PartiesAttendedRequestSchema
+from app.api.v1.schema.request.parties_attended import PartiesAttendedRequestSchema, PartyAttendedArgs
 from app.api.v1.schema.response.parties_attended import (
     PartiesAttendedResponseSchema,
     AllPartiesAttendedResponseSchema,
@@ -51,14 +51,9 @@ async def create_parties_attended(
 async def get_party(
     party_attended_id: int,
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
-        party_attended_obj = (
-            db.query(PartiesAttended)
-            .filter_by(id=party_attended_id, user_id=current_user.id)
-            .first()
-        )
+        party_attended_obj = db.query(PartiesAttended).filter_by(id=party_attended_id).first()
         if not party_attended_obj:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -75,12 +70,16 @@ async def get_party(
 @parties_attended_router.get("", response_model=AllPartiesAttendedResponseSchema)
 async def get_all_parties_attended(
     db: Session = Depends(get_db),
-    current_user: UserResponseSchema = Depends(get_current_user),
+    args: PartyAttendedArgs = Depends(),
 ):
     try:
         result = {}
-        query = db.query(PartiesAttended).filter_by(user_id=current_user.id)
-        party_attended_obj = query.all()
+        query = db.query(PartiesAttended)
+        if args.party_id:
+            query = query.filter_by(party_id=args.party_id)
+            party_attended_obj = query.first()
+        else:
+            party_attended_obj = query.all()
         result["data"] = party_attended_obj
         result["total"] = query.count()
         return result

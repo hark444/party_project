@@ -12,6 +12,13 @@ To Do List
 
 - Design individual roles with specific permissions [PPDEV-012]
 
+- As soon as the parties_attended object is submitted,
+    the overall ratings and approved should be recalculated. [PPDEV-046]
+
+- Parties Attended get request should have a filter 'PartyId'. [PPDEV-047]
+
+- PartyId and userId should be compositally unique in parties attended. [PPDEV-048]
+
 - Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
 
 - Unit Tests Related:
@@ -22,6 +29,8 @@ To Do List
 
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
+    - Since 'approved' is a calculated field, it should be removed from parties_attended model
+    [PPDEV-045]
 
 
 Completed Tasks
