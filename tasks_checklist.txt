@@ -9,6 +9,7 @@ To Do List
 - Small independent tasks:
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
+    - Fix the party attended get with party_id return structure [PPDEV-047]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
