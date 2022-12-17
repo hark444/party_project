@@ -22,8 +22,6 @@ To Do List
 
 - Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
 
-- Add filter 'created_by' in parties attended get all request [PPDEV-049]
-
 - Unit Tests Related:
     - Write GET UTs for parties_attented CRUD APIs [PPDEV-020]
     - Write POST UTs for parties_attented CRUD APIs [PPDEV-040]
@@ -35,6 +33,7 @@ To Do List
     - Since 'approved' is a calculated field, it should be removed from parties_attended model
     [PPDEV-045]
 
+- Update party-attended get api, to contain user filter [PPDEV-050]
 
 Completed Tasks
 
@@ -91,3 +90,4 @@ Completed Tasks
     - Write UTs for party DELETE APIs [PPDEV-039]
 
 - Create a get all party api, having date, and user filters. [PPDEV-043]
+- Add filter 'created_by' in parties attended get all request [PPDEV-049]
