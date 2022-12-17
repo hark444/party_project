@@ -12,4 +12,4 @@ class PartiesAttendedRequestSchema(TimeStampRequestSchema):
 
 class PartyAttendedArgs(BaseModel):
     party_id: str | None = None
-    created_by: str | None = None
+    created_by: bool = False

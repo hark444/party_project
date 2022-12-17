@@ -76,6 +76,7 @@ async def get_party(
 async def get_all_parties_attended(
     db: Session = Depends(get_db),
     args: PartyAttendedArgs = Depends(),
+    curr_user: UserResponseSchema = Depends(get_current_user),
 ):
     try:
         result = {}
@@ -84,7 +85,7 @@ async def get_all_parties_attended(
             query = query.filter_by(party_id=args.party_id)
 
         if args.created_by:
-            query = query.filter_by(user_id=args.created_by)
+            query = query.filter_by(user=curr_user)
 
         party_attended_obj = query.all()
         result["data"] = party_attended_obj
