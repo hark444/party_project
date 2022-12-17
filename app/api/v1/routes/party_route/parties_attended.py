@@ -80,12 +80,9 @@ async def get_all_parties_attended(
 ):
     try:
         result = {}
-        query = db.query(PartiesAttended)
+        query = db.query(PartiesAttended).filter_by(user=curr_user)
         if args.party_id:
             query = query.filter_by(party_id=args.party_id)
-
-        if args.created_by:
-            query = query.filter_by(user=curr_user)
 
         party_attended_obj = query.all()
         result["data"] = party_attended_obj
