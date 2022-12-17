@@ -82,9 +82,11 @@ async def get_all_parties_attended(
         query = db.query(PartiesAttended)
         if args.party_id:
             query = query.filter_by(party_id=args.party_id)
-            party_attended_obj = query.all()
-        else:
-            party_attended_obj = query.all()
+
+        if args.created_by:
+            query = query.filter_by(user_id=args.created_by)
+
+        party_attended_obj = query.all()
         result["data"] = party_attended_obj
         result["total"] = query.count()
         return result

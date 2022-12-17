@@ -81,7 +81,7 @@ async def get_current_user(
     if user is None:
         logger.exception("Invalid token")
         raise credentials_exception
-    logger.info(f"{user.email} if logged in..!")
+    logger.info(f"{user.email} logged in..!")
     return user
 
 
