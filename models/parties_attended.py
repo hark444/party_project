@@ -26,7 +26,6 @@ class PartiesAttended(Base):
     user_id = Column(BigInteger, ForeignKey("account_user.id"))
     user = relationship(UserModel)
     rating = Column(Float, nullable=True)
-    approved = Column(Boolean, nullable=False, default=False)
     comment = Column(Text, nullable=True)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
