@@ -31,7 +31,6 @@ async def create_parties_attended(
             party_id=party_attended.party_id,
             user_id=current_user.id,
             rating=party_attended.rating,
-            approved=party_attended.approved,
             comment=party_attended.comment,
             created_on=party_attended.created_on,
             last_modified_on=party_attended.last_modified_on,
