@@ -1,6 +1,6 @@
 from pydantic import BaseModel, validator
 from typing import Optional
-from pydantic.schema import date
+from pydantic.schema import datetime
 from app.api.v1.schema.request.base import TimeStampRequestSchema
 from models import get_db
 from models.user import UserModel
@@ -17,7 +17,7 @@ class UserRequestSchema(TimeStampRequestSchema):
     last_name: str = None
     disabled: bool = False
     team: str = None
-    date_of_joining: date = None
+    date_of_joining: datetime = None
 
 
 class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):

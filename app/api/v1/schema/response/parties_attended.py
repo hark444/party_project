@@ -12,7 +12,6 @@ class PartiesAttendedResponseSchema(TimeStampResponseSchema):
     party: PartyResponseSchema
     rating: float
     comment: str | None = None
-    approved: bool
 
 
 class AllPartiesAttendedResponseSchema(BaseModel):
