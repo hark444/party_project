@@ -32,6 +32,7 @@ To Do List
     - Remove current user check from party get api [PPDEV-044]
     - Since 'approved' is a calculated field, it should be removed from parties_attended model
     [PPDEV-045]
+    - Date to Datetime in user post/put [PPDEV-051]
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
