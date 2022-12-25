@@ -13,9 +13,6 @@ To Do List
 
 - Design individual roles with specific permissions [PPDEV-012]
 
-- As soon as the parties_attended object is submitted,
-    the overall ratings and approved should be calculated/recalculated. [PPDEV-046]
-
 - Parties Attended get request should have a filter 'PartyId'. [PPDEV-047]
 
 - PartyId and userId should be compositally unique in parties attended. [PPDEV-048]
@@ -33,7 +30,7 @@ To Do List
     - Since 'approved' is a calculated field, it should be removed from parties_attended model
     [PPDEV-045]
     - Date to Datetime in user post/put [PPDEV-051]
-    - Ratings should be initially 0 and not None [PPDEV-052]
+    - Ratings should be initially 0 and not None [PPDEV-054]
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
@@ -97,3 +94,5 @@ Completed Tasks
 - Add filter 'created_by' in parties attended get all request [PPDEV-049]
 - Create Global MAX_PARTY_RATING field. [PPDEV-052]
 - Add validations for max rating per parties-attended-post/put request. [PPDEV-053]
+- As soon as the parties_attended object is submitted,
+    the overall ratings and approved should be calculated/recalculated. [PPDEV-046]

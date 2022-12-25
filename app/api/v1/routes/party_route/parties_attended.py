@@ -40,11 +40,17 @@ async def create_parties_attended(
             last_modified_on=party_attended.last_modified_on,
         )
 
-        update_rating_and_approval(party_attended_obj, party_attended.rating)
-
         db.add(parties_attended_obj)
         db.commit()
         db.refresh(parties_attended_obj)
+
+        update_rating_and_approval(
+            parties_attended_obj, new_rating=parties_attended_obj.rating
+        )
+        db.add(parties_attended_obj)
+        db.commit()
+        db.refresh(parties_attended_obj)
+
         return parties_attended_obj
 
     except Exception as e:
@@ -123,7 +129,11 @@ async def put_party(
 
     try:
         # Update party record with new rating and approved
-        update_rating_and_approval(party_attended_obj, party_attended.rating)
+        update_rating_and_approval(
+            party_attended_obj,
+            party_attended.rating,
+            old_rating=party_attended_obj.rating,
+        )
 
         for field, value in party_attended.dict().items():
             setattr(party_attended_obj, field, value)
@@ -168,11 +178,11 @@ async def delete_party(
         )
 
 
-def update_rating_and_approval(party_attended_obj, new_rating=0):
+def update_rating_and_approval(party_attended_obj, new_rating=0, old_rating=0):
     try:
         party = party_attended_obj.party
         total_weight = party.ratings * party.guests_invited
-        net_change = party_attended_obj.rating - new_rating
+        net_change = old_rating - new_rating
         updated_rating = (total_weight - net_change) / party.guests_invited
         is_approved = updated_rating > (MAX_PARTY_RATING // 2)
         logger.info("Updating party ratings and approval.")

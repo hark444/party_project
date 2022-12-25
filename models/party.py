@@ -28,5 +28,5 @@ class Party(Base):
     last_modified_on = Column(DateTime, nullable=True)
     party_date = Column(DateTime, nullable=True)
     party_place = Column(String, nullable=True)
-    ratings = Column(Float, nullable=True)
+    ratings = Column(Float, nullable=True, default=0.0)
     approved = Column(Boolean, nullable=False, default=False)

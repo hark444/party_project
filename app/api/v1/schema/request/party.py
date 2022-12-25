@@ -12,7 +12,7 @@ class PartyRequestCreateSchema(TimeStampRequestSchema):
 
 
 class PartyRequestSchema(PartyRequestCreateSchema):
-    ratings: float | None = None
+    ratings: float = 0.0
     approved: bool = False
 
 
