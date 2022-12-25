@@ -10,11 +10,13 @@ To Do List
     - Write a common class for database communications [PPDEV-013]
     - Add pagination to all GET-ALL APIs [PPDEV-019]
     - Fix the party attended get with party_id return structure [PPDEV-047]
+    - Create Global MAX_PARTY_RATING field. [PPDEV-052]
+    - Add validations for max rating per parties-attended-post/put request. [PPDEV-053]
 
 - Design individual roles with specific permissions [PPDEV-012]
 
 - As soon as the parties_attended object is submitted,
-    the overall ratings and approved should be recalculated. [PPDEV-046]
+    the overall ratings and approved should be calculated/recalculated. [PPDEV-046]
 
 - Parties Attended get request should have a filter 'PartyId'. [PPDEV-047]
 
@@ -35,6 +37,8 @@ To Do List
     - Date to Datetime in user post/put [PPDEV-051]
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
+
+
 
 Completed Tasks
 
