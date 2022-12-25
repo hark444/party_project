@@ -1,5 +1,7 @@
 from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
+import logging
+from settings.base import env
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from app.api.v1.schema.request.parties_attended import (
@@ -18,6 +20,8 @@ from models.parties_attended import PartiesAttended
 parties_attended_router = APIRouter(
     prefix="/parties_attended", tags=["parties_attended"]
 )
+MAX_PARTY_RATING = env.int("MAX_PARTY_RATING")
+logger = logging.getLogger("main")
 
 
 @parties_attended_router.post("", response_model=PartiesAttendedResponseSchema)
@@ -36,12 +40,15 @@ async def create_parties_attended(
             last_modified_on=party_attended.last_modified_on,
         )
 
+        update_rating_and_approval(party_attended_obj, party_attended.rating)
+
         db.add(parties_attended_obj)
         db.commit()
         db.refresh(parties_attended_obj)
         return parties_attended_obj
 
     except Exception as e:
+        db.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
@@ -115,15 +122,20 @@ async def put_party(
         )
 
     try:
+        # Update party record with new rating and approved
+        update_rating_and_approval(party_attended_obj, party_attended.rating)
+
         for field, value in party_attended.dict().items():
             setattr(party_attended_obj, field, value)
 
         db.add(party_attended_obj)
         db.commit()
         db.refresh(party_attended_obj)
+
         return party_attended_obj
 
     except Exception as e:
+        db.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
@@ -154,3 +166,17 @@ async def delete_party(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
+
+
+def update_rating_and_approval(party_attended_obj, new_rating=0):
+    try:
+        party = party_attended_obj.party
+        total_weight = party.ratings * party.guests_invited
+        net_change = party_attended_obj.rating - new_rating
+        updated_rating = (total_weight - net_change) / party.guests_invited
+        is_approved = updated_rating > (MAX_PARTY_RATING // 2)
+        logger.info("Updating party ratings and approval.")
+        party_attended_obj.party.ratings = updated_rating
+        party_attended_obj.party.approved = is_approved
+    except Exception as e:
+        logger.exception(f"Unable to update party ratings and approvals because: {e}")
