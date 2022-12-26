@@ -8,7 +8,7 @@ from sqlalchemy import (
     BigInteger,
     ForeignKey,
     Float,
-    UniqueConstraint
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
 from sqlalchemy.orm import relationship
@@ -31,5 +31,5 @@ class PartiesAttended(Base):
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
     __table_args__ = (
-        UniqueConstraint('party_id', 'user_id', name='uix_table_party_user'),
+        UniqueConstraint("party_id", "user_id", name="uix_table_party_user"),
     )
