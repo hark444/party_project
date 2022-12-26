@@ -26,6 +26,7 @@ To Do List
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
     - Date to Datetime in user post/put [PPDEV-051]
+    - team name should be case-insensitive
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
