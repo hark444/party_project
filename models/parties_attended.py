@@ -8,6 +8,7 @@ from sqlalchemy import (
     BigInteger,
     ForeignKey,
     Float,
+    UniqueConstraint,
 )
 from sqlalchemy.dialects.postgresql import JSONB, TEXT
 from sqlalchemy.orm import relationship
@@ -29,3 +30,6 @@ class PartiesAttended(Base):
     comment = Column(Text, nullable=True)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
+    __table_args__ = (
+        UniqueConstraint("party_id", "user_id", name="uix_table_party_user"),
+    )
