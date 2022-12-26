@@ -20,6 +20,7 @@ async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)
             email=user.email,
             first_name=user.first_name,
             last_name=user.last_name,
+            team_id=user.team_id,
         )
 
         db.add(user_obj)
@@ -58,7 +59,7 @@ async def update_user(
 
 
 @user_router.delete("", status_code=200)
-async def update_user(
+async def delete_user(
     db: Session = Depends(get_db),
     curr_user: UserModel = Depends(get_current_user),
 ):

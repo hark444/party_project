@@ -26,7 +26,6 @@ To Do List
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
     - Date to Datetime in user post/put [PPDEV-051]
-    - team name should be case-insensitive [PPDEV-060]
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
@@ -85,6 +84,7 @@ Completed Tasks
     - Ratings should be initially 0 and not None [PPDEV-054]
     - Since 'approved' is a calculated field, it should be removed from parties_attended model
         [PPDEV-045]
+    - team name should be case-insensitive [PPDEV-060]
 - create DELETE for account_user. [PPDEV-011]
 - Unit Test Related:
     - Fix all existing failing UTs [PPDEV-028]
