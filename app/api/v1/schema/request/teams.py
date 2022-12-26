@@ -10,7 +10,7 @@ class TeamsRequestSchema(TimeStampRequestSchema):
     @validator("team_name")
     def validate_email_uniqueness(cls, v):
         db = next(get_db())
-        teams_obj = db.query(TeamsModel).filter_by(team_name=v).first()
+        teams_obj = db.query(TeamsModel).filter_by(team_name=v.lower()).first()
         if teams_obj:
             raise ValueError(
                 f"A team with the same name already exists. "

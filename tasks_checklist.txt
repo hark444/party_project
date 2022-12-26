@@ -26,12 +26,10 @@ To Do List
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
     - Date to Datetime in user post/put [PPDEV-051]
-    - team name should be case-insensitive
+    - team name should be case-insensitive [PPDEV-060]
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
-- Link team table with user [PPDEV-056]
-- Write an endpoint to add/get teams [PPDEV-058]
 - Update user APIs to encompass teams [PPDEV-059]
 
 - When viewing parties, a user should see only their team's parties.[PPDEV-057]
@@ -105,6 +103,8 @@ Completed Tasks
     the overall ratings and approved should be calculated/recalculated. [PPDEV-046]
 - PartyId and userId should be compositally unique in parties attended. [PPDEV-048]
 - Create Teams table.[PPDEV-055]
+- Link team table with user [PPDEV-056]
+- Write an endpoint to add/get teams [PPDEV-058]
 
 
 

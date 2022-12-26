@@ -14,7 +14,9 @@ logger = logging.getLogger("main")
 @team_router.post("", response_model=TeamsResponseSchema)
 async def create_team(team: TeamsRequestSchema, db: Session = Depends(get_db)):
     try:
-        teams_obj = TeamsModel(team_name=team.team_name, created_on=team.created_on)
+        teams_obj = TeamsModel(
+            team_name=team.team_name.lower(), created_on=team.created_on
+        )
 
         db.add(teams_obj)
         db.commit()
@@ -64,7 +66,7 @@ async def update_team(
             detail="No team with this ID was found.",
         )
     try:
-        teams_obj.team_name = team.team_name
+        teams_obj.team_name = team.team_name.lower()
         db.add(teams_obj)
         db.commit()
         db.refresh(teams_obj)
@@ -77,7 +79,7 @@ async def update_team(
         )
 
 
-@team_router.delete("", status_code=200)
+@team_router.delete("/{team_id}", status_code=200)
 async def delete_team(
     team_id: int,
     db: Session = Depends(get_db),
