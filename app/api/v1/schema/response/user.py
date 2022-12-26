@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from app.api.v1.schema.response.base import TimeStampResponseSchema
 from pydantic.schema import date
+from app.api.v1.schema.response.teams import TeamsResponseSchema
 
 
 class UserResponseSchema(TimeStampResponseSchema):
@@ -9,7 +10,8 @@ class UserResponseSchema(TimeStampResponseSchema):
     last_name: str | None = None
     disabled: bool | None = None
     role: str | None = None
-    team: str | None = None
+    team_id: int | None = None
+    team: TeamsResponseSchema
     date_of_joining: date | None = None
 
 

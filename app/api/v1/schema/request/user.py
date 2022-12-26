@@ -16,7 +16,7 @@ class UserRequestSchema(TimeStampRequestSchema):
     first_name: str = None
     last_name: str = None
     disabled: bool = False
-    team: str = None
+    team_id: int = None
     date_of_joining: datetime = None
 
 
