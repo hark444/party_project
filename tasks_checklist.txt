@@ -18,7 +18,7 @@ To Do List
 - Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
 
 - Unit Tests Related:
-    - Fix all existing Unit tests. [PPDEV-060]
+    - Fix all existing Unit tests. [PPDEV-061]
     - Write GET UTs for parties_attented CRUD APIs [PPDEV-020]
     - Write POST UTs for parties_attented CRUD APIs [PPDEV-040]
     - Write PUT UTs for parties_attented CRUD APIs [PPDEV-041]
@@ -32,7 +32,7 @@ To Do List
 
 - When viewing parties, a user should see only their team's parties.[PPDEV-057]
 
-- Create a script that'll return the highest PPDEV ticket. [PPDEV-061]
+- Create a script that'll return the highest PPDEV ticket. [PPDEV-062]
 
 
 In-progress tasks
