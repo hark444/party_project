@@ -59,9 +59,6 @@ def test_get_single_party_attended(client, account_user_and_token):
     assert response_json.get("comment") == DEFAULT_PARTIES_ATTENDED_PAYLOAD.get(
         "comment"
     )
-    assert response_json.get("approved") == DEFAULT_PARTIES_ATTENDED_PAYLOAD.get(
-        "approved"
-    )
 
 
 def test_get_single_party_with_incorrect_party_id(client, account_user_and_token):

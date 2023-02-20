@@ -18,6 +18,7 @@ To Do List
 - Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
 
 - Unit Tests Related:
+    - Fix all existing Unit tests. [PPDEV-060]
     - Write GET UTs for parties_attented CRUD APIs [PPDEV-020]
     - Write POST UTs for parties_attented CRUD APIs [PPDEV-040]
     - Write PUT UTs for parties_attented CRUD APIs [PPDEV-041]
@@ -29,9 +30,9 @@ To Do List
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
-- Update user APIs to encompass teams [PPDEV-059]
-
 - When viewing parties, a user should see only their team's parties.[PPDEV-057]
+
+- Create a script that'll return the highest PPDEV ticket. [PPDEV-061]
 
 
 In-progress tasks
@@ -105,9 +106,11 @@ Completed Tasks
 - Create Teams table.[PPDEV-055]
 - Link team table with user [PPDEV-056]
 - Write an endpoint to add/get teams [PPDEV-058]
+- Update user APIs to encompass teams [PPDEV-059]
 
 
 
 Unplanned tasks
 - group/team
 - user tagging
+-

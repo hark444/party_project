@@ -11,7 +11,7 @@ class UserResponseSchema(TimeStampResponseSchema):
     disabled: bool | None = None
     role: str | None = None
     team_id: int | None = None
-    team: TeamsResponseSchema
+    team: TeamsResponseSchema | None = None
     date_of_joining: date | None = None
 
 
