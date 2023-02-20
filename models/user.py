@@ -31,7 +31,7 @@ class UserModel(Base):
     disabled = Column(Boolean, default=False, nullable=False)
     hashed_password = Column(String, nullable=True)
     role = Column(Enum(RoleTypeEnum), nullable=False, server_default="regular")
-    team_id = Column(Integer, ForeignKey("teams.id"))
+    team_id = Column(Integer, ForeignKey("teams.id"), nullable=True)
     team = relationship(TeamsModel)
     date_of_joining = Column(DATE)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
