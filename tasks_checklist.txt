@@ -22,9 +22,6 @@ To Do List
     - Write POST UTs for parties_attended CRUD APIs [PPDEV-040]
     - Write PUT UTs for parties_attended CRUD APIs [PPDEV-041]
     - Write DELETE UTs for parties_attended CRUD APIs [PPDEV-042]
-
-
-    - Write DELETE UTs for teams apis [PPDEV-066]
     - Update all existing cases where teams scenario applies [PPDEV-067]
 
 - Bugs:
@@ -108,6 +105,7 @@ Completed Tasks
     - Write POST UTs for teams and fixed latest tag regex[PPDEV-063]
     - Write GET UTs for teams apis [PPDEV-064]
     - Write PUT UTs for teams apis [PPDEV-065]
+    - Write DELETE UTs for teams apis [PPDEV-066]
 
 - Create a get all party api, having date, and user filters. [PPDEV-043]
 - Add filter 'created_by' in parties attended get all request [PPDEV-049]
@@ -122,6 +120,7 @@ Completed Tasks
 - Update user APIs to encompass teams [PPDEV-059]
 - Create a script that'll return the highest PPDEV ticket. [PPDEV-062]
 - All POST APIs should return 202 status instead of 200 [PPDEV-068]
+- User model should expect team_name and not team_id [PPDEV-072]
 
 
 
