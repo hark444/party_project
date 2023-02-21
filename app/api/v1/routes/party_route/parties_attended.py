@@ -24,7 +24,11 @@ MAX_PARTY_RATING = env.int("MAX_PARTY_RATING")
 logger = logging.getLogger("main")
 
 
-@parties_attended_router.post("", response_model=PartiesAttendedResponseSchema, status_code=status.HTTP_201_CREATED)
+@parties_attended_router.post(
+    "",
+    response_model=PartiesAttendedResponseSchema,
+    status_code=status.HTTP_201_CREATED,
+)
 async def create_parties_attended(
     party_attended: PartiesAttendedRequestSchema,
     db: Session = Depends(get_db),

@@ -11,7 +11,9 @@ team_router = APIRouter(prefix="/teams", tags=["teams"])
 logger = logging.getLogger("main")
 
 
-@team_router.post("", response_model=TeamsResponseSchema, status_code=status.HTTP_201_CREATED)
+@team_router.post(
+    "", response_model=TeamsResponseSchema, status_code=status.HTTP_201_CREATED
+)
 async def create_team(team: TeamsRequestSchema, db: Session = Depends(get_db)):
     try:
         teams_obj = TeamsModel(
