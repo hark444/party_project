@@ -8,7 +8,7 @@ class TeamsRequestSchema(TimeStampRequestSchema):
     team_name: str = None
 
     @validator("team_name")
-    def validate_email_uniqueness(cls, v):
+    def validate_team_name_uniqueness(cls, v):
         db = next(get_db())
         teams_obj = db.query(TeamsModel).filter_by(team_name=v.lower()).first()
         if teams_obj:

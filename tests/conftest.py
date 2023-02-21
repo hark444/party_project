@@ -9,6 +9,7 @@ from fastapi.testclient import TestClient
 from models.user import UserModel
 from models.party import Party
 from models.parties_attended import PartiesAttended
+from models.teams import TeamsModel
 from settings import settings
 from models import Base, get_db
 from main import application
@@ -50,6 +51,7 @@ def clear_db(session):
     session.query(PartiesAttended).delete()
     session.query(Party).delete()
     session.query(UserModel).delete()
+    session.query(TeamsModel).delete()
     session.commit()
 
 
