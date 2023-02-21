@@ -34,7 +34,9 @@ To Do List
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
-- When viewing parties, a user should see only their team's parties.[PPDEV-057]
+- When viewing parties, a user should see only their team's parties. [PPDEV-057]
+
+- last_modified_on field is not updating in some scenarios, especially in PUT apis. [PPDEV-069]
 
 
 
