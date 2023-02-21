@@ -41,7 +41,7 @@ To Do List
 
 - Add get_by_team_name in teams GET API [PPDEV-071]
 
-- User model could expect team_name/team_id or both [PPDEV-072]
+- User model should expect team_name and not team_id [PPDEV-072]
 
 In-progress tasks
 

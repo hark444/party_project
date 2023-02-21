@@ -18,7 +18,13 @@ logger = logging.getLogger("main")
 )
 async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)):
     try:
-        team_obj = db.query(TeamsModel).filter_by(id=user.team_id).first()
+        team_obj = None
+        # Getting teams object for the given team name
+        if user.team_name:
+            team_obj = (
+                db.query(TeamsModel).filter_by(team_name=user.team_name.lower()).first()
+            )
+
         user_obj = UserModel(
             hashed_password=get_password_hash(user.password),
             email=user.email,
@@ -47,8 +53,16 @@ async def update_user(
     curr_user: UserModel = Depends(get_current_user),
 ):
     try:
+
         for field, value in user:
             setattr(curr_user, field, value)
+
+        # Getting teams object for the given team name
+        if user.team_name:
+            team_obj = (
+                db.query(TeamsModel).filter_by(team_name=user.team_name.lower()).first()
+            )
+            curr_user.team = team_obj
 
         db.add(curr_user)
         db.commit()
