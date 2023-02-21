@@ -23,10 +23,9 @@ To Do List
     - Write PUT UTs for parties_attended CRUD APIs [PPDEV-041]
     - Write DELETE UTs for parties_attended CRUD APIs [PPDEV-042]
 
-    - Write GET UTs for teams apis [PPDEV-064]
-    - Write PUT UTs for teams apis [PPDEV-065]
+
     - Write DELETE UTs for teams apis [PPDEV-066]
-    - Update all existing cases where this scenario applies [PPDEV-067]
+    - Update all existing cases where teams scenario applies [PPDEV-067]
 
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
@@ -103,6 +102,8 @@ Completed Tasks
     - Write UTs for party DELETE APIs [PPDEV-039]
     - Fix all existing Unit tests. [PPDEV-061]
     - Write POST UTs for teams and fixed latest tag regex[PPDEV-063]
+    - Write GET UTs for teams apis [PPDEV-064]
+    - Write PUT UTs for teams apis [PPDEV-065]
 
 - Create a get all party api, having date, and user filters. [PPDEV-043]
 - Add filter 'created_by' in parties attended get all request [PPDEV-049]
