@@ -17,8 +17,16 @@ class UserRequestSchema(TimeStampRequestSchema):
     first_name: str = None
     last_name: str = None
     disabled: bool = False
-    team_id: int | None = None
+    team_name: str | None = None
     date_of_joining: datetime = None
+
+    @validator("team_name")
+    def validate_team_must_exist(cls, v):
+        db = next(get_db())
+        teams_obj = db.query(TeamsModel).filter_by(team_name=v.lower()).first()
+        if not teams_obj:
+            raise ValueError(f"There is no existing team with this name.")
+        return v
 
 
 class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):
@@ -31,12 +39,4 @@ class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):
                 f"A user with the same email already exists. "
                 f"Please try to login or create a user with a different email"
             )
-        return v
-
-    @validator("team_id")
-    def validate_team_must_exist(cls, v):
-        db = next(get_db())
-        teams_obj = db.query(TeamsModel).filter_by(id=v).first()
-        if not teams_obj:
-            raise ValueError(f"There is no existing team with this ID.")
         return v

@@ -10,7 +10,6 @@ class UserResponseSchema(TimeStampResponseSchema):
     last_name: str | None = None
     disabled: bool | None = None
     role: str | None = None
-    team_id: int | None = None
     team: TeamsResponseSchema | None = None
     date_of_joining: date | None = None
 
