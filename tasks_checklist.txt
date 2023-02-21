@@ -22,7 +22,7 @@ To Do List
     - Write POST UTs for parties_attended CRUD APIs [PPDEV-040]
     - Write PUT UTs for parties_attended CRUD APIs [PPDEV-041]
     - Write DELETE UTs for parties_attended CRUD APIs [PPDEV-042]
-    - Write POST UTs for teams [PPDEV-063]
+
     - Write GET UTs for teams apis [PPDEV-064]
     - Write PUT UTs for teams apis [PPDEV-065]
     - Write DELETE UTs for teams apis [PPDEV-066]
@@ -36,8 +36,7 @@ To Do List
 
 - When viewing parties, a user should see only their team's parties.[PPDEV-057]
 
-- All POST APIs should return 202 status instead of 200 [068]
-
+- All POST APIs should return 202 status instead of 200 [PPDEV-068]
 
 
 
@@ -103,6 +102,7 @@ Completed Tasks
     - Write UTs for party PUT APIs [PPDEV-038]
     - Write UTs for party DELETE APIs [PPDEV-039]
     - Fix all existing Unit tests. [PPDEV-061]
+    - Write POST UTs for teams and fixed latest tag regex[PPDEV-063]
 
 - Create a get all party api, having date, and user filters. [PPDEV-043]
 - Add filter 'created_by' in parties attended get all request [PPDEV-049]
