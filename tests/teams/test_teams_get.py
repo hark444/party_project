@@ -32,7 +32,7 @@ def test_get_teams_without_auth(client):
     assert response.status_code == status.HTTP_200_OK
 
 
-def test_get__team_by_id(client):
+def test_get_team_by_id(client):
     teams_obj = create_teams(client)
     team_id = teams_obj.get("id")
     response = client.get(teams_url + f"/{team_id}")
