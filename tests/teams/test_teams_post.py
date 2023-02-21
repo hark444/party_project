@@ -21,7 +21,7 @@ def test_post_teams_without_auth(client):
     assert response.status_code == status.HTTP_201_CREATED
 
 
-def test_post_team_with_same_name(client, account_user_and_token):
+def test_post_team_with_same_name(client):
     response = client.post(teams_url, json=DEFAULT_TEAMS_PAYLOAD)
     assert response.status_code == status.HTTP_201_CREATED
     response = client.post(teams_url, json=DEFAULT_TEAMS_PAYLOAD)

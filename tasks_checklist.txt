@@ -36,8 +36,6 @@ To Do List
 
 - When viewing parties, a user should see only their team's parties.[PPDEV-057]
 
-- All POST APIs should return 202 status instead of 200 [PPDEV-068]
-
 
 
 In-progress tasks
@@ -116,6 +114,7 @@ Completed Tasks
 - Write an endpoint to add/get teams [PPDEV-058]
 - Update user APIs to encompass teams [PPDEV-059]
 - Create a script that'll return the highest PPDEV ticket. [PPDEV-062]
+- All POST APIs should return 202 status instead of 200 [PPDEV-068]
 
 
 
