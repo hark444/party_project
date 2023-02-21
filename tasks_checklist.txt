@@ -37,7 +37,11 @@ To Do List
 
 - last_modified_on field is not updating in some scenarios, especially in PUT apis. [PPDEV-069]
 
+- Add validation in user model for teams: team must exist [PPDEV-070]
 
+- Add get_by_team_name in teams GET API [PPDEV-071]
+
+- User model could expect team_name/team_id or both [PPDEV-072]
 
 In-progress tasks
 

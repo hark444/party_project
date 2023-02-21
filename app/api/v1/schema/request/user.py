@@ -4,6 +4,7 @@ from pydantic.schema import datetime
 from app.api.v1.schema.request.base import TimeStampRequestSchema
 from models import get_db
 from models.user import UserModel
+from models.teams import TeamsModel
 from pydantic import BaseModel
 
 
@@ -30,4 +31,12 @@ class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):
                 f"A user with the same email already exists. "
                 f"Please try to login or create a user with a different email"
             )
+        return v
+
+    @validator("team_id")
+    def validate_team_must_exist(cls, v):
+        db = next(get_db())
+        teams_obj = db.query(TeamsModel).filter_by(id=v).first()
+        if not teams_obj:
+            raise ValueError(f"There is no existing team with this ID.")
         return v

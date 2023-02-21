@@ -1,6 +1,7 @@
 from fastapi import Depends, APIRouter, HTTPException, status
 from models.user import UserModel
 from models import get_db
+from models.teams import TeamsModel
 import logging
 from sqlalchemy.orm import Session
 from app.api.v1.schema.request.user import UserRequestSchema, UserRequestPostSchema
@@ -17,12 +18,13 @@ logger = logging.getLogger("main")
 )
 async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)):
     try:
+        team_obj = db.query(TeamsModel).filter_by(id=user.team_id).first()
         user_obj = UserModel(
             hashed_password=get_password_hash(user.password),
             email=user.email,
             first_name=user.first_name,
             last_name=user.last_name,
-            team_id=user.team_id,
+            team=team_obj,
         )
 
         db.add(user_obj)
