@@ -8,13 +8,13 @@ filename = BASE_DIR + "/tasks_checklist.txt"
 
 def get_latest_tag():
     latest_tag = 000
-    regex = r"\d{3}"
+    regex = r"(\d{3})(\])"
 
     with open(filename, "r") as file:
         for line in file.read().split("\n"):
             res = re.search(regex, line)
-            if res and int(res.group()) > latest_tag:
-                latest_tag = int(res.group())
+            if res and int(res.group(1)) > latest_tag:
+                latest_tag = int(res.group((1)))
 
     return latest_tag
 
