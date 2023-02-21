@@ -85,7 +85,9 @@ async def get_current_user(
     return user
 
 
-@auth_router.post("/token", response_model=TokenResponseSchema)
+@auth_router.post(
+    "/token", response_model=TokenResponseSchema, status_code=status.HTTP_201_CREATED
+)
 async def login_for_access_token(
     form_data: TokenGenerateSchema, db: Session = Depends(get_db)
 ):

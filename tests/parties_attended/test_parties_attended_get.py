@@ -23,7 +23,7 @@ parties_attended_url = "/api/v1/parties_attended"
 
 def create_party_object(client, headers):
     create_party = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
-    assert create_party.status_code == 200
+    assert create_party.status_code == status.HTTP_201_CREATED
     return create_party.json()
 
 
@@ -32,7 +32,7 @@ def create_party_attended_object(client, headers, party_obj):
     party_attended_obj = client.post(
         parties_attended_url, headers=headers, json=DEFAULT_PARTIES_ATTENDED_PAYLOAD
     )
-    assert party_attended_obj.status_code == 200
+    assert party_attended_obj.status_code == status.HTTP_201_CREATED
     return party_attended_obj
 
 

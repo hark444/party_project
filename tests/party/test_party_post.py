@@ -17,7 +17,7 @@ party_url = "/api/v1/party"
 def test_post_party(client, account_user_and_token):
     headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
     response = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_201_CREATED
     response_json = response.json()
     assert response_json.get("reason") == DEFAULT_PARTY_PAYLOAD.get("reason")
     assert response_json.get("guests_invited") == DEFAULT_PARTY_PAYLOAD.get(
@@ -33,7 +33,7 @@ def test_post_party_without_auth(client, account_user_and_token):
 def test_post_party_return_default_approved_and_ratings(client, account_user_and_token):
     headers = {"Authorization": f'Bearer {account_user_and_token.get("access_token")}'}
     response = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_201_CREATED
     response_json = response.json()
     assert not response_json.get("ratings")
     assert not response_json.get("approved")

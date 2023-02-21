@@ -13,9 +13,9 @@ DEFAULT_USER_PAYLOAD = {
 
 def test_create_user_token(client):
     response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == status.HTTP_201_CREATED
     response = client.post(f"/api/v1/auth/token", json=DEFAULT_USER_PAYLOAD)
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == status.HTTP_201_CREATED
     response_data = json.loads(response.text)
     assert response_data.get("access_token")
     assert response_data.get("token_type") == "bearer"

@@ -21,7 +21,9 @@ from app.api.v1.routes.auth import get_current_user
 party_party_router = APIRouter(prefix="/party", tags=["party"])
 
 
-@party_party_router.post("", response_model=PartyResponseSchema)
+@party_party_router.post(
+    "", response_model=PartyResponseSchema, status_code=status.HTTP_201_CREATED
+)
 async def create_party(
     party: PartyRequestCreateSchema,
     db: Session = Depends(get_db),

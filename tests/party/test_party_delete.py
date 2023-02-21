@@ -17,7 +17,7 @@ party_url = "/api/v1/party"
 
 def create_party_object(client, headers):
     create_party = client.post(party_url, headers=headers, json=DEFAULT_PARTY_PAYLOAD)
-    assert create_party.status_code == 200
+    assert create_party.status_code == status.HTTP_201_CREATED
     return create_party.json()
 
 

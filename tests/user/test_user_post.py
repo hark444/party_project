@@ -12,7 +12,7 @@ DEFAULT_USER_PAYLOAD = {
 
 def test_create_user(client):
     response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
-    assert response.status_code == status.HTTP_200_OK
+    assert response.status_code == status.HTTP_201_CREATED
     response_data = json.loads(response.text)
     assert response_data.get("email") == DEFAULT_USER_PAYLOAD.get("email")
     assert not response_data.get("disabled")

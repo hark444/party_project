@@ -12,7 +12,9 @@ user_router = APIRouter(prefix="/users", tags=["users"])
 logger = logging.getLogger("main")
 
 
-@user_router.post("", response_model=UserResponseSchema)
+@user_router.post(
+    "", response_model=UserResponseSchema, status_code=status.HTTP_201_CREATED
+)
 async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)):
     try:
         user_obj = UserModel(
