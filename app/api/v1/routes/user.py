@@ -3,6 +3,7 @@ from models.user import UserModel
 from models import get_db
 from models.teams import TeamsModel
 import logging
+import datetime
 from sqlalchemy.orm import Session
 from app.api.v1.schema.request.user import (
     UserRequestSchema,
@@ -35,6 +36,7 @@ async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)
             first_name=user.first_name,
             last_name=user.last_name,
             team=team_obj,
+            date_of_joining=user.date_of_joining,
         )
 
         db.add(user_obj)
@@ -71,8 +73,6 @@ async def get_users(
             base_query = base_query.filter_by(date_of_joining=args.doj)
 
         if args.experience:
-            import datetime
-
             today = datetime.date.today()
             experience_date = today.replace(year=today.year - args.experience)
             base_query = base_query.filter(UserModel.date_of_joining < experience_date)
