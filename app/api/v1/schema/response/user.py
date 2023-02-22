@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from app.api.v1.schema.response.base import TimeStampResponseSchema
 from pydantic.schema import date
+from typing import List
 from app.api.v1.schema.response.teams import TeamsResponseSchema
 
 
@@ -18,3 +19,8 @@ class TokenResponseSchema(BaseModel):
     access_token: str
     token_type: str
     username: str | None = None
+
+
+class UsersResponseSchema(BaseModel):
+    data: List[UserResponseSchema]
+    total: int

@@ -1,7 +1,10 @@
 To Do List
 
 - Need filters in the user get api: team, team=null, doj, experience, etc. [PPDEV-073]
+- Add unit test for user get api with filters. [PPDEV-093]
+
 - Assign roles to users: Superadmin, admin and regular user.[PPDEV-074]
+
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user->admin, and admin->user [PPDEV-075]
 
@@ -151,6 +154,7 @@ Not Immediately Required/Doubtful Tasks
 - Bugs:
     - Remove current user check from party get api [PPDEV-044]
     - Date to Datetime in user post/put [PPDEV-051]
+    - Date of joining is not handled in user API.
 
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
