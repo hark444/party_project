@@ -4,8 +4,10 @@ To Do List
     - Permissions table: id, permission. [PPDEV-074]
     - permission_role table containing mappings of permission each role has. [PPDEV-094]
     - Role table: id, role [PPDEV-095]
-    - Permissions ENUM: containing all possible permissions. [PPDEV-096]
-    - migrations to add permission_role mappings. [PPDEV-097]
+    - Populate Roles table. [PPDEV-096]
+    - Permissions ENUM: containing all possible permissions. [PPDEV-097]
+    - Populate Permissions table. [PPDEV-098]
+    - migrations to add permission_role mappings. [PPDEV-099]
 
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user->admin, and admin->user [PPDEV-075]
