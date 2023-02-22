@@ -1,4 +1,3 @@
-import enum
 from sqlalchemy import (
     Boolean,
     Column,
@@ -13,12 +12,7 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from models import Base
 from models.teams import TeamsModel
-
-
-class RoleTypeEnum(str, enum.Enum):
-    admin = "admin"
-    superuser = "superuser"
-    regular = "regular"
+from models.role import RoleTypeEnum
 
 
 class UserModel(Base):
