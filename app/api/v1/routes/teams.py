@@ -34,7 +34,7 @@ async def create_team(team: TeamsRequestSchema, db: Session = Depends(get_db)):
 
 
 @team_router.get("/{team_id}", response_model=TeamsResponseSchema)
-async def get_team(
+async def get_team_by_id(
     team_id: int,
     db: Session = Depends(get_db),
 ):
