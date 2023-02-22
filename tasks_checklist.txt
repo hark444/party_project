@@ -1,9 +1,10 @@
 To Do List
 
-- Need filters in the user get api: team, team=null, doj, experience, etc. [PPDEV-073]
-- Add unit test for user get api with filters. [PPDEV-093]
-
-- Assign roles to users: Superadmin, admin and regular user.[PPDEV-074]
+- Create Permissions Structure. Rules:
+    - Permissions table: id, permission. [PPDEV-074]
+    - permission_role table containing mappings of permission each role has. [PPDEV-094]
+    - Permissions ENUM: containing all possible permissions. [PPDEV-094]
+    - migrations to add permission_role mappings. [PPDEV-094]
 
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user->admin, and admin->user [PPDEV-075]
@@ -122,6 +123,8 @@ Completed Tasks
 - User model should expect team_name and not team_id [PPDEV-072]
 - Add validation in user model for teams: team must exist [PPDEV-070]
 - Design group/team logic using design document [PPDEV-006]
+- Need filters in the user get api: team, team=null, doj, experience, etc. [PPDEV-073]
+- Add unit test for user get api with filters. [PPDEV-093]
 
 
 Unplanned tasks
