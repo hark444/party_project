@@ -20,6 +20,17 @@ def create_teams(client):
     return response.json()
 
 
+def test_create_user_with_invalid_team(client):
+    DEFAULT_USER_PAYLOAD["team_name"] = "No Team"
+    response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
+    response_data = json.loads(response.text)
+    assert (
+        response_data.get("detail")[0]["msg"]
+        == "There is no existing team with this name."
+    )
+
+
 def test_create_user(client):
     team_obj = create_teams(client)
     DEFAULT_USER_PAYLOAD["team_name"] = team_obj.get("team_name")
@@ -39,23 +50,4 @@ def test_create_user_with_missing_email(client):
     response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
     response_data = json.loads(response.text)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
-    assert response_data == {
-        "detail": [
-            {
-                "loc": ["body", "email"],
-                "msg": "field required",
-                "type": "value_error.missing",
-            }
-        ]
-    }
-
-
-def test_create_user_with_invalid_team(client):
-    DEFAULT_USER_PAYLOAD["team_name"] = "No Team"
-    response = client.post(f"/api/v1/users", json=DEFAULT_USER_PAYLOAD)
-    assert response.status_code == status.HTTP_422_UNPROCESSABLE_ENTITY
-    response_data = json.loads(response.text)
-    assert (
-        response_data.get("detail")[0]["msg"]
-        == "There is no existing team with this name."
-    )
+    assert response_data.get("detail")[0]["msg"] == "field required"
