@@ -11,6 +11,10 @@ from utils.authorization import ValidatePermissions
 user_role_router = APIRouter(prefix="/user-role", tags=["roles"])
 
 allow_change_role = ValidatePermissions(["superuser"])
+"""
+Role change is currently limited to superusers only. A superuser can change any users role
+to either superuser, admin or regular user.
+"""
 
 
 @user_role_router.patch(
