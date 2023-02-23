@@ -37,6 +37,7 @@ async def create_user(user: UserRequestPostSchema, db: Session = Depends(get_db)
             last_name=user.last_name,
             team=team_obj,
             date_of_joining=user.date_of_joining,
+            role=user.role
         )
 
         db.add(user_obj)
