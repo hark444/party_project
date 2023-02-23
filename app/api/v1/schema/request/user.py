@@ -6,6 +6,7 @@ from models import get_db
 from models.user import UserModel
 from models.teams import TeamsModel
 from fastapi import HTTPException
+from models.role import RoleTypeEnum
 
 
 class TokenGenerateSchema(BaseModel):
@@ -17,6 +18,7 @@ class UserRequestSchema(TimeStampRequestSchema):
     first_name: str = None
     last_name: str = None
     disabled: bool = False
+    role: RoleTypeEnum | None = RoleTypeEnum.regular
     team_name: str | None = None
     date_of_joining: date = None
 
