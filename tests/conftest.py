@@ -63,14 +63,11 @@ DEFAULT_USER_PAYLOAD = {
     "last_name": "User",
 }
 
-URLS = {
-    'users': '/api/v1/users',
-    'token': '/api/v1/auth/token'
-}
+URLS = {"users": "/api/v1/users", "token": "/api/v1/auth/token"}
 
 
 def get_user_token(client, user_id):
-    response = client.post(URLS['token'], json=DEFAULT_USER_PAYLOAD)
+    response = client.post(URLS["token"], json=DEFAULT_USER_PAYLOAD)
     if response.status_code == status.HTTP_201_CREATED:
         return {
             "user_id": user_id,
@@ -80,7 +77,7 @@ def get_user_token(client, user_id):
 
 @pytest.fixture(scope="function")
 def account_user_and_token(client):
-    response = client.post(URLS['users'], json=DEFAULT_USER_PAYLOAD)
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
     if response.status_code == status.HTTP_201_CREATED:
         user_id = response.json().get("id")
         return get_user_token(client, user_id)
@@ -88,9 +85,9 @@ def account_user_and_token(client):
 
 @pytest.fixture(scope="function")
 def superuser_and_token(client):
-    DEFAULT_USER_PAYLOAD['role'] = 'superuser'
-    response = client.post(URLS['users'], json=DEFAULT_USER_PAYLOAD)
-    del DEFAULT_USER_PAYLOAD['role']
+    DEFAULT_USER_PAYLOAD["role"] = "superuser"
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
+    del DEFAULT_USER_PAYLOAD["role"]
     if response.status_code == status.HTTP_201_CREATED:
         user_id = response.json().get("id")
         return get_user_token(client, user_id)
@@ -98,9 +95,9 @@ def superuser_and_token(client):
 
 @pytest.fixture(scope="function")
 def admin_user_and_token(client):
-    DEFAULT_USER_PAYLOAD['role'] = 'admin'
-    response = client.post(URLS['users'], json=DEFAULT_USER_PAYLOAD)
-    del DEFAULT_USER_PAYLOAD['role']
+    DEFAULT_USER_PAYLOAD["role"] = "admin"
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
+    del DEFAULT_USER_PAYLOAD["role"]
     if response.status_code == status.HTTP_201_CREATED:
         user_id = response.json().get("id")
         return get_user_token(client, user_id)
