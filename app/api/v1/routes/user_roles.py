@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, APIRouter, HTTPException, status
+from fastapi import Depends, FastAPI, APIRouter, HTTPException, status, Request
 from models.user import UserModel, RoleTypeEnum
 from models import get_db
 from sqlalchemy.orm import Session
@@ -6,13 +6,22 @@ from datetime import datetime, timedelta
 from pydantic import BaseModel
 from app.api.v1.schema.response.user import UserResponseSchema
 from app.api.v1.schema.request.role import RoleTypeSchema
+from utils.authorization import ValidatePermissions
 
 user_role_router = APIRouter(prefix="/user-role", tags=["roles"])
 
+allow_change_role = ValidatePermissions(["superuser"])
 
-@user_role_router.patch("/{user_id}", response_model=UserResponseSchema)
+
+@user_role_router.patch(
+    "/{user_id}",
+    response_model=UserResponseSchema,
+    dependencies=[Depends(allow_change_role)],
+)
 async def login_for_access_token(
-    user_id: int, role: RoleTypeSchema, db: Session = Depends(get_db)
+    user_id: int,
+    role: RoleTypeSchema,
+    db: Session = Depends(get_db),
 ):
     try:
         user = db.query(UserModel).filter_by(id=user_id).one_or_none()
@@ -30,7 +39,6 @@ async def login_for_access_token(
         return user
     except Exception as e:
         db.rollback()
-        print(e)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
