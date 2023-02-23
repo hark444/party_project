@@ -1,13 +1,6 @@
 To Do List
 
-- Create Permissions Structure. Rules:
-    - Permissions table: id, permission. [PPDEV-074]
-    - permission_role table containing mappings of permission each role has. [PPDEV-094]
-    - Role table: id, role [PPDEV-095]
-    - Populate Roles table. [PPDEV-096]
-    - Permissions ENUM: containing all possible permissions. [PPDEV-097]
-    - Populate Permissions table. [PPDEV-097]
-    - migrations to add permission_role mappings. [PPDEV-098]
+- Create boiler-plate for permission based authorization. [PPDEV-099]
 
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user -> admin, and admin->user [PPDEV-075]
@@ -40,6 +33,7 @@ To Do List
     - GET handler. [PPDEV-091]
     - add, update and soft-delete will be functional calls. [PPDEV-092]
 
+- Remove permission_role table, model and all of its mappings
 
 In-progress tasks
 
@@ -128,6 +122,14 @@ Completed Tasks
 - Design group/team logic using design document [PPDEV-006]
 - Need filters in the user get api: team, team=null, doj, experience, etc. [PPDEV-073]
 - Add unit test for user get api with filters. [PPDEV-093]
+- Create Permissions Structure. Rules:
+    - Permissions table: id, permission. [PPDEV-074]
+    - permission_role table containing mappings of permission each role has. [PPDEV-094]
+    - Role table: id, role [PPDEV-095]
+    - Populate Roles table. [PPDEV-096]
+    - Permissions ENUM: containing all possible permissions. [PPDEV-097]
+    - Populate Permissions table. [PPDEV-097]
+    - migrations to add permission_role mappings. [PPDEV-098]
 
 
 Unplanned tasks
