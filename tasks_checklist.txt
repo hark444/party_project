@@ -4,6 +4,7 @@ To Do List
 
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user -> admin, and admin->user [PPDEV-075]
+    - Write unittests for these cases.
 
 - API to add/remove user from team. Rules:
     - Only admins to have permission to do this. [PPDEV-076]
