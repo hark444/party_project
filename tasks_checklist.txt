@@ -1,11 +1,5 @@
 To Do List
 
-- Create boiler-plate for permission based authorization. [PPDEV-099]
-
-- API to change roles of users. This will be permission based. Rules:
-    - Superadmin can create user -> admin, and admin->user [PPDEV-075]
-    - Write unittests for these cases. [PPDEV-100]
-
 - API to add/remove user from team. Rules:
     - Only admins to have permission to do this. [PPDEV-076]
     - On-addition, Opt-in handler to be called. [PPDEV-077]
@@ -131,6 +125,11 @@ Completed Tasks
     - Permissions ENUM: containing all possible permissions. [PPDEV-097]
     - Populate Permissions table. [PPDEV-097]
     - migrations to add permission_role mappings. [PPDEV-098]
+- Create boiler-plate for permission based authorization. [PPDEV-099]
+
+- API to change roles of users. This will be permission based. Rules:
+    - Superadmin can create user -> admin, and admin->user [PPDEV-075]
+    - Write unittests for these cases. [PPDEV-100]
 
 
 Unplanned tasks
