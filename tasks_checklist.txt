@@ -1,8 +1,8 @@
 To Do List
 
 - API to add/remove user from team. Rules:
-    - Only admins to have permission to do this. [PPDEV-076]
-    - On-addition, Opt-in handler to be called. [PPDEV-077]
+    - Only admins to have permission to do this. [PPDEV-077]
+    - On-addition, Opt-in handler to be called. [PPDEV-076]
     - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
 
 - Opt-in API. This will be used only by superadmins and admins. Rules:
