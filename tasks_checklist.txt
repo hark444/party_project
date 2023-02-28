@@ -18,7 +18,7 @@ To Do List
     - On successful subscription, an email can be shared over to the user. [PPDEV-086]
 
 - Opt-in table:
-    - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) [PPDEV-087]
+    - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) with migration script [PPDEV-087]
 
 - Opt-out handler API. The opt-in record should be deleted and subscibed should be marked as false. [PPDEV-088]
 
