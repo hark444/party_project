@@ -17,9 +17,6 @@ To Do List
     - The team-name will be fetched from notification record. [PPDEV-085]
     - On successful subscription, an email can be shared over to the user. [PPDEV-086]
 
-- Opt-in table:
-    - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) with migration script [PPDEV-087]
-
 - Opt-out handler API. The opt-in record should be deleted and subscibed should be marked as false. [PPDEV-088]
 
 - Notifications. Requirements:
@@ -29,6 +26,8 @@ To Do List
     - add, update and soft-delete will be functional calls. [PPDEV-092]
 
 - Remove permission_role table, model and all of its mappings
+
+- Add the following to the teamuser table: requested_by (admin_user) and team [PPDEV-101]
 
 In-progress tasks
 
@@ -130,6 +129,10 @@ Completed Tasks
 - API to change roles of users. This will be permission based. Rules:
     - Superadmin can create user -> admin, and admin->user [PPDEV-075]
     - Write unittests for these cases. [PPDEV-100]
+
+- Opt-in table:
+    - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) with migration script [PPDEV-087]
+
 
 
 Unplanned tasks
