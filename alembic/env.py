@@ -14,6 +14,7 @@ from models import (
     permissions,
     role,
     permission_role,
+    TeamUser,
 )
 
 # this is the Alembic Config object, which provides
