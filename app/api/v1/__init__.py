@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from .routes import user, user_roles, auth
 from .routes.party_route import party_router
 from .routes.teams import team_router
-from .routes.user_teams import user_team_router
+from .routes.team_user import user_team_router
 
 version_router = APIRouter(prefix="/v1")
 version_router.include_router(user.user_router)
