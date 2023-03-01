@@ -1,0 +1,39 @@
+To Do List
+
+- API to add/remove user from team. Rules:
+    - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
+
+- Opt-in API. This will be used only by superadmins and admins. Rules:
+    - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
+
+- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
+    - The url will contain a uuid. [PPDEV-083]
+    - This will be matched with user's token. [PPDEV-084]
+    - The team-name will be fetched from notification record. [PPDEV-085]
+    - On successful subscription, an email can be shared over to the user. [PPDEV-086]
+
+- Opt-out handler API. The opt-in record should be deleted and subscibed should be marked as false. [PPDEV-088]
+
+- Notifications. Requirements:
+    - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
+    - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
+    - GET handler. [PPDEV-091]
+    - add, update and soft-delete will be functional calls. [PPDEV-092]
+
+- Remove permission_role table, model and all of its mappings. [PPDEV-105]
+
+- Add 'admin' filter to get users request. [PPDEV-102]
+
+- Create a new task_list to contain tasks from
+    PPDEV-000 to PPDEV-100 and fix fetch_latest_tag script. [PPDEV-106]
+
+
+
+Completed Tasks
+
+- Bugs
+    - team_name should not be none in team_user api request. [PPDEV-103]
+
+- there should be a unique record for each user and team in opt-in. [PPDEV-104]
+
+- Add the following to the teamuser table: requested_by (admin_user) and team [PPDEV-101]

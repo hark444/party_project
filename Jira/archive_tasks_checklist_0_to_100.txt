@@ -1,46 +1,3 @@
-To Do List
-
-- API to add/remove user from team. Rules:
-    - Only admins to have permission to do this. [PPDEV-077]
-    - On-addition, Opt-in handler to be called. [PPDEV-076]
-    - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
-
-- Opt-in API. This will be used only by superadmins and admins. Rules:
-    - An opt-in link will be created. [PPDEV-080]
-    - This link will contain a unique uuid. [PPDEV-079]
-    - The uuid will be linked to a particular user only. [PPDEV-081]
-    - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
-
-- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
-    - The url will contain a uuid. [PPDEV-083]
-    - This will be matched with user's token. [PPDEV-084]
-    - The team-name will be fetched from notification record. [PPDEV-085]
-    - On successful subscription, an email can be shared over to the user. [PPDEV-086]
-
-- Opt-out handler API. The opt-in record should be deleted and subscibed should be marked as false. [PPDEV-088]
-
-- Notifications. Requirements:
-    - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
-    - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
-    - GET handler. [PPDEV-091]
-    - add, update and soft-delete will be functional calls. [PPDEV-092]
-
-- Remove permission_role table, model and all of its mappings
-
-- Add the following to the teamuser table: requested_by (admin_user) and team [PPDEV-101]
-
-- Add 'admin' filter to get users request. [PPDEV-102]
-
-- Bugs
-    - team_name should not be none in team_user api request. [PPDEV-103]
-
-- there should be a unique record for each user and team in opt-in. [PPDEV-104]
-
-In-progress tasks
-
-- teams API is still open. Do we need to add authentication layer on top of it?
-
-
 Completed Tasks
 
 - Create FastAPI boiler plate
@@ -140,6 +97,14 @@ Completed Tasks
 - Opt-in table:
     - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) with migration script [PPDEV-087]
 
+- API to add/remove user from team. Rules:
+    - Only admins to have permission to do this. [PPDEV-077]
+    - On-addition, Opt-in handler to be called. [PPDEV-076]
+
+- Opt-in API. This will be used only by superadmins and admins. Rules:
+    - An opt-in link will be created. [PPDEV-080]
+    - This link will contain a unique uuid. [PPDEV-079]
+    - The uuid will be linked to a particular user only. [PPDEV-081] [PPDEV-082]
 
 
 Unplanned tasks
@@ -177,3 +142,7 @@ Not Immediately Required/Doubtful Tasks
 - Update party-attended get api, to contain user filter [PPDEV-050]
 
 - When viewing parties, a user should see only their team's parties. [PPDEV-057]
+
+In-progress tasks
+
+- teams API is still open. Do we need to add authentication layer on top of it?
