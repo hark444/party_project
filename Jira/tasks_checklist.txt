@@ -7,12 +7,10 @@ To Do List
     - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
 
 - Opt-in handler API. This will be used to subscribe a user to a team. Rules:
-    - The url will contain a uuid. [PPDEV-083]
-    - This will be matched with user's token. [PPDEV-084]
-    - The team-name will be fetched from team_user record and user will be subscribed. [PPDEV-085]
+    - On successful subscription, the subscribed flag should be set. [PPDEV-111]
     - On successful subscription, an email can be shared over to the user. [PPDEV-086]
 
-- Opt-out handler API. The opt-in record should be deleted and subscibed should be marked as false. [PPDEV-088]
+- Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
 
 - Notifications. Requirements:
     - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
@@ -33,6 +31,9 @@ To Do List
     User accepts and finds out team is not present, or data is invalid.
     Is this a possible scenario? [PPDEV-109]
 
+- Think over the opt-out flow once again, especially
+    in the case where a user is first subscribed and then unsubscribed. [PPDEV-110]
+
 
 Completed Tasks
 
@@ -45,3 +46,8 @@ Completed Tasks
 
 - Create a new task_list to contain tasks from
     PPDEV-000 to PPDEV-100 and fix fetch_latest_tag script. [PPDEV-106]
+
+- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
+    - The url will contain a uuid. [PPDEV-083]
+    - This will be matched with user's token. [PPDEV-084]
+    - The team-name will be fetched from team_user record and user will be subscribed. [PPDEV-085]

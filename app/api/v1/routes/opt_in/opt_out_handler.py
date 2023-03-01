@@ -8,10 +8,10 @@ from app.api.v1.routes.user.auth import get_current_user
 from app.api.v1.schema.response.user import UserResponseSchema
 
 
-opt_in_router = APIRouter(prefix="/opt_in", tags=["opt_in"])
+opt_out_router = APIRouter(prefix="/opt_out", tags=["opt_in"])
 
 
-@opt_in_router.put("/{unique_identifier}", response_model=UserResponseSchema)
+@opt_out_router.put("/{unique_identifier}", response_model=UserResponseSchema)
 async def update_curr_user_team(
     unique_identifier: str = Path(title="The unique identifier for opt in"),
     db: Session = Depends(get_db),
@@ -29,12 +29,11 @@ async def update_curr_user_team(
                 detail="No Opt-In request for this and user",
             )
 
-        team_obj = db.query(TeamsModel).filter_by(id=team_user_obj.team_id).first()
-        curr_user.team = team_obj
-
-        db.add(curr_user)
-        db.commit(curr_user)
-        db.refresh(curr_user)
+        if team_user_obj.subscribed:
+            team_user_obj.subscribed = False
+            db.add(team_user_obj)
+            db.commit(team_user_obj)
+            db.refresh(team_user_obj)
 
         return curr_user
 
