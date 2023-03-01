@@ -10,12 +10,15 @@ from app.api.v1.schema.request.team_user import TeamUserRequestSchema
 from app.api.v1.schema.response.TeamUser import TeamUserResponseSchema
 from app.api.v1.routes.auth import get_current_user
 from utils.authorization import ValidatePermissions
+from settings import settings
 
 user_team_router = APIRouter(prefix="/user-teams", tags=["user-teams"])
 
 logger = logging.getLogger("main")
 
 allow_change_team = ValidatePermissions(["admin"])
+
+OPT_IN_LINK = settings.API.OPT_IN_LINK
 
 
 @user_team_router.post(
@@ -45,6 +48,9 @@ async def add_team_to_user(
         db.add(team_user_obj)
         db.commit()
         db.refresh(team_user_obj)
+
+        opt_in_link = OPT_IN_LINK + unique_identifier
+        print(opt_in_link)
 
         return team_user_obj
 
