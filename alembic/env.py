@@ -15,6 +15,7 @@ from models import (
     role,
     permission_role,
     TeamUser,
+    notifications,
 )
 
 # this is the Alembic Config object, which provides
