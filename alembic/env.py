@@ -13,7 +13,6 @@ from models import (
     teams,
     permissions,
     role,
-    permission_role,
     TeamUser,
     notifications,
 )

@@ -14,7 +14,10 @@ To Do List
     - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
     - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
     - GET handler. [PPDEV-091]
+    - GET should also be a functional call. [PPDEV-114]
     - add, update and soft-delete will be functional calls. [PPDEV-092]
+    - update function [PPDEV-115]
+    - delete function [PPDEV-116]
 
 - Remove permission_role table, model and all of its mappings. [PPDEV-105]
 
@@ -33,6 +36,8 @@ To Do List
     in the case where a user is first subscribed and then unsubscribed. [PPDEV-110]
 
 - Add a check in opt-in, the deleted flag should be unset. [PPDEV-112]
+
+- server default in notifications table has to be more meaningful. [PPDEV-117]
 
 
 
