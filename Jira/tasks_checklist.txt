@@ -2,15 +2,13 @@ To Do List
 
 - API to add/remove user from team. Rules:
     - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
+    - User should get a notification, that they've been removed from the team. [PPDEV-113]
 
 - Opt-in API. This will be used only by superadmins and admins. Rules:
     - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
 
 - Opt-in handler API. This will be used to subscribe a user to a team. Rules:
-    - On successful subscription, the subscribed flag should be set. [PPDEV-111]
-    - On successful subscription, an email can be shared over to the user. [PPDEV-086]
-
-- Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
+    - On successful subscription, an email/notification can be shared over to the user. [PPDEV-086]
 
 - Notifications. Requirements:
     - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
@@ -34,6 +32,9 @@ To Do List
 - Think over the opt-out flow once again, especially
     in the case where a user is first subscribed and then unsubscribed. [PPDEV-110]
 
+- Add a check in opt-in, the deleted flag should be unset. [PPDEV-112]
+
+
 
 Completed Tasks
 
@@ -51,3 +52,6 @@ Completed Tasks
     - The url will contain a uuid. [PPDEV-083]
     - This will be matched with user's token. [PPDEV-084]
     - The team-name will be fetched from team_user record and user will be subscribed. [PPDEV-085]
+    - On successful subscription, the subscribed flag should be set. [PPDEV-111]
+
+- Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
