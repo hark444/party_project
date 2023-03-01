@@ -24,6 +24,8 @@ To Do List
 
 - Add 'admin' filter to get users request. [PPDEV-102]
 
+- Add 'id' filter to get users request. [PPDEV-108]
+
 - Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
 
 
