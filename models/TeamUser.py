@@ -1,4 +1,12 @@
-from sqlalchemy import Column, String, DateTime, Integer, ForeignKey, Boolean
+from sqlalchemy import (
+    Column,
+    String,
+    DateTime,
+    Integer,
+    ForeignKey,
+    Boolean,
+    UniqueConstraint,
+)
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from models import Base
@@ -21,3 +29,4 @@ class TeamUserModel(Base):
     deleted = Column(Boolean, default=False)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
+    __table_args__ = (UniqueConstraint("user_id", "team_id", name="_user_team_uc"),)
