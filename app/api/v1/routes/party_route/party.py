@@ -2,7 +2,6 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from models import get_db
 from sqlalchemy.orm import Session
 from sqlalchemy import extract
-from pydantic import BaseModel
 from app.api.v1.schema.request.party import (
     PartyRequestSchema,
     PartyRequestCreateSchema,
@@ -14,8 +13,7 @@ from app.api.v1.schema.response.party import (
 )
 from app.api.v1.schema.response.user import UserResponseSchema
 from models.party import Party
-from app.api.v1.routes.auth import oauth2_scheme
-from app.api.v1.routes.auth import get_current_user
+from app.api.v1.routes.user.auth import get_current_user
 
 
 party_party_router = APIRouter(prefix="/party", tags=["party"])

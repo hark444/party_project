@@ -1,4 +1,4 @@
-from app.api.v1.routes.auth import get_current_user
+from app.api.v1.routes.user.auth import get_current_user
 from fastapi import Depends, HTTPException
 from models.user import UserModel
 from typing import List

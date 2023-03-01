@@ -24,9 +24,7 @@ To Do List
 
 - Add 'admin' filter to get users request. [PPDEV-102]
 
-- Create a new task_list to contain tasks from
-    PPDEV-000 to PPDEV-100 and fix fetch_latest_tag script. [PPDEV-106]
-
+- Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
 
 
 Completed Tasks
@@ -37,3 +35,6 @@ Completed Tasks
 - there should be a unique record for each user and team in opt-in. [PPDEV-104]
 
 - Add the following to the teamuser table: requested_by (admin_user) and team [PPDEV-101]
+
+- Create a new task_list to contain tasks from
+    PPDEV-000 to PPDEV-100 and fix fetch_latest_tag script. [PPDEV-106]

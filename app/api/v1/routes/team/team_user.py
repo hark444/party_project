@@ -8,7 +8,7 @@ import uuid
 from sqlalchemy.orm import Session
 from app.api.v1.schema.request.team_user import TeamUserRequestSchema
 from app.api.v1.schema.response.TeamUser import TeamUserResponseSchema
-from app.api.v1.routes.auth import get_current_user
+from app.api.v1.routes.user.auth import get_current_user
 from utils.authorization import ValidatePermissions
 from settings import settings
 
