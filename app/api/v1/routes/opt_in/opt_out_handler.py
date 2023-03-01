@@ -29,11 +29,11 @@ async def update_curr_user_team(
                 detail="No Opt-In request for this and user",
             )
 
-        if team_user_obj.subscribed:
-            team_user_obj.subscribed = False
-            db.add(team_user_obj)
-            db.commit(team_user_obj)
-            db.refresh(team_user_obj)
+        team_user_obj.subscribed = False
+        team_user_obj.deleted = True
+        db.add(team_user_obj)
+        db.commit()
+        db.refresh(team_user_obj)
 
         return curr_user
 

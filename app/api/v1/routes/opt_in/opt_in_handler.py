@@ -30,15 +30,23 @@ async def update_curr_user_team(
             )
 
         team_obj = db.query(TeamsModel).filter_by(id=team_user_obj.team_id).first()
-        curr_user.team = team_obj
 
+        # updating current user's team with the given team
+        curr_user.team = team_obj
         db.add(curr_user)
-        db.commit(curr_user)
+        db.commit()
         db.refresh(curr_user)
+
+        # Setting the team_user subscribed flag
+        team_user_obj.subscribed = True
+        db.add(team_user_obj)
+        db.commit()
+        db.refresh(team_user_obj)
 
         return curr_user
 
     except Exception as e:
+        db.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
         )
