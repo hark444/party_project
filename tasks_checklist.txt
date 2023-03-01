@@ -6,8 +6,8 @@ To Do List
     - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
 
 - Opt-in API. This will be used only by superadmins and admins. Rules:
-    - An opt-in link will be created. [PPDEV-079]
-    - This link will contain a unique uuid. [PPDEV-080]
+    - An opt-in link will be created. [PPDEV-080]
+    - This link will contain a unique uuid. [PPDEV-079]
     - The uuid will be linked to a particular user only. [PPDEV-081]
     - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
 
