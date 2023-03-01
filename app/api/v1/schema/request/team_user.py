@@ -6,7 +6,7 @@ from models.user import UserModel
 
 
 class TeamUserRequestSchema(TimeStampRequestSchema):
-    team_name: str = None
+    team_name: str
     user_id: int
 
     @validator("team_name")
