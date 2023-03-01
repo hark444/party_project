@@ -3,7 +3,6 @@ from models import get_db
 import logging
 from settings.base import env
 from sqlalchemy.orm import Session
-from pydantic import BaseModel
 from app.api.v1.schema.request.parties_attended import (
     PartiesAttendedRequestSchema,
     PartyAttendedArgs,
@@ -13,7 +12,7 @@ from app.api.v1.schema.response.parties_attended import (
     AllPartiesAttendedResponseSchema,
 )
 from app.api.v1.schema.response.user import UserResponseSchema
-from app.api.v1.routes.auth import get_current_user
+from app.api.v1.routes.user.auth import get_current_user
 from models.parties_attended import PartiesAttended
 
 

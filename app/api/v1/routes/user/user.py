@@ -11,7 +11,7 @@ from app.api.v1.schema.request.user import (
     GetUserArgs,
 )
 from app.api.v1.schema.response.user import UserResponseSchema, UsersResponseSchema
-from app.api.v1.routes.auth import get_password_hash, get_current_user
+from app.api.v1.routes.user.auth import get_password_hash, get_current_user
 
 user_router = APIRouter(prefix="/users", tags=["users"])
 
