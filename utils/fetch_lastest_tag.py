@@ -3,7 +3,7 @@ import re
 
 # Picking tasks_checklist as default file
 BASE_DIR = os.path.dirname(os.getcwd())
-filename = BASE_DIR + "/tasks_checklist.txt"
+filename = BASE_DIR + "/Jira/tasks_checklist.txt"
 
 
 def get_latest_tag():
