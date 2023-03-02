@@ -11,7 +11,6 @@ from models import (
     party,
     parties_attended,
     teams,
-    permissions,
     role,
     TeamUser,
     notifications,
