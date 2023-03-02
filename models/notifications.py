@@ -9,6 +9,7 @@ from sqlalchemy import (
     ForeignKey,
     Float,
     Enum,
+    UniqueConstraint,
 )
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -37,5 +38,8 @@ class Notifications(Base):
     type_id = Column(Integer, nullable=False)
     is_read = Column(Boolean, nullable=False, default=False)
     expired = Column(Boolean, nullable=False, default=False)
+    __table_args__ = (
+        UniqueConstraint("user_id", "type_id", "type", name="_user_type_id_type_uc"),
+    )
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
