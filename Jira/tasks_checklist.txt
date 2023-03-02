@@ -41,17 +41,17 @@ To Do List
 
 - server default in notifications table has to be more meaningful. [PPDEV-117]
 
-- Determine if validations are required for notifications.
+- Determine if validations are required for notifications. [PPDEV-119]
 
-- Think of the permissions that will be required in notifications.
+- Think of the permissions that will be required in notifications. [PPDEV-120]
 
-- Think about how we'll return the type object in notifications response.
+- Think about how we'll return the type object in notifications response. [PPDEV-121]
 
 - Think: Handle type_id for notifications: will notifications be custom messages or
     do we need to store notification messages in types? Also, if type_id,
-    (type_id + user_id) should be unique
+    (type_id + user_id) should be unique. [PPDEV-122]
 
-- Think: Do we need to record the notification created_by?
+- Think: Do we need to record the notification created_by? [PPDEV-123]
 
 
 Completed Tasks
