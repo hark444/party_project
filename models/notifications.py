@@ -43,3 +43,8 @@ class Notifications(Base):
     )
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)
+
+
+NotificationsCustomMessages = {
+    "OPT_IN": "You have to new request to join team {}. Requested by {}."
+}

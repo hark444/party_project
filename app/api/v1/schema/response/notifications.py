@@ -8,6 +8,7 @@ from models.notifications import NotificationTypeEnum
 class NotificationResponseSchema(TimeStampResponseSchema):
     user: UserResponseSchema
     type: NotificationTypeEnum
+    type_id: int
     is_read: bool
     expired: bool
 
