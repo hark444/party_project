@@ -28,6 +28,7 @@ async def create_notifications(
         notification_obj = Notifications(
             user=user_obj,
             type=notification.type,
+            type_id=notification.type_id,
             is_read=notification.is_read,
             expired=notification.expired,
             created_on=notification.created_on,
