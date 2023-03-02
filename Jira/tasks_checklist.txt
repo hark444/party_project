@@ -51,6 +51,10 @@ To Do List
     do we need to store notification messages in types? Also, if type_id,
     (type_id + user_id) should be unique. [PPDEV-122]
 
+- Store custom messages for each notification type. [PPDEV-124]
+
+- Create unique constraint for type_id + user_id in notifications table. [PPDEV-125]
+
 - Think: Do we need to record the notification created_by? [PPDEV-123]
 
 

@@ -34,6 +34,7 @@ class Notifications(Base):
     user = relationship(UserModel)
     # TODO: server default needs to be meaningful
     type = Column(Enum(NotificationTypeEnum), nullable=False, server_default="WELCOME")
+    type_id = Column(Integer, nullable=False)
     is_read = Column(Boolean, nullable=False, default=False)
     expired = Column(Boolean, nullable=False, default=False)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
