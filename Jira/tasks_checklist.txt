@@ -19,7 +19,9 @@ To Do List
     - update function [PPDEV-115]
     - delete function [PPDEV-116]
 
-- Remove permission_role table, model and all of its mappings. [PPDEV-105]
+- Remove permissions table, model and all of its mappings. [PPDEV-118]
+
+- Identify the need of roles table. If not required, delete it. [PPDEV-119]
 
 - Add 'admin' filter to get users request. [PPDEV-102]
 
@@ -39,6 +41,17 @@ To Do List
 
 - server default in notifications table has to be more meaningful. [PPDEV-117]
 
+- Determine if validations are required for notifications.
+
+- Think of the permissions that will be required in notifications.
+
+- Think about how we'll return the type object in notifications response.
+
+- Think: Handle type_id for notifications: will notifications be custom messages or
+    do we need to store notification messages in types? Also, if type_id,
+    (type_id + user_id) should be unique
+
+- Think: Do we need to record the notification created_by?
 
 
 Completed Tasks
@@ -60,3 +73,5 @@ Completed Tasks
     - On successful subscription, the subscribed flag should be set. [PPDEV-111]
 
 - Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
+
+- Remove permission_role table, model and all of its mappings. [PPDEV-105]
