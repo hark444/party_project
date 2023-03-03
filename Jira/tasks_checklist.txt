@@ -6,8 +6,6 @@ To Do List
     - delete function [PPDEV-116]
     - Notifications return must also contain the messages. [PPDEV-126]
 
-- Identify the need of roles table. If not required, delete it. [PPDEV-119]
-
 - Add 'admin' filter to get users request. [PPDEV-102]
 
 - Add 'id' filter to get users request. [PPDEV-108]
@@ -39,6 +37,9 @@ To Do List
 - type_id in notifications can be null
 
 - update team_user uc to team+user+deleted
+
+- remember to fix filter_by(team_name=args.team_name.lower())
+
 
 Completed Tasks
 
@@ -99,4 +100,5 @@ Completed Tasks
     - Update handler. [PPDEV-092]
     - update function [PPDEV-115]
 
+- Identify the need of roles table. If not required, delete it. [PPDEV-119]
 

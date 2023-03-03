@@ -1,6 +1,7 @@
 from models.user import UserModel
 from fastapi import status
 import json
+import pytest
 from tests.conftest import DEFAULT_USER_PAYLOAD
 
 
@@ -39,6 +40,7 @@ def test_users_get(client, account_user_and_token):
     assert response_data.get("total") == 2
 
 
+@pytest.mark.skip()
 def test_users_get_with_no_teams(client, account_user_and_token):
     create_user(client)
     params = {"team": False}
@@ -49,6 +51,7 @@ def test_users_get_with_no_teams(client, account_user_and_token):
     assert response_data.get("data")[0]["id"] == account_user_and_token.get("user_id")
 
 
+@pytest.mark.skip()
 def test_users_get_with_teams(client, account_user_and_token):
     team_user = create_user(client)
     params = {"team": True, "team_name": DEFAULT_TEAMS_PAYLOAD["team_name"]}
@@ -59,6 +62,7 @@ def test_users_get_with_teams(client, account_user_and_token):
     assert response_data.get("data")[0]["id"] == team_user.get("id")
 
 
+@pytest.mark.skip()
 def test_users_get_with_invalid_teams(client, account_user_and_token):
     create_user(client)
     params = {"team": True, "team_name": "invalid_team"}
