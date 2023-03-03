@@ -1,11 +1,15 @@
 To Do List
 
 - API to add/remove user from team. Rules:
-    - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
-    - User should get a notification, that they've been removed from the team. [PPDEV-113]
+    - On refusing to subscribe to the team,
+        the admin should get a notification that their request has been rejected.
+    - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
 
-- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
-    - On successful subscription, an email/notification can be shared over to the user. [PPDEV-086]
+- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PDEV-113]
+
+- User should get a notification, that they've been removed from the team.
+
+- User should not have the ability to add/create teams to their profile.
 
 - Notifications. Requirements:
     - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
@@ -17,15 +21,11 @@ To Do List
     - delete function [PPDEV-116]
     - Notifications return must also contain the messages. [PPDEV-126]
 
-- Remove permissions table, model and all of its mappings. [PPDEV-118]
-
 - Identify the need of roles table. If not required, delete it. [PPDEV-119]
 
 - Add 'admin' filter to get users request. [PPDEV-102]
 
 - Add 'id' filter to get users request. [PPDEV-108]
-
-- Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
 
 - Figure this out:
     admin sends an opt-in request.
@@ -44,14 +44,6 @@ To Do List
 - Think of the permissions that will be required in notifications. [PPDEV-120]
 
 - Think about how we'll return the type object in notifications response. [PPDEV-121]
-
-- Think: Handle type_id for notifications: will notifications be custom messages or
-    do we need to store notification messages in types? Also, if type_id,
-    (type_id + user_id) should be unique. [PPDEV-122]
-
-- Store custom messages for each notification type. [PPDEV-124]
-
-- Create unique constraint for type_id + user_id in notifications table. [PPDEV-125]
 
 - Think: Do we need to record the notification created_by? [PPDEV-123]
 
@@ -82,4 +74,20 @@ Completed Tasks
 
 - Opt-in API. This will be used only by superadmins and admins. Rules:
     - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
+
+- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
+    - On successful subscription, an email/notification can be shared over to the user. [PPDEV-086]
+
+
+- Think: Handle type_id for notifications: will notifications be custom messages or
+    do we need to store notification messages in types? Also, if type_id,
+    (type_id + user_id) should be unique. [PPDEV-122]
+
+- Store custom messages for each notification type. [PPDEV-124]
+
+- Create unique constraint for type_id + user_id in notifications table. [PPDEV-125]
+
+- Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
+
+- Remove permissions table, model and all of its mappings. [PPDEV-118]
 
