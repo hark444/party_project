@@ -2,14 +2,14 @@ To Do List
 
 - API to add/remove user from team. Rules:
     - On refusing to subscribe to the team,
-        the admin should get a notification that their request has been rejected.
+        the admin should get a notification that their request has been rejected. [PPDEV-127]
     - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
 
 - Create an endpoint for admin and superadmin, where they can remove a user from a team. [PDEV-113]
 
-- User should get a notification, that they've been removed from the team.
+- User should get a notification, that they've been removed from the team. [PPDEV-128]
 
-- User should not have the ability to add/create teams to their profile.
+- User should not have the ability to add/create teams to their profile. [PPDEV-129]
 
 - Notifications. Requirements:
     - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
