@@ -19,16 +19,7 @@ class UserRequestSchema(TimeStampRequestSchema):
     last_name: str = None
     disabled: bool = False
     role: RoleTypeEnum | None = RoleTypeEnum.regular
-    team_name: str | None = None
     date_of_joining: date = None
-
-    @validator("team_name")
-    def validate_team_must_exist(cls, v):
-        db = next(get_db())
-        teams_obj = db.query(TeamsModel).filter_by(team_name=v.lower()).first()
-        if not teams_obj:
-            raise ValueError(f"There is no existing team with this name.")
-        return v
 
 
 class UserRequestPostSchema(UserRequestSchema, TokenGenerateSchema):
