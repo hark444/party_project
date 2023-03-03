@@ -25,7 +25,7 @@ async def update_curr_user_team(
             .first()
         )
         if not team_user_obj:
-            return HTTPException(
+            raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="No Opt-In request for this and user",
             )

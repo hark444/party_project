@@ -1,11 +1,6 @@
 To Do List
 
-- API to add/remove user from team. Rules:
-    - On refusing to subscribe to the team,
-        the admin should get a notification that their request has been rejected. [PPDEV-127]
-    - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
-
-- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PDEV-113]
+- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PPDEV-113]
 
 - User should get a notification, that they've been removed from the team. [PPDEV-128]
 
@@ -49,6 +44,11 @@ To Do List
 
 - Notifications will be like: click to mark as read.
 
+- Create a member-activity concept.
+
+- type_id in notifications can be null
+
+- update team_user uc to team+user+deleted
 
 Completed Tasks
 
@@ -90,4 +90,10 @@ Completed Tasks
 - Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
 
 - Remove permissions table, model and all of its mappings. [PPDEV-118]
+
+- API to add/remove user from team. Rules:
+    - On refusing to subscribe to the team,
+        the admin should get a notification that their request has been rejected. [PPDEV-127]
+    - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
+
 
