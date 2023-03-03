@@ -25,6 +25,7 @@ class NotificationTypeEnum(str, enum.Enum):
     COMMENT = "COMMENT"
     APPROVAL = "APPROVAL"
     BIRTHDAY = "BIRTHDAY"
+    REQUEST_REJECTION = "REQUEST_REJECTION"
 
 
 class Notifications(Base):
@@ -48,4 +49,5 @@ class Notifications(Base):
 NotificationsCustomMessages = {
     "OPT_IN": "You have to new request to join team {}. Requested by {}.",
     "WELCOME": "Welcome to team {}. It's party time.",
+    "REQUEST_REJECTION": "Your request to user {} was rejected.",
 }
