@@ -77,3 +77,26 @@ async def get_notifications(
     objects = base_query.all()
 
     return {"data": objects, "total": count}
+
+
+# Currently covering for only
+def update_notifications(notification, db: Session = Depends(get_db)):
+    if args.id:
+        notifications_obj = (
+            db.query(Notifications).filter_by(id=notification.id).first()
+        )
+        if not notifications_obj:
+            return "No notifications object found for this ID."
+    try:
+        for field, value in notification.items():
+            setattr(notifications_obj, field, value)
+
+        db.add(notifications_obj)
+        db.commit()
+        db.refresh(notifications_obj)
+
+        return notifications_obj
+
+    except Exception as e:
+        db.rollback()
+        return str(e)

@@ -12,7 +12,7 @@ To Do List
     - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
     - GET handler. [PPDEV-091]
     - GET should also be a functional call. [PPDEV-114]
-    - add, update and soft-delete will be functional calls. [PPDEV-092]
+    - Update handler. [PPDEV-092]
     - update function [PPDEV-115]
     - delete function [PPDEV-116]
     - Notifications return must also contain the messages. [PPDEV-126]
@@ -54,6 +54,8 @@ To Do List
 - Create unique constraint for type_id + user_id in notifications table. [PPDEV-125]
 
 - Think: Do we need to record the notification created_by? [PPDEV-123]
+
+- Notifications will be like: click to mark as read.
 
 
 Completed Tasks
