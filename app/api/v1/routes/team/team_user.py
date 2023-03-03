@@ -11,6 +11,7 @@ from app.api.v1.schema.response.TeamUser import TeamUserResponseSchema
 from app.api.v1.routes.user.auth import get_current_user
 from utils.authorization import ValidatePermissions
 from settings import settings
+from app.api.v1.routes.notifications.notifications import create_notifications_sync
 
 user_team_router = APIRouter(prefix="/user-teams", tags=["user-teams"])
 
@@ -51,6 +52,14 @@ async def add_team_to_user(
 
         opt_in_link = OPT_IN_LINK + unique_identifier
         print(opt_in_link)
+
+        # Creating notification for the user
+        notifications_obj = {
+            "user_id": team_user.user_id,
+            "type": "OPT_IN",
+            "type_id": team_user_obj.id,
+        }
+        create_notifications_sync(notifications_obj, db)
 
         return team_user_obj
 
