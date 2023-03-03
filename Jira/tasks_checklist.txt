@@ -15,6 +15,7 @@ To Do List
     - add, update and soft-delete will be functional calls. [PPDEV-092]
     - update function [PPDEV-115]
     - delete function [PPDEV-116]
+    - Notifications return must also contain the messages. [PPDEV-126]
 
 - Remove permissions table, model and all of its mappings. [PPDEV-118]
 

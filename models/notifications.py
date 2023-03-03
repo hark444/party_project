@@ -46,5 +46,6 @@ class Notifications(Base):
 
 
 NotificationsCustomMessages = {
-    "OPT_IN": "You have to new request to join team {}. Requested by {}."
+    "OPT_IN": "You have to new request to join team {}. Requested by {}.",
+    "WELCOME": "Welcome to team {}. It's party time.",
 }
