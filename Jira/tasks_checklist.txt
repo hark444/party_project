@@ -1,18 +1,8 @@
 To Do List
 
-- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PPDEV-113]
-
-- User should get a notification, that they've been removed from the team. [PPDEV-128]
-
 - User should not have the ability to add/create teams to their profile. [PPDEV-129]
 
 - Notifications. Requirements:
-    - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
-    - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
-    - GET handler. [PPDEV-091]
-    - GET should also be a functional call. [PPDEV-114]
-    - Update handler. [PPDEV-092]
-    - update function [PPDEV-115]
     - delete function [PPDEV-116]
     - Notifications return must also contain the messages. [PPDEV-126]
 
@@ -95,5 +85,18 @@ Completed Tasks
     - On refusing to subscribe to the team,
         the admin should get a notification that their request has been rejected. [PPDEV-127]
     - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
+
+- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PPDEV-113]
+
+- User should get a notification, that they've been removed from the team. [PPDEV-128]
+
+
+- Notifications. Requirements:
+    - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
+    - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
+    - GET handler. [PPDEV-091]
+    - GET should also be a functional call. [PPDEV-114]
+    - Update handler. [PPDEV-092]
+    - update function [PPDEV-115]
 
 
