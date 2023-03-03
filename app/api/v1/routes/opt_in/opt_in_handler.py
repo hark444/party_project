@@ -6,6 +6,7 @@ from models.TeamUser import TeamUserModel
 from models.teams import TeamsModel
 from app.api.v1.routes.user.auth import get_current_user
 from app.api.v1.schema.response.user import UserResponseSchema
+from app.api.v1.routes.notifications.notifications import create_notifications_sync
 
 
 opt_in_router = APIRouter(prefix="/opt_in", tags=["opt_in"])
@@ -42,6 +43,14 @@ async def update_curr_user_team(
         db.add(team_user_obj)
         db.commit()
         db.refresh(team_user_obj)
+
+        # Creating notification for the user
+        notifications_obj = {
+            "user_id": curr_user.id,
+            "type": "WELCOME",
+            "type_id": team_user_obj.id,
+        }
+        create_notifications_sync(notifications_obj, db)
 
         return curr_user
 

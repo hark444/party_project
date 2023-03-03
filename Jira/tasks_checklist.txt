@@ -4,9 +4,6 @@ To Do List
     - On removal, user to be removed from team (team=null), and opt-in record soft deleted. [PPDEV-078]
     - User should get a notification, that they've been removed from the team. [PPDEV-113]
 
-- Opt-in API. This will be used only by superadmins and admins. Rules:
-    - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
-
 - Opt-in handler API. This will be used to subscribe a user to a team. Rules:
     - On successful subscription, an email/notification can be shared over to the user. [PPDEV-086]
 
@@ -18,6 +15,7 @@ To Do List
     - add, update and soft-delete will be functional calls. [PPDEV-092]
     - update function [PPDEV-115]
     - delete function [PPDEV-116]
+    - Notifications return must also contain the messages. [PPDEV-126]
 
 - Remove permissions table, model and all of its mappings. [PPDEV-118]
 
@@ -79,3 +77,7 @@ Completed Tasks
 - Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
 
 - Remove permission_role table, model and all of its mappings. [PPDEV-105]
+
+- Opt-in API. This will be used only by superadmins and admins. Rules:
+    - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
+
