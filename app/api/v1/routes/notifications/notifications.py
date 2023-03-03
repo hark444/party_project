@@ -15,6 +15,7 @@ from app.api.v1.schema.response.notifications import (
     NotificationResponseSchema,
     NotificationsResponseSchema,
 )
+import json
 
 
 notifications_router = APIRouter(prefix="/notifications", tags=["notifications"])
@@ -79,15 +80,30 @@ async def get_notifications(
     return {"data": objects, "total": count}
 
 
-# Currently covering for only
-def update_notifications(notification, db: Session = Depends(get_db)):
-    if args.id:
-        notifications_obj = (
-            db.query(Notifications).filter_by(id=notification.id).first()
-        )
-        if not notifications_obj:
-            return "No notifications object found for this ID."
+# currently handling for id only
+@notifications_router.put(
+    "/{notification_id}", response_model=NotificationResponseSchema
+)
+async def update_notifications(
+    notification_id: int,
+    notification: NotificationCreateSchema,
+    db: Session = Depends(get_db),
+):
     try:
+        return update_notifications_sync(notification.json(), notification_id, db)
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
+        )
+
+
+def update_notifications_sync(notification, notification_id, db):
+    notifications_obj = db.query(Notifications).filter_by(id=notification_id).first()
+    if not notifications_obj:
+        return "No notifications object found for this ID."
+    try:
+        notification = json.loads(notification)
         for field, value in notification.items():
             setattr(notifications_obj, field, value)
 
