@@ -1,19 +1,15 @@
 To Do List
 
-- User should not have the ability to add/create teams to their profile. [PPDEV-129]
-
 - Notifications. Requirements:
     - delete function [PPDEV-116]
     - Notifications return must also contain the messages. [PPDEV-126]
 
-- Add 'admin' filter to get users request. [PPDEV-102]
-
-- Add 'id' filter to get users request. [PPDEV-108]
-
 - Figure this out:
     admin sends an opt-in request.
     User accepts and finds out team is not present, or data is invalid.
-    Is this a possible scenario? [PPDEV-109]
+    Is this a possible scenario?
+    - Yes, this could be a possibility. To ensure that this doesn't happen, we'll have to
+        make sure that there shouldn't be any data that is linked with team_user while deleting a team record.[PPDEV-109]
 
 - Think over the opt-out flow once again, especially
     in the case where a user is first subscribed and then unsubscribed. [PPDEV-110]
@@ -101,4 +97,11 @@ Completed Tasks
     - update function [PPDEV-115]
 
 - Identify the need of roles table. If not required, delete it. [PPDEV-119]
+
+- User should not have the ability to add/create teams to their profile. [PPDEV-129]
+
+- Add 'admin' filter to get users request. [PPDEV-102]
+
+- Add 'id' filter to get users request. [PPDEV-108]
+
 

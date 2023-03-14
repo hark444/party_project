@@ -81,6 +81,9 @@ async def update_team(
         )
 
 
+# TODO: Make sure to delete the team_user objects as well. Do impact analysis.
+
+
 @team_router.delete("/{team_id}", status_code=200)
 async def delete_team(
     team_id: int,
