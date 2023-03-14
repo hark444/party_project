@@ -1,5 +1,5 @@
 from fastapi import Depends, APIRouter, HTTPException, status
-from models.user import UserModel
+from models.user import UserModel, RoleTypeEnum
 from models import get_db
 from models.teams import TeamsModel
 import logging
@@ -69,6 +69,9 @@ async def get_users(
             today = datetime.date.today()
             experience_date = today.replace(year=today.year - args.experience)
             base_query = base_query.filter(UserModel.date_of_joining < experience_date)
+
+        if args.admins:
+            base_query = base_query.filter_by(role=RoleTypeEnum.admin.value)
 
         user_objects = base_query.all()
         total_objects = base_query.count()

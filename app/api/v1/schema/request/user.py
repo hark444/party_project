@@ -40,6 +40,7 @@ class GetUserArgs(BaseModel):
     team_name: str | None = None
     doj: str | None = None
     experience: int | None = None
+    admins: bool | None = None
 
     @root_validator()
     def validate_team_must_exist(cls, values):
