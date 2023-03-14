@@ -41,6 +41,7 @@ class GetUserArgs(BaseModel):
     doj: str | None = None
     experience: int | None = None
     admins: bool | None = None
+    id: int | None = None
 
     @root_validator()
     def validate_team_must_exist(cls, values):

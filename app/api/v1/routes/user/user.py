@@ -73,6 +73,9 @@ async def get_users(
         if args.admins:
             base_query = base_query.filter_by(role=RoleTypeEnum.admin.value)
 
+        if args.id:
+            base_query = base_query.filter_by(id=args.id)
+
         user_objects = base_query.all()
         total_objects = base_query.count()
 
