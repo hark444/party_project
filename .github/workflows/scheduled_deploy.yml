@@ -19,4 +19,4 @@ jobs:
         run: env
         
       - name: run on develop
-        run: echo "Running on ref=${GITHUB_REF}"
+        run: echo "Running on ${{ secrets.LAST_STAGE_DEPLOYMENT_BRANCH }}"
