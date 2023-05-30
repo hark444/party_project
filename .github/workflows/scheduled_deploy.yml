@@ -1,9 +1,6 @@
 on:
   schedule:
-    - cron: '58 * * * *' # Executes at 1 PM UTC every day
-  push:
-    branches:
-      - develop
+    - cron: '15 * * * *' # Executes at 1 PM UTC every day
 
 jobs:
   build:
@@ -12,6 +9,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        with:
+          ref: PPDEV-007
 
       - name: Run on Specific Branch
         if: github.ref == 'refs/heads/main'
