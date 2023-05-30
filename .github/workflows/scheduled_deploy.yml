@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '28 * * * *' # Executes at 1 PM UTC every day
+    - cron: '0-59/10 * * * *' # Executes at 1 PM UTC every day
 
 jobs:
   build:
@@ -12,9 +12,14 @@ jobs:
         with:
           ref: PPDEV-007
 
-      - name: Run on Specific Branch
-        if: github.ref == 'refs/heads/main'
-        run: echo "Running on the main branch"
+      - name: Get all the env variables
+        run: env
         
       - name: run on develop
         run: echo "Running on ref=${GITHUB_REF}"
+        
+      - name: Echo Secrets
+        run: |
+          for secret in $(env | grep -oP "(?<=secrets\.).*$"); do
+            echo "$secret: ${{ env[secret] }}"
+          done
