@@ -12,8 +12,8 @@ jobs:
 #         with:
 #           ref: PPDEV-007
           
-      - name: Set Variable
-        run: echo "LAST_STAGE_DEPLOYMENT_BRANCH=PDEV-007" >> $GITHUB_ENV
+#       - name: Set Variable
+#         run: echo "LAST_STAGE_DEPLOYMENT_BRANCH=PDEV-007" >> $GITHUB_ENV
 
       - name: Get all the env variables
         run: env
