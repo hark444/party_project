@@ -17,9 +17,3 @@ jobs:
         
       - name: run on develop
         run: echo "Running on ref=${GITHUB_REF}"
-        
-      - name: Echo Secrets
-        run: |
-          for secret in $(env | grep -oP "(?<=secrets\.).*$"); do
-            echo "$secret: ${{ env[secret] }}"
-          done
