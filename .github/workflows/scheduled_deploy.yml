@@ -1,0 +1,21 @@
+on:
+  schedule:
+    - cron: '58 * * * *' # Executes at 1 PM UTC every day
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Run on Specific Branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "Running on the main branch"
+        
+      - name: run on develop
+        run: echo "Running on ref=${GITHUB_REF}"
