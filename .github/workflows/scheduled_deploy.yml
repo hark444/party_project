@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '15 * * * *' # Executes at 1 PM UTC every day
+    - cron: '28 * * * *' # Executes at 1 PM UTC every day
 
 jobs:
   build:
