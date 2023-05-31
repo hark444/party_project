@@ -1,10 +1,12 @@
 on:
   schedule:
-    - cron: '0-59/10 * * * *' # Executes at 1 PM UTC every day
+    - cron: '0-59/6 * * * *' # Executes at 1 PM UTC every day
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+        output1: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
     
     steps:
       - name: Set color
