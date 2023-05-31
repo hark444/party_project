@@ -1,0 +1,14 @@
+on:
+  schedule:
+    - cron: '0-59/10 * * * *' # Executes at 1 PM UTC every day
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get all the env variables
+        run: env
+          
+      - name: Getting ENV Var
+        run: echo "${{ env.MY_STAGE_VARIABLE }}"
