@@ -1,6 +1,9 @@
 on:
-  schedule:
-    - cron: '0-59/6 * * * *' # Executes at 1 PM UTC every day
+  push:
+    branches:
+      - develop
+#   schedule:
+#     - cron: '0-59/6 * * * *' # Executes at 1 PM UTC every day
 
 jobs:
   build:
