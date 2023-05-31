@@ -13,5 +13,9 @@ jobs:
       - name: run on develop
         run: echo "Running on ${{ secrets.LAST_STAGE_DEPLOYMENT_BRANCH }}"
         
-      - name: github events
-        run: echo "${{ toJSON(github.event) }}"
+      - name: Set Environment Variable
+        run: |
+          echo "MY_STAGE_VARIABLE=my_value" >> $GITHUB_ENV
+          
+      - name: Persist as GitHub Variable
+        run: echo "MY_STAGE_VARIABLE=${{ env.MY_STAGE_VARIABLE }}" >> $GITHUB_ENV
