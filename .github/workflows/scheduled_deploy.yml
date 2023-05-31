@@ -11,7 +11,7 @@ jobs:
         run: env
         
       - name: run on develop
-        run: echo "Running on ${{ secrets.LAST_STAGE_DEPLOYMENT_BRANCH }}"
+        run: echo "Running on ${{ env.LAST_STAGE_DEPLOYMENT_BRANCH }}"
         
       - name: Set Environment Variable
         run: |
