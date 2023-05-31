@@ -11,10 +11,10 @@ jobs:
         run: env
         
       - name: run on develop
-        run: echo "Running on ${{ var.LAST_STAGE_DEPLOYMENT }}"
+        run: echo "Running on ${{ vars.LAST_STAGE_DEPLOYMENT }}"
         
       - name: Set Environment Variable
-        run: $var.LAST_STAGE_DEPLOYMENT = 'PPDEV-111'
+        run: echo 'PPDEV-111' >> $vars.LAST_STAGE_DEPLOYMENT
           
           
 #       - name: Persist as GitHub Variable
