@@ -14,4 +14,4 @@ jobs:
         run: echo "Running on ${{ secrets.LAST_STAGE_DEPLOYMENT_BRANCH }}"
         
       - name: github events
-        run: echo ${{ toJSON(github.event) }}
+        run: echo "${{ toJSON(github.event) }}"
