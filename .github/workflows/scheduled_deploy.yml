@@ -1,6 +1,9 @@
 on:
   schedule:
     - cron: '0-59/10 * * * *' # Executes at 1 PM UTC every day
+  push:
+    branches:
+      - develop
 
 jobs:
   build:
@@ -15,6 +18,15 @@ jobs:
         
       - name: Set Environment Variable
         run: echo 'PPDEV-111' >> $vars.LAST_STAGE_DEPLOYMENT
+        
+      - name: "Set latest tag"
+        id: set-latest-tag
+        run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
+
+#       - name: "Tag Docker image as latest"
+#         id: tag-as-latest
+#         if: ${{ github.ref_name == env.latest_tag }}
+#         run: |
           
           
 #       - name: Persist as GitHub Variable
