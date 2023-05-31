@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-        output1: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
+        SELECTED_COLOR: ${{ steps.random-color-generator.outputs.SELECTED_COLOR }}
     
     steps:
       - name: Set color
