@@ -1,0 +1,12 @@
+on:
+  schedule:
+    - cron: '0-59/10 * * * *' # Executes at 1 PM UTC every day
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Set color
+        id: random-color-generator
+        run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
