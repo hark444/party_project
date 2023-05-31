@@ -20,3 +20,9 @@ jobs:
         
       - name: run on develop
         run: echo "Running on ${{ secrets.LAST_STAGE_DEPLOYMENT_BRANCH }}"
+        
+      - name: github events
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
