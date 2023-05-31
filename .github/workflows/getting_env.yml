@@ -11,4 +11,4 @@ jobs:
         run: env
           
       - name: Getting ENV Var
-        run: echo "${{ env.MY_STAGE_VARIABLE }}"
+        run: echo "${{ vars.LAST_STAGE_DEPLOYMENT }}"
