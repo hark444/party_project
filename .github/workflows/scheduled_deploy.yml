@@ -21,8 +21,8 @@ jobs:
         
       - name: "Set latest tag"
         id: set-latest-tag
-        run: git tag | sort --version-sort | tail -n1
-#         run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
+#         run: git tag | sort --version-sort | tail -n1
+        run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
 
 #       - name: "Tag Docker image as latest"
 #         id: tag-as-latest
