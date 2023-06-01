@@ -48,6 +48,7 @@ jobs:
         run: |
           git status
           git branch
+          git fetch
           git tag | sort --version-sort | tail -n1
 
       - name: "Tag Docker image as latest"
