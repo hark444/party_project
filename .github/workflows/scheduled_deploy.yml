@@ -25,4 +25,8 @@ jobs:
         run: |
           echo "Latest tag is ${{ env.latest_tag }}"
           echo "latest_release_branch"="${{ env.latest_tag }} | cut -c 2-" >> $GITHUB_ENV
+          
+      - name: "echo the sliced string"
+        run: |
+          echo "latest release branch is: ${{ env.latest_release_branch }}"
         
