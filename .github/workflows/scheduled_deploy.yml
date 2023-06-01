@@ -19,10 +19,15 @@ jobs:
       - name: Set Environment Variable
         run: echo 'PPDEV-111' >> $vars.LAST_STAGE_DEPLOYMENT
         
-      - name: "Set latest tag"
-        id: set-latest-tag
-#         run: git tag | sort --version-sort | tail -n1
-        run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
+      - name: Set variable
+        run: echo "FOO=bar" >> $GITHUB_ENV
+      - name: Write variable to file
+        run: echo $FOO > foo.txt
+        
+#       - name: "Set latest tag"
+#         id: set-latest-tag
+# #         run: git tag | sort --version-sort | tail -n1
+#         run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
 
 #       - name: "Tag Docker image as latest"
 #         id: tag-as-latest
