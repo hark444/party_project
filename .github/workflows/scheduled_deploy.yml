@@ -19,8 +19,22 @@ jobs:
       - name: Set Environment Variable
         run: echo 'PPDEV-111' >> $vars.LAST_STAGE_DEPLOYMENT
         
+      - name: checkout repo content
+        uses: actions/checkout@v2
+      
+      - name: listing all files
+        run: |
+          pwd
+          ls -a
+        
+        
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' # install the python version needed
+        
       - name: write to file
-        run: python /.github/workflows/write_to_file.py PPDEV-007
+        run: python .github/workflows/write_to_file.py PPDEV-007
       
 #       - name: "Set latest tag"
 #         id: set-latest-tag
