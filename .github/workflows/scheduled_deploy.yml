@@ -20,7 +20,7 @@ jobs:
         run: echo 'PPDEV-111' >> $vars.LAST_STAGE_DEPLOYMENT
         
       - name: write to file
-        run: python write_to_file.py PPDEV-007
+        run: python ./.github/workflows/write_to_file.py PPDEV-007
       
 #       - name: "Set latest tag"
 #         id: set-latest-tag
