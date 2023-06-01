@@ -28,22 +28,22 @@ jobs:
           ls -a
         
         
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' # install the python version needed
+#       - name: setup python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.10' # install the python version needed
         
-      - name: write to file
-        run: python .github/workflows/write_to_file.py PPDEV-007
+#       - name: write to file
+#         run: python .github/workflows/write_to_file.py PPDEV-007
         
-      - name: reading file after edit
-        run: |
-          cat .github/workflows/foo.txt
+#       - name: reading file after edit
+#         run: |
+#           cat .github/workflows/foo.txt
       
-#       - name: "Set latest tag"
-#         id: set-latest-tag
-# #         run: git tag | sort --version-sort | tail -n1
-#         run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
+      - name: "Set latest tag"
+        id: set-latest-tag
+#         run: git tag | sort --version-sort | tail -n1
+        run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
 
 #       - name: "Tag Docker image as latest"
 #         id: tag-as-latest
