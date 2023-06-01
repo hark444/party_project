@@ -28,9 +28,11 @@ jobs:
         
       - name: Make envfile
         run: |
+          pwd
           touch foos.txt
           echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> foos.txt
           echo API_KEY=${{ secrets.API_KEY }} >> foos.txt
+          ls -a
           cat foos.txt
         
 #       - name: "Set latest tag"
