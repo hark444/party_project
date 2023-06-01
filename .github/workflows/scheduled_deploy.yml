@@ -27,11 +27,11 @@ jobs:
           file_name: .env
         
       - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_DEBUG: false
-          envkey_SOME_API_KEY: "123456abcdef"
-          file_name: foo.txt
+        run: |
+          touch foos.txt
+          echo API_ENDPOINT="https://xxx.execute-api.us-west-2.amazonaws.com" >> foos.txt
+          echo API_KEY=${{ secrets.API_KEY }} >> foos.txt
+          cat foos.txt
         
 #       - name: "Set latest tag"
 #         id: set-latest-tag
