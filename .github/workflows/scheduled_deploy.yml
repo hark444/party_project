@@ -41,14 +41,11 @@ jobs:
 #           cat .github/workflows/foo.txt
       
       - name: "Set latest tag"
-        id: set-latest-tag
 #         run: git tag | sort --version-sort | tail -n1
         run: echo "latest_tag=$(git tag | sort --version-sort | tail -n1)" >> $GITHUB_ENV
 
-#       - name: "Tag Docker image as latest"
-#         id: tag-as-latest
-#         if: ${{ github.ref_name == env.latest_tag }}
-#         run: |
+      - name: "Tag Docker image as latest"
+        run: echo "Latest tag is ${{ env.latest_tag }}"
           
           
 #       - name: Persist as GitHub Variable
