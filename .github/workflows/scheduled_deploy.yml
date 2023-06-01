@@ -35,6 +35,10 @@ jobs:
         
       - name: write to file
         run: python .github/workflows/write_to_file.py PPDEV-007
+        
+      - name: reading file after edit
+        run: |
+          cat .github/workflows/foo.txt
       
 #       - name: "Set latest tag"
 #         id: set-latest-tag
