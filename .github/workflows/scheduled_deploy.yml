@@ -17,6 +17,7 @@ jobs:
         run: |
           git fetch
           latest_release_branch=$(git branch -r| grep "\borigin/release/[0-9]" | sort --version-sort | tail -n1)
+          latest_release_branch=$(echo "$latest_release_branch" | sed -e 's/^[[:space:]]*//')
           echo "ref=$latest_release_branch"
           echo "latest_release_branch=$latest_release_branch" >> $GITHUB_ENV
 
