@@ -23,4 +23,6 @@ jobs:
       - name: "echo the sliced string"
         run: |
           echo "latest release branch is: ${{env.latest_release_branch}}"
+          latest_release_branch=$(echo "${{env.latest_release_branch}}"" | sed -e 's/^[[:space:]]*//')
+          echo "trimmed string is : ${latest_release_branch} ..."
 
