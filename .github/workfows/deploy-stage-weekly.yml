@@ -1,0 +1,31 @@
+name: Weekly Deploy to Stage
+
+on:
+  schedule:
+    - cron: '0/30 * * * *'
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      WAYPOINT_SERVER_TOKEN: ${{ secrets.STAGE_WAYPOINT_SERVER_TOKEN }}
+      WAYPOINT_SERVER_ADDR: ${{ secrets.STAGE_WAYPOINT_SERVER_ADDR }}
+      WAYPOINT_SERVER_TLS: 1
+      WAYPOINT_SERVER_TLS_SKIP_VERIFY: 1
+      ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Deploy Waypoint
+        uses: MarcMeszaros/action-setup-waypoint@releases-api
+        with:
+          version: ${{ secrets.WAYPOINT_CLI_DEPLOY_VERSION }}
+      - run: |
+          git fetch
+          latest_release_branch=$(git branch -r| grep "\borigin/release/[0-9]" | sort --version-sort | tail -n1)
+          latest_release_branch=$(echo "$latest_release_branch" | sed -e 's/^[[:space:]]*//')
+          echo "latest release branch is: $latest_release_branch"
+          cd mobilestorm && waypoint init && waypoint up -local=false -remote-source="ref=$latest_release_branch"
