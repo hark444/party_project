@@ -1,17 +1,26 @@
 from pydantic import BaseModel
-from ..base import TimestampResponseSchema
+from app.api.v1.schema.response.base import TimeStampResponseSchema
+from pydantic.schema import date
+from typing import List
+from app.api.v1.schema.response.teams import TeamsResponseSchema
 
 
-class UserResponseSchema(TimestampResponseSchema):
+class UserResponseSchema(TimeStampResponseSchema):
     email: str
     first_name: str | None = None
     last_name: str | None = None
-    disable: bool | None = None
-
-    class Config:
-        orm_mode = True
+    disabled: bool | None = None
+    role: str | None = None
+    team: TeamsResponseSchema | None = None
+    date_of_joining: date | None = None
 
 
 class TokenResponseSchema(BaseModel):
     access_token: str
     token_type: str
+    username: str | None = None
+
+
+class UsersResponseSchema(BaseModel):
+    data: List[UserResponseSchema]
+    total: int

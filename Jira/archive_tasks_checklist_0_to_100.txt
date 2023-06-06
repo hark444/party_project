@@ -1,0 +1,148 @@
+Completed Tasks
+
+- Create FastAPI boiler plate
+- Create User Module
+- Create Roles Module
+- Setup black[PPDEV-000]
+    - setup black and fix all files[PPDEV-000-A]
+- Write unit tests [PPDEV-001]
+    - Create boiler plate for UTs[PPDEV-001-A]
+    - Write UTs for auth[PPDEV-001-B]
+    - Write UTs for user[PPDEV-001-C]
+- Integrate User-Roles modules[PPDEV-002]
+    - Create role type enum and user mappings[PPDEV-002-A]
+    - Update the user schemas[PPDEV-002-B]
+    - Create API(PATCH) to update user roles[PPDEV-002-C]
+    - Write UTs for roles [PPDEV-002-D]
+    - Create Scope for permitted API usage
+- Separate Auth and User & update UTs [PPDEV-003]
+- Create party table structure [PPDEV-004]
+- Create following tables: [PPDEV-005]
+    - party: id, user_id, reason, created_on, proposed_date, guests_invited, given_date, place, approved, ratings
+    - parties_due: id, user_id, parties_due
+    - parties_attended: party_id, attendee, rating, approved, comment
+- Permissions setup and Create PUT for account_user [PPDEV-010]
+- Create party CRUD APIs [PPDEV-008]
+- Create parties_attended CRUD APIs [PPDEV-009]
+- Try and remove parties_due table [PPDEV-007]
+- Consolidate Schema [PPDEV-012]
+- Put constants in env file and create env.example file [PPDEV-018]
+- Split user schema into request-response [PPDEV-016]
+- Create a common time stamp schema and independent response schema [PPDEV-014]
+- Update user API to receive request in json format and not as form data [PPDEV-024]
+- Enable CORS [PPDEV-025]
+- Add team and date_of_joining in account_user table [PPDEV-026]
+- Return username with token API [PPDEV-027]
+- Remove user/user_id from party requests and yield it from the token itself [PPDEV-032]
+- Update date type in user request/response and model [PPDEV-033]
+- Add validations in user create API to check if a user exists with the same email [PPDEV-023]
+- Remove approved and ratings field from create party [PPDEV-031]
+- Create API to get all parties. [PPDEV-017]
+- Create logger and add logging to existing infra [PPDEV-034]
+- Bugs:
+    - Create a different schema for token generation and user creation [PPDEV-035]
+    - Fix the return type of party attended get api [PPDEV-046]
+    - Ratings should be initially 0 and not None [PPDEV-054]
+    - Since 'approved' is a calculated field, it should be removed from parties_attended model
+        [PPDEV-045]
+    - team name should be case-insensitive [PPDEV-060]
+- create DELETE for account_user. [PPDEV-011]
+- Unit Test Related:
+    - Fix all existing failing UTs [PPDEV-028]
+    - Add DELETE API UTs for user [PPDEV-029]
+    - Add PUT API UTs for user [PPDEV-036]
+    - Write UTs for party GET APIs [PPDEV-015]
+    - Write UTs for party POST APIs [PPDEV-037]
+    - Write UTs for party PUT APIs [PPDEV-038]
+    - Write UTs for party DELETE APIs [PPDEV-039]
+    - Fix all existing Unit tests. [PPDEV-061]
+    - Write POST UTs for teams and fixed latest tag regex[PPDEV-063]
+    - Write GET UTs for teams apis [PPDEV-064]
+    - Write PUT UTs for teams apis [PPDEV-065]
+    - Write DELETE UTs for teams apis [PPDEV-066]
+    - Update all existing cases where teams scenario applies [PPDEV-067]
+
+- Create a get all party api, having date, and user filters. [PPDEV-043]
+- Add filter 'created_by' in parties attended get all request [PPDEV-049]
+- Create Global MAX_PARTY_RATING field. [PPDEV-052]
+- Add validations for max rating per parties-attended-post/put request. [PPDEV-053]
+- As soon as the parties_attended object is submitted,
+    the overall ratings and approved should be calculated/recalculated. [PPDEV-046]
+- PartyId and userId should be compositally unique in parties attended. [PPDEV-048]
+- Create Teams table.[PPDEV-055]
+- Link team table with user [PPDEV-056]
+- Write an endpoint to add/get teams [PPDEV-058]
+- Update user APIs to encompass teams [PPDEV-059]
+- Create a script that'll return the highest PPDEV ticket. [PPDEV-062]
+- All POST APIs should return 202 status instead of 200 [PPDEV-068]
+- User model should expect team_name and not team_id [PPDEV-072]
+- Add validation in user model for teams: team must exist [PPDEV-070]
+- Design group/team logic using design document [PPDEV-006]
+- Need filters in the user get api: team, team=null, doj, experience, etc. [PPDEV-073]
+- Add unit test for user get api with filters. [PPDEV-093]
+- Create Permissions Structure. Rules:
+    - Permissions table: id, permission. [PPDEV-074]
+    - permission_role table containing mappings of permission each role has. [PPDEV-094]
+    - Role table: id, role [PPDEV-095]
+    - Populate Roles table. [PPDEV-096]
+    - Permissions ENUM: containing all possible permissions. [PPDEV-097]
+    - Populate Permissions table. [PPDEV-097]
+    - migrations to add permission_role mappings. [PPDEV-098]
+- Create boiler-plate for permission based authorization. [PPDEV-099]
+
+- API to change roles of users. This will be permission based. Rules:
+    - Superadmin can create user -> admin, and admin->user [PPDEV-075]
+    - Write unittests for these cases. [PPDEV-100]
+
+- Opt-in table:
+    - id, uuid, user, created_on, deleted, subscribed(opt-in or opt-out) with migration script [PPDEV-087]
+
+- API to add/remove user from team. Rules:
+    - Only admins to have permission to do this. [PPDEV-077]
+    - On-addition, Opt-in handler to be called. [PPDEV-076]
+
+- Opt-in API. This will be used only by superadmins and admins. Rules:
+    - An opt-in link will be created. [PPDEV-080]
+    - This link will contain a unique uuid. [PPDEV-079]
+    - The uuid will be linked to a particular user only. [PPDEV-081] [PPDEV-082]
+
+
+Unplanned tasks
+- group/team
+- user tagging
+
+
+Not Immediately Required/Doubtful Tasks
+- After removing parties_due table, 'parties_due' count was suggested to be stored in redis or memcache.
+    - Create Redis connections [PPDEV-021]
+    - Write Logic to create and invalidate cache [PPDEV-022]
+- Design individual roles with specific permissions [PPDEV-012]
+- last_modified_on field is not updating in some scenarios, especially in PUT apis. [PPDEV-069]
+- Add get_by_team_name in teams GET API [PPDEV-071]
+- Small independent tasks:
+    - Write a common class for database communications [PPDEV-013]
+    - Add pagination to all GET-ALL APIs [PPDEV-019]
+    - Fix the party attended get with party_id return structure [PPDEV-047]
+
+- Parties Attended get request should have a filter 'PartyId'. [PPDEV-047]
+
+- Add soft delete to party, and update all methods to filter active parties [PPDEV-044]
+
+- Unit Tests Related:
+    - Write GET UTs for parties_attended CRUD APIs [PPDEV-020]
+    - Write POST UTs for parties_attended CRUD APIs [PPDEV-040]
+    - Write PUT UTs for parties_attended CRUD APIs [PPDEV-041]
+    - Write DELETE UTs for parties_attended CRUD APIs [PPDEV-042]
+
+- Bugs:
+    - Remove current user check from party get api [PPDEV-044]
+    - Date to Datetime in user post/put [PPDEV-051]
+    - Date of joining is not handled in user API.
+
+- Update party-attended get api, to contain user filter [PPDEV-050]
+
+- When viewing parties, a user should see only their team's parties. [PPDEV-057]
+
+In-progress tasks
+
+- teams API is still open. Do we need to add authentication layer on top of it?

@@ -7,16 +7,20 @@ from fastapi.testclient import TestClient
 
 # from app.auth.inter_service_auth import verify_auth_token
 from models.user import UserModel
+from models.party import Party
+from models.parties_attended import PartiesAttended
+from models.teams import TeamsModel
 from settings import settings
 from models import Base, get_db
 from main import application
+import json
+from fastapi import status
 
 
 @pytest.fixture(scope="function")
 def db_engine():
     engine = create_engine(settings.DATABASE.SQLALCHEMY_TEST_DATABASE_URL)
     if not database_exists(engine.url):
-        print(engine.url)
         create_database(engine.url)
 
     Base.metadata.create_all(bind=engine)
@@ -45,5 +49,55 @@ def client(db_session):
 
 
 def clear_db(session):
+    session.query(PartiesAttended).delete()
+    session.query(Party).delete()
     session.query(UserModel).delete()
+    session.query(TeamsModel).delete()
     session.commit()
+
+
+DEFAULT_USER_PAYLOAD = {
+    "email": "test@gmail.com",
+    "password": "Test@123",
+    "first_name": "Test",
+    "last_name": "User",
+}
+
+URLS = {"users": "/api/v1/users", "token": "/api/v1/auth/token"}
+
+
+def get_user_token(client, user_id):
+    response = client.post(URLS["token"], json=DEFAULT_USER_PAYLOAD)
+    if response.status_code == status.HTTP_201_CREATED:
+        return {
+            "user_id": user_id,
+            "access_token": response.json().get("access_token"),
+        }
+
+
+@pytest.fixture(scope="function")
+def account_user_and_token(client):
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
+    if response.status_code == status.HTTP_201_CREATED:
+        user_id = response.json().get("id")
+        return get_user_token(client, user_id)
+
+
+@pytest.fixture(scope="function")
+def superuser_and_token(client):
+    DEFAULT_USER_PAYLOAD["role"] = "superuser"
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
+    del DEFAULT_USER_PAYLOAD["role"]
+    if response.status_code == status.HTTP_201_CREATED:
+        user_id = response.json().get("id")
+        return get_user_token(client, user_id)
+
+
+@pytest.fixture(scope="function")
+def admin_user_and_token(client):
+    DEFAULT_USER_PAYLOAD["role"] = "admin"
+    response = client.post(URLS["users"], json=DEFAULT_USER_PAYLOAD)
+    del DEFAULT_USER_PAYLOAD["role"]
+    if response.status_code == status.HTTP_201_CREATED:
+        user_id = response.json().get("id")
+        return get_user_token(client, user_id)

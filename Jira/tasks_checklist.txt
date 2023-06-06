@@ -1,0 +1,107 @@
+To Do List
+
+- Notifications. Requirements:
+    - delete function [PPDEV-116]
+    - Notifications return must also contain the messages. [PPDEV-126]
+
+- Figure this out:
+    admin sends an opt-in request.
+    User accepts and finds out team is not present, or data is invalid.
+    Is this a possible scenario?
+    - Yes, this could be a possibility. To ensure that this doesn't happen, we'll have to
+        make sure that there shouldn't be any data that is linked with team_user while deleting a team record.[PPDEV-109]
+
+- Think over the opt-out flow once again, especially
+    in the case where a user is first subscribed and then unsubscribed. [PPDEV-110]
+
+- Add a check in opt-in, the deleted flag should be unset. [PPDEV-112]
+
+- server default in notifications table has to be more meaningful. [PPDEV-117]
+
+- Determine if validations are required for notifications. [PPDEV-119]
+
+- Think of the permissions that will be required in notifications. [PPDEV-120]
+
+- Think about how we'll return the type object in notifications response. [PPDEV-121]
+
+- Think: Do we need to record the notification created_by? [PPDEV-123]
+
+- Notifications will be like: click to mark as read.
+
+- Create a member-activity concept.
+
+- type_id in notifications can be null
+
+- update team_user uc to team+user+deleted
+
+- remember to fix filter_by(team_name=args.team_name.lower())
+
+
+Completed Tasks
+
+- Bugs
+    - team_name should not be none in team_user api request. [PPDEV-103]
+
+- there should be a unique record for each user and team in opt-in. [PPDEV-104]
+
+- Add the following to the teamuser table: requested_by (admin_user) and team [PPDEV-101]
+
+- Create a new task_list to contain tasks from
+    PPDEV-000 to PPDEV-100 and fix fetch_latest_tag script. [PPDEV-106]
+
+- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
+    - The url will contain a uuid. [PPDEV-083]
+    - This will be matched with user's token. [PPDEV-084]
+    - The team-name will be fetched from team_user record and user will be subscribed. [PPDEV-085]
+    - On successful subscription, the subscribed flag should be set. [PPDEV-111]
+
+- Opt-out handler API. The opt-in record should be deleted and subscribed should be unset. [PPDEV-088]
+
+- Remove permission_role table, model and all of its mappings. [PPDEV-105]
+
+- Opt-in API. This will be used only by superadmins and admins. Rules:
+    - This link will be shared as a notification [and over email as well -> not sure]. [PPDEV-082]
+
+- Opt-in handler API. This will be used to subscribe a user to a team. Rules:
+    - On successful subscription, an email/notification can be shared over to the user. [PPDEV-086]
+
+
+- Think: Handle type_id for notifications: will notifications be custom messages or
+    do we need to store notification messages in types? Also, if type_id,
+    (type_id + user_id) should be unique. [PPDEV-122]
+
+- Store custom messages for each notification type. [PPDEV-124]
+
+- Create unique constraint for type_id + user_id in notifications table. [PPDEV-125]
+
+- Create new routes sub-directories for team and opt-in. Check by running all unittests. [PPDEV-107]
+
+- Remove permissions table, model and all of its mappings. [PPDEV-118]
+
+- API to add/remove user from team. Rules:
+    - On refusing to subscribe to the team,
+        the admin should get a notification that their request has been rejected. [PPDEV-127]
+    - Add enum: REQUEST_REJECTION to notifications with message as well. [PPDEV-078]
+
+- Create an endpoint for admin and superadmin, where they can remove a user from a team. [PPDEV-113]
+
+- User should get a notification, that they've been removed from the team. [PPDEV-128]
+
+
+- Notifications. Requirements:
+    - Notifications table: id, created_on, is_read, expired, type, type_id, user, deleted [PPDEV-089]
+    - Notification Type Enum: Opt-in, Welcome, Like, Comment, Approval, Birthday. [PPDEV-090]
+    - GET handler. [PPDEV-091]
+    - GET should also be a functional call. [PPDEV-114]
+    - Update handler. [PPDEV-092]
+    - update function [PPDEV-115]
+
+- Identify the need of roles table. If not required, delete it. [PPDEV-119]
+
+- User should not have the ability to add/create teams to their profile. [PPDEV-129]
+
+- Add 'admin' filter to get users request. [PPDEV-102]
+
+- Add 'id' filter to get users request. [PPDEV-108]
+
+

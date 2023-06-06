@@ -1,8 +1,8 @@
-"""Create role table
+"""Create roles table
 
-Revision ID: f922bf57da4c
-Revises: 538273900378
-Create Date: 2022-08-06 02:44:10.951961
+Revision ID: 89b9a478c657
+Revises: 0b5c7aaa5e34
+Create Date: 2023-02-22 22:56:17.612531
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = "f922bf57da4c"
-down_revision = "538273900378"
+revision = "89b9a478c657"
+down_revision = "0b5c7aaa5e34"
 branch_labels = None
 depends_on = None
 
@@ -21,10 +21,9 @@ def upgrade() -> None:
     op.create_table(
         "roles",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("name", sa.String(), nullable=False),
-        sa.Column("disabled", sa.Boolean(), nullable=False),
+        sa.Column("role", sa.String(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
-        sa.UniqueConstraint("name"),
+        sa.UniqueConstraint("role"),
     )
     op.create_index(op.f("ix_roles_id"), "roles", ["id"], unique=False)
     # ### end Alembic commands ###

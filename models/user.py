@@ -1,22 +1,18 @@
-import enum
 from sqlalchemy import (
     Boolean,
     Column,
-    ForeignKey,
     Integer,
     String,
-    UniqueConstraint,
     Enum,
     DateTime,
-    func,
-    Table,
-    JSON,
+    DATE,
+    ForeignKey,
 )
-from sqlalchemy.dialects.postgresql import JSONB, TEXT
-from sqlalchemy.orm import relationship, Session
-from sqlalchemy.ext.mutable import MutableDict
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from models import Base
+from models.teams import TeamsModel
+from models.role import RoleTypeEnum
 
 
 class UserModel(Base):
@@ -28,5 +24,9 @@ class UserModel(Base):
     last_name = Column(String, nullable=True)
     disabled = Column(Boolean, default=False, nullable=False)
     hashed_password = Column(String, nullable=True)
+    role = Column(Enum(RoleTypeEnum), nullable=False, server_default="regular")
+    team_id = Column(Integer, ForeignKey("teams.id"), nullable=True)
+    team = relationship(TeamsModel)
+    date_of_joining = Column(DATE)
     created_on = Column(DateTime, default=datetime.now(), nullable=False)
     last_modified_on = Column(DateTime, nullable=True)

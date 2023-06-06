@@ -1,0 +1,27 @@
+on:
+  schedule:
+    - cron: '0 2 * * mon'
+  push:
+    branches:
+      - develop
+
+jobs:
+  latest_branch:
+    name: get latest release branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "checking out git commands"
+        run: |
+          git fetch
+          latest_release_branch=$(git branch -r| grep "\borigin/release/[0-9]" | sort --version-sort | tail -n1)
+          latest_release_branch=$(echo "$latest_release_branch" | sed -e 's/^[[:space:]]*//')
+          echo "ref=$latest_release_branch"
+          echo "latest_release_branch=$latest_release_branch" >> $GITHUB_ENV
+
+      - name: "echo the sliced string"
+        run: |
+          echo "latest release branch is: ${{env.latest_release_branch}}"
+          
