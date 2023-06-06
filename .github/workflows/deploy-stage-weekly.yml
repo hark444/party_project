@@ -2,7 +2,7 @@ name: Weekly Deploy to Stage
 
 on:
   schedule:
-    - cron: '0/30 * * * *'
+    - cron: '* * 1 2 *'
 
 jobs:
   package:
