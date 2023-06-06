@@ -2,7 +2,9 @@ name: test develop merge run
 
 on:
   push:
-    branches-ignore: develop
+    branches:
+      - 'master'
+      - '!develop'
     
 jobs: 
   mergeDevelop:
