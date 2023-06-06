@@ -12,4 +12,7 @@ jobs:
       - name: check if branch name is ppdev-1234
 #         if: ${{ github.event_name == 'push' && github.ref_type == 'merge' }}
         run: env
+      
+      - name: getting event details
+        run: echo "getting the event vars ${{ github.event }}"
         
