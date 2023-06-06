@@ -1,0 +1,15 @@
+name: test develop merge run
+
+on:
+  push:
+    branches: develop
+    
+jobs: 
+  mergeDevelop:
+    name: conditional run for a specific branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: check if branch name is ppdev-1234
+#         if: ${{ github.event_name == 'push' && github.ref_type == 'merge' }}
+        run: env
+        
