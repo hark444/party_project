@@ -14,23 +14,13 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           
-          # Required mail server address if not connection_url:
           server_address: smtp.gmail.com
-          # Server port, default 25:
           server_port: 465
-          # Optional whether this connection use TLS (default is true if server_port is 465)
-          secure: true
-          # Optional (recommended) mail server username:
           username: hkeshwani78@gmail.com
-          # Optional (recommended) mail server password:
           password: hvekpqahusdjycql
-          # Required mail subject:
+          
           subject: Github Actions job result
-          # Required recipients' addresses:
           to: hark44@yopmail.com
-          # Required sender full name (address can be skipped):
-          from: Luke Skywalker # <user@example.com>
-          # Optional plain body:
+          from: Email Test
           body: Build job of ${{github.repository}} completed successfully!
-          # Optional HTML body read from file:
           html_body: This is a test HTML body
