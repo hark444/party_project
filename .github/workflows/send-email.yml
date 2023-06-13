@@ -27,4 +27,4 @@ jobs:
           to: hark44@yopmail.com
           from: Email Test
           body: Build job of ${{github.repository}} completed successfully!
-          html_body: ${{ github.event.head_commit.message }}
+          html_body: ${{ github.event.commits }}
