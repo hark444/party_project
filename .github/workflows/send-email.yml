@@ -10,16 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
         with:
-          node-version: '14'
-
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Send Email
-        run: |
-          # Replace this command with the actual command to send an email
-          # For example, using the 'mail' command or a custom script
-          echo "Email content" | mail -s "Email subject" hark44@yopmail.com
+          
+          # Required mail server address if not connection_url:
+          server_address: smtp.gmail.com
+          # Server port, default 25:
+          server_port: 465
+          # Optional whether this connection use TLS (default is true if server_port is 465)
+          secure: true
+          # Optional (recommended) mail server username:
+          username: hkeshwani78@gmail.com
+          # Optional (recommended) mail server password:
+          password: Quovantis@123
+          # Required mail subject:
+          subject: Github Actions job result
+          # Required recipients' addresses:
+          to: hark44@yopmail.com
+          # Required sender full name (address can be skipped):
+          from: Luke Skywalker # <user@example.com>
+          # Optional plain body:
+          body: Build job of ${{github.repository}} completed successfully!
+          # Optional HTML body read from file:
+          html_body: This is a test HTML body
