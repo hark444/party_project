@@ -3,7 +3,7 @@ name: Send Email on Develop Push
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   send-email:
