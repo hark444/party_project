@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Extract Commit Message
         run: |
-          echo "Commit Message: ${{ github.event.head_commit.message }}"
+          echo "Commit Message: ${{ github.event.commits }}"
           # echo "MY_ENV_VARIABLE=example_value" >> $GITHUB_ENV
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
