@@ -1,0 +1,25 @@
+name: Send Email on Develop Push
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Send Email
+        run: |
+          # Replace this command with the actual command to send an email
+          # For example, using the 'mail' command or a custom script
+          echo "Email content" | mail -s "Email subject" hark44@yopmail.com
