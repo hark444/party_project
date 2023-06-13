@@ -18,7 +18,7 @@ jobs:
             echo "Commit Message: $commit.message"
             commit_messages+="$commit.message\n"
           done
-          # echo "MY_ENV_VARIABLE=example_value" >> $GITHUB_ENV
+          echo "MY_ENV_VARIABLE=$commit_messages" >> $GITHUB_ENV
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
@@ -32,4 +32,4 @@ jobs:
           to: hark44@yopmail.com
           from: Email Test
           body: Build job of ${{github.repository}} completed successfully!
-          html_body: ${{ github.event.commits }}
+          html_body: ${{ env.MY_ENV_VARIABLE }}"
