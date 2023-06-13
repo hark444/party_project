@@ -23,7 +23,7 @@ jobs:
           # Optional (recommended) mail server username:
           username: hkeshwani78@gmail.com
           # Optional (recommended) mail server password:
-          password: Quovantis@123
+          password: hvekpqahusdjycql
           # Required mail subject:
           subject: Github Actions job result
           # Required recipients' addresses:
