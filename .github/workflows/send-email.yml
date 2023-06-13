@@ -1,0 +1,30 @@
+name: Send Email on Develop Push
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extract Commit Message
+        run: |
+          echo "Commit Message: ${{ github.event.head_commit.message }}"
+          # echo "MY_ENV_VARIABLE=example_value" >> $GITHUB_ENV
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: hkeshwani78@gmail.com
+          password: ${{ secrets.SMTP_PASSWORD }}
+          
+          subject: Github Actions job result
+          to: hark44@yopmail.com
+          from: Email Test
+          body: Build job of ${{github.repository}} completed successfully!
+          html_body: ${{ github.event.head_commit.message }}
