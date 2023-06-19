@@ -21,4 +21,8 @@ jobs:
               commit_messages+="$commit.message\n"
             done
             #echo "MY_ENV_VARIABLE=$commit_messages" >> $GITHUB_ENV
+      
+      - name: reading env
+        run: |
+            echo "commit messages: ${{ env.MY_ENV_VARIABLE }}"
         
