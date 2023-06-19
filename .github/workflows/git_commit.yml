@@ -15,6 +15,7 @@ jobs:
       - run: |
           curl --location --request PATCH 'https://api.github.com/repos/hark444/party_project/actions/variables/LAST_STAGE_DEPLOYMENT' \
           --header 'Accept: application/vnd.github.v3+json' \
+          --header 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}
           --header 'Content-Type: application/json' \
           --data '{
               "name": "LAST_STAGE_DEPLOYMENT",
