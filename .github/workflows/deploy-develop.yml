@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: head_ref
         run: echo "${{ github.head_ref }}"
+        
+      - name: logging github.event
+        run: echo "${{toJSON(github.event)}}"
       
       - name: composing commit messages
         run: |
