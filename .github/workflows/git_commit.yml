@@ -8,6 +8,8 @@ jobs:
     name: commit to git
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      actions: write
     steps:
       - run: |
           github_token=${{ secrets.GITHUB_TOKEN }}
