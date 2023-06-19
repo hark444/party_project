@@ -12,16 +12,11 @@ jobs:
       # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
       contents: write
     steps:
-      - uses: actions/checkout@v3
       - run: |
-          echo "creating test.txt file"
-          touch test.csv
-          current_date=$(date)
-          contents_to_append="$GITHUB_REF, test_commit_message, $current_date"
-          echo contents_to_append >> test.csv
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Adding text.txt
-          create_branch: true
-          branch: test/1a
-        
+          curl --location --request PATCH 'https://api.github.com/repos/hark444/party_project/actions/variables/LAST_STAGE_DEPLOYMENT' \
+          --header 'Accept: application/vnd.github.v3+json' \
+          --header 'Content-Type: application/json' \
+          --data '{
+              "name": "LAST_STAGE_DEPLOYMENT",
+              "value": "PPDEV-009"
+          }'
