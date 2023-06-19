@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - develop
+    
+jobs:
+  commitToGit:
+    name: waypoint-up
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "creating test.txt file"
+          touch test.txt
+          echo "creating a new branch"
+          git checkout -b test/1a
+          git status
+          git add .
+          git commit -m "Adding test file"
+          git push origin test/1a
+        
